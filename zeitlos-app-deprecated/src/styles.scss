@@ -1,0 +1,15 @@
+.main-container {
+  width: 1680px;
+  background: red;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+  div {
+    background: darkblue;
+  }
+}
