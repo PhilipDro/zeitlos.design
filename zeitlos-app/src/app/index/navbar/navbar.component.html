@@ -1,6 +1,5 @@
 <nav class="main-nav">
   <a class="navbar-brand" href="#">Zeitlos</a>
-
   <ul>
     <li>
       <a href="javascript:;;" [routerLink]="[ '/' ]">Home
@@ -8,9 +7,8 @@
       </a>
     </li>
     <li>
-      <a href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">Our Products</a>
+      <a href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">Objekte</a>
     </li>
-
   </ul>
 
   <ul class="navbar-nav">
@@ -30,23 +28,21 @@
     </li>
     <li class="active">
       <a href="javascript:;;">
-        <i class="fa fa-envelope"></i> Contact
+        <i class="fa fa-envelope"></i> Kontakt
         <span class="sr-only">(current)</span>
       </a>
     </li>
     <li class="nav-item" *ngIf="authService.isLoggedIn()">
       <a [routerLink]="['/users']">
-        <i class="fa fa-user"></i> My Account</a>
+        <i class="fa fa-user"></i> Account</a>
     </li>
     <li class="nav-item" *ngIf="!authService.isLoggedIn()">
       <a [routerLink]="[ '/index/login' ]">
-        <i class="fa fa-sign-in"></i> Signin / Signup</a>
+        <i class="fa fa-sign-in"></i>Login/ Registration</a>
     </li>
     <li class="nav-item" *ngIf="authService.isLoggedIn()">
       <a (click)="logout()">
         <i class="fa fa-sign-in"></i>Logout</a>
     </li>
   </ul>
-
 </nav>
-<!--/.Navbar-->
