@@ -3,7 +3,7 @@
 
 
 
-  <ul class="navbar-nav">
+  <ul class="main-nav__list">
     <li>
       <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
         <i class="fa fa-heart">
@@ -24,20 +24,20 @@
         <span class="sr-only">(current)</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="authService.isLoggedIn()">
+    <li *ngIf="authService.isLoggedIn()">
       <a [routerLink]="['/users']">
         <i class="fa fa-user"></i> Account</a>
     </li>
-    <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+    <li *ngIf="!authService.isLoggedIn()">
       <a [routerLink]="[ '/index/login' ]">
         <i class="fa fa-sign-in"></i>Login/ Registration</a>
     </li>
-    <li class="nav-item" *ngIf="authService.isLoggedIn()">
+    <li *ngIf="authService.isLoggedIn()">
       <a (click)="logout()">
         <i class="fa fa-sign-in"></i>Logout</a>
     </li>
   </ul>
-  <ul>
+  <ul class="main-nav__list">
     <li>
       <a href="javascript:;;" [routerLink]="[ '/' ]">Home
         <span class="sr-only">(current)</span>

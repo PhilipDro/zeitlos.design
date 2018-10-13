@@ -12,6 +12,16 @@ router-outlet ~ * {
   height: 100%;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+section {
+  margin: 15vh 0;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

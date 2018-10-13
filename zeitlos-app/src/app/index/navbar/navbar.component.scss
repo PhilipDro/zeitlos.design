@@ -1,9 +1,13 @@
 .main-nav {
-  ul {
+  &__list {
     display: inline;
     float: right;
     li {
       display: inline;
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
 }
