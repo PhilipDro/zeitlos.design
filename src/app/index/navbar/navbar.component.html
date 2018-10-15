@@ -1,50 +1,79 @@
-<nav class="main-nav container">
-  <a class="navbar-brand" href="#">Zeitlos</a>
+<div class="container">
+  <nav class="main-nav">
+    <div class="main-nav__section">
+      <!--<img src="parent-brand.png" alt="Logo von Artur Drozd Möbelmanufaktur" />-->
+      <img class="parent-brand" src="assets/icons/parent-logo.png" alt="Logo " />
 
+      <ul class="main-nav__list nav-info">
+        <li>
+          <i class="fa fa-phone"></i>
+          <span>00 49 0172 / 525 25 31</span>
+        </li>
+        <li>
+          <i class="fa fa-envelope"></i>
+          <span>info@zeitlos-artd.de</span>
+        </li>
+      </ul>
+    </div>
 
+    <div class="main-nav__section main-brand">
+      <a href="#">Zeitlos</a>
+      <span>Objekte des 20. Jahrhunderts</span>
+    </div>
 
-  <ul class="main-nav__list">
-    <li>
-      <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
-        <i class="fa fa-heart">
-          <span class="mt-2"> {{productService.navbarFavProdCount}}</span>
-        </i>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:;;" [routerLink]="['/products/cart-items']">
-        <i class="fa fa-shopping-cart">
-          <span class="mt-2"> {{productService.navbarCartCount}}</span>
-        </i>
-      </a>
-    </li>
-    <li class="active">
-      <a href="javascript:;;">
-        <i class="fa fa-envelope"></i> Kontakt
-        <span class="sr-only">(current)</span>
-      </a>
-    </li>
-    <li *ngIf="authService.isLoggedIn()">
-      <a [routerLink]="['/users']">
-        <i class="fa fa-user"></i> Account</a>
-    </li>
-    <li *ngIf="!authService.isLoggedIn()">
-      <a [routerLink]="[ '/index/login' ]">
-        <i class="fa fa-sign-in"></i>Login/ Registration</a>
-    </li>
-    <li *ngIf="authService.isLoggedIn()">
-      <a (click)="logout()">
-        <i class="fa fa-sign-in"></i>Logout</a>
-    </li>
-  </ul>
-  <ul class="main-nav__list">
-    <li>
-      <a href="javascript:;;" [routerLink]="[ '/' ]">Home
-        <span class="sr-only">(current)</span>
-      </a>
-    </li>
-    <li>
-      <a href="javascript:;;" [routerLink]="[ '/products/all-products' ]">Objekte</a>
-    </li>
-  </ul>
-</nav>
+    <div class="main-nav__section">
+      <ul class="main-nav__list nav-sites">
+        <li>
+          <a href="javascript:;;" [routerLink]="[ '/' ]">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;;" [routerLink]="[ '/products/all-products' ]">Objekte</a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-nav__section">
+      <ul class="main-nav__list nav-personal">
+        <li>
+          <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
+            <i class="fa fa-heart">
+              <span class="mt-2"> {{productService.navbarFavProdCount}}</span>
+            </i>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;;" [routerLink]="['/products/cart-items']">
+            <i class="fa fa-shopping-cart">
+              <span class="mt-2"> {{productService.navbarCartCount}}</span>
+            </i>
+          </a>
+        </li>
+        <!--<li class="active">-->
+          <!--<a href="javascript:;;">-->
+            <!--<i class="fa fa-envelope"></i> Kontakt-->
+            <!--<span class="sr-only">(current)</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <li *ngIf="authService.isLoggedIn()">
+          <a [routerLink]="['/users']">
+            <i class="fa fa-user"></i>
+            <!--Mein Konto-->
+          </a>
+        </li>
+        <li *ngIf="!authService.isLoggedIn()">
+          <a [routerLink]="[ '/index/login' ]">
+            <i class="fa fa-sign-in"></i>
+            <!--Login/ Registration-->
+          </a>
+        </li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a (click)="logout()">
+            <i class="fa fa-sign-in"></i>
+            <!--Logout-->
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

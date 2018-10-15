@@ -4,6 +4,7 @@ import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
+
 @Component({
   selector: "app-product-list",
   templateUrl: "./product-list.component.html",
@@ -11,6 +12,7 @@ import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 })
 export class ProductListComponent implements OnInit {
   productList: Product[];
+  addProducts = false;
 
   brands = [
     "Tische",
@@ -72,5 +74,10 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.productService.addToCart(product);
+  }
+
+  toggleAddProducts(any) {
+    this.addProducts = !this.addProducts;
+    console.log(this.addProducts);
   }
 }

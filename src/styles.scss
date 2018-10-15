@@ -1,15 +1,33 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Krub', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;;
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 router-outlet ~ * {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+h2 {
+  //text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 3em;
 }
 
 img {
@@ -22,20 +40,21 @@ a {
   text-decoration: none;
 }
 
-section {
-  margin: 15vh 0;
+button {
+  padding: 2em;
+  background: #e0934b;
+  border: 1px solid darken(#e0934b, 5%);
+  a {
+    color: #ffffff;
+    font-size: 1.5em;
+  }
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+section {
+  margin: 5vh 0;
+  padding: 10vh 0;
+  //background: #ededed;
+  background: #e2e2e2;
 }
 
 .container {
@@ -722,38 +741,41 @@ section {
 .row:after {
   clear: both;
 }
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.pull-right {
-  float: right !important;
-}
-.pull-left {
-  float: left !important;
-}
-.hide {
-  display: none !important;
-}
-.show {
-  display: block !important;
-}
-.invisible {
-  visibility: hidden;
-}
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.hidden {
-  display: none !important;
-}
-.affix {
-  position: fixed;
-}
 
 
+
+//.center-block {
+//  display: block;
+//  margin-left: auto;
+//  margin-right: auto;
+//}
+//.pull-right {
+//  float: right !important;
+//}
+//.pull-left {
+//  float: left !important;
+//}
+//.hide {
+//  display: none !important;
+//}
+//.show {
+//  display: block !important;
+//}
+//.invisible {
+//  visibility: hidden;
+//}
+//.text-hide {
+//  font: 0/0 a;
+//  color: transparent;
+//  text-shadow: none;
+//  background-color: transparent;
+//  border: 0;
+//}
+//.hidden {
+//  display: none !important;
+//}
+//.affix {
+//  position: fixed;
+//}
+//
+//

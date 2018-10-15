@@ -1,13 +1,57 @@
 .main-nav {
+  display: flex;
+  //flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1.1em;
+  align-items: flex-end;
+
   &__list {
     display: inline;
-    float: right;
+    padding-left: 0;
     li {
       display: inline;
+      margin: 0 .5em;
       a {
         text-decoration: none;
         color: black;
       }
+    }
+  }
+
+  .parent-brand {
+    max-height: 50px;
+    width: auto;
+  }
+
+  .nav-info {
+    i {
+      margin-right: .5em;
+    }
+  }
+
+  .nav-sites {
+
+  }
+
+  .nav-personal {
+    li {
+
+    }
+  }
+
+
+  .main-brand {
+    a {
+      font-family: 'K2D', sans-serif;
+      font-size: 3em;
+      color: black;
+      text-transform: uppercase;
+      position: relative;
+      top: .1em;
+    }
+    span {
+      display: block;
+      font-size: .9em;
     }
   }
 }
