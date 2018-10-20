@@ -1,20 +1,20 @@
-<h4 class="d-flex justify-content-between align-items-center mb-3">
-  <span class="text-muted">Your cart</span>
-  <span class="badge badge-primary badge-pill">{{products.length}}</span>
-</h4>
-<ul class="list-group mb-3">
-  <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products">
+<h3>
+  <span class="text-muted">Ihr Einkaufswagen</span>
+  <span class="badge">{{products.length}}</span>
+</h3>
+<ul class="item-list">
+  <li *ngFor="let product of products">
     <div>
-      <h6 class="my-0">{{product.productName}}</h6>
+      <h4>{{product.productName}}</h4>
     </div>
     <span class="text-muted">€ {{product.productPrice}}</span>
   </li>
   <hr>
-  <li class="list-group-item d-flex justify-content-between">
+  <li>
     <span>Total (INR)</span>
     <strong>€ {{totalValue}}</strong>
   </li>
-  <a class="btn btn-primary" [routerLink]="['/products/all-products']">Continue Shipping</a>
-  <a class="btn btn-default" [routerLink]="['/checkouts']">Checkout</a>
+  <a class="button-primary" [routerLink]="['/checkouts']">Bezahlen</a>
+  <a class="button-default" [routerLink]="['/products/all-products']">Zum Shop</a>
 
 </ul>
