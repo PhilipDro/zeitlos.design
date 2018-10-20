@@ -18,6 +18,8 @@ import { SharedModule } from "../shared/shared.module";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.component";
+import { ProductListIntroComponent } from "./product-list-intro/product-list-intro.component";
+
 
 @NgModule({
   imports: [
@@ -34,7 +36,8 @@ import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.compo
     ProductDetailComponent,
     FavouriteProductsComponent,
     CartProductsComponent,
-    CartCalculatorComponent
+    CartCalculatorComponent,
+    ProductListIntroComponent,
   ],
   exports: [BestProductComponent]
 })
