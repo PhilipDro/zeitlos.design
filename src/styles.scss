@@ -40,7 +40,16 @@ a {
   text-decoration: none;
 }
 
-button {
+section {
+  margin: 2.5vh 0;
+  padding: 2.5vh 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.button-hero {
   padding: 2em;
   background: #e0934b;
   border: 1px solid darken(#e0934b, 5%);
@@ -50,21 +59,12 @@ button {
   }
 }
 
-section {
-  margin: 5vh 0;
-  padding: 10vh 0;
-}
-
 .content-section {
-  background: #ededed;
-  //background: #e2e2e2;
+  margin: 5vh 0;
+  padding: 5vh 0;
+  //background: #ededed;
+  background: #e2e2e2;
 }
-
-
-
-
-
-
 
 .container {
   margin-right: auto;
