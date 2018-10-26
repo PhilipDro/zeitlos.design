@@ -5,7 +5,9 @@ body {
   color: #333333;
   margin: 0;
 }
-
+button {
+  font-family: 'Krub', sans-serif;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -24,10 +26,15 @@ router-outlet ~ * {
   height: 100%;
 }
 
-h2 {
+h1 {
   //text-transform: uppercase;
   margin-bottom: 0;
   font-size: 3em;
+}
+
+h2 {
+  font-weight: bold;
+  margin: .5em 0;
 }
 
 img {
@@ -54,8 +61,28 @@ section {
 }
 
 .button {
-  padding: 1em;
+  padding: 1em 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  letter-spacing: .05em;
+  font-size: 1.1em;
 }
+.button-primary {
+  background-color: #34b0a0;
+  color: white;
+  border: none;
+
+  a {
+    color: white;
+  }
+}
+
+//.button-secondary {
+//  //TODO
+//}
 
 .button-hero {
   padding: 2em;
@@ -67,12 +94,20 @@ section {
   }
 }
 
-.button-primary {
-  //TODO
-}
+.list {
+  padding-left: 0;
 
-.button-secondary {
-  //TODO
+  li {
+    list-style-type: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 2em;
+    color: #626262;
+
+    &.active {
+      color: black;
+    }
+  }
 }
 
 .content-section {
