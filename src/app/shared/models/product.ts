@@ -5,10 +5,16 @@ export class Product {
   productCategory: string;
   productPrice: number;
   productDescription: string;
+  productMaterial: string;
+  productSize: string;
+  productStyle: string;
+  productOrigin: string;
+  productManufacturer: string;
+  productDesigner: string;
+  productTime: string;
+  productCondition: string;
   productImageUrl: string;
   productAdded: number;
   productQuatity: number;
-  ratings: number;
   favourite: boolean;
-  productSeller: string;
 }

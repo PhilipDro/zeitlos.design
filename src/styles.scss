@@ -52,6 +52,17 @@ section {
   padding: 2.5vh 0;
 }
 
+.mr {
+  margin-right: 1em;
+}
+.mt {
+  margin-top: 1em;
+}
+
+.highlighted {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 .block {
   display: block;
 }
@@ -74,6 +85,7 @@ section {
   background-color: #34b0a0;
   color: white;
   border: none;
+  border: 1px solid darken(#34b0a0, 5%);
 
   a {
     color: white;
@@ -84,15 +96,6 @@ section {
 //  //TODO
 //}
 
-.button-hero {
-  padding: 2em;
-  background: #e0934b;
-  border: 1px solid darken(#e0934b, 5%);
-  a {
-    color: #ffffff;
-    font-size: 1.5em;
-  }
-}
 
 .list {
   padding-left: 0;
@@ -106,6 +109,23 @@ section {
 
     &.active {
       color: black;
+    }
+  }
+}
+
+table {
+  tr {
+    //border-collapse: separate;
+    //border-spacing: 3em;
+    padding: 30em 0;
+    th {
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: left;
+      padding: 0 4em .8em 0;
+    }
+    td {
+
     }
   }
 }
