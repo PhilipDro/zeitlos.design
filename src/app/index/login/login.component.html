@@ -1,68 +1,66 @@
 <section class="container">
   <div class="row">
-  <!-- Login form -->
-  <div class="col-sm-6">
-    <form style="width:22rem" #loginForm="ngForm" (ngSubmit)="signInWithEmail(loginForm)">
-      <p>Log in</p>
+    <!-- Login form -->
+    <div class="col-sm-6">
+      <form class="form" #loginForm="ngForm" (ngSubmit)="signInWithEmail(loginForm)">
+        <h2>Bereits bei Zeitlos Kunde?</h2>
 
-      <i class="fa fa-envelope"></i>
-      <input mdbActive type="email" id="loginEmailId" class="form-control" name="emailId" [(ngModel)]="user.emailId" mdbInputValidate
-        [email]="true" autocomplete="email">
-      <label for="emailId">E-Mail Adresse</label>
+        <!--<i class="fa fa-envelope"></i>-->
+        <input mdbActive type="email" id="loginEmailId" class="form-control" name="emailId" [(ngModel)]="user.emailId" mdbInputValidate
+          [email]="true" autocomplete="email" placeholder="E-Mail Adresse">
+        <!--<label for="emailId">E-Mail Adresse</label>-->
 
-      <br /><!-- TODO-->
+        <br /><!-- TODO-->
 
-      <i class="fa fa-lock"></i>
-      <input type="password" id="loginPassword" name="loginPassword" [(ngModel)]="user.loginPassword" class="form-control" mdbActive
-        autocomplete="current-password">
+        <!--<i class="fa fa-lock"></i>-->
+        <input type="password" id="loginPassword" name="loginPassword" [(ngModel)]="user.loginPassword" class="form-control" mdbActive
+          autocomplete="current-password" placeholder="Passwort">
 
 
-      <label for="defaultForm-pass">Passwort</label>
+        <!--<label for="defaultForm-pass">Passwort</label>-->
 
-      <div class="block">
-        <button type="submit" class="button" id="loginButton">
-          Login
-        </button>
-
-        <button type="button" class="button" (click)="signInWithGoogle()" style="background-color: #dd4b39">
-          <i class="fa fa-google" aria-hidden="true"></i>
-          Login über Google
-        </button>
-      </div>
-
-    </form>
-  </div>
-  <div class="col-sm-6">
-    <p>Sie sind neu ?
-      <a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue">Registrieren Sie sich hier!</a>
-    </p>
-
-    <div id="createUserForm" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
-          <h4><i class="fa fa-user-plus"></i> Registrieren</h4>
-
-          <div class="alert alert-danger" role="alert" *ngIf="errorInUserCreate">
-            {{errorMessage.message}}
-          </div>
-          <i class="fa fa-envelope prefix"></i>
-          <input mdbActive type="email" id="emailId" class="form-control" name="emailId" [(ngModel)]="createUser.emailId" mdbInputValidate
-            [email]="true" autocomplete="email">
-          <label for="emailId">E-Mail Adresse</label>
-
-          <br> <!-- TODO -->
-
-          <i class="fa fa-lock prefix"></i>
-          <input type="password" id="password" name="password" [(ngModel)]="createUser.password" autocomplete="new-password">
-          <label for="password">Passwort</label>
-
-          <br> <!-- TODO -->
-
-          <button class="button" id="signUpButton">Registrieren
-            <i class="fa fa-sign-in"></i>
+        <div class="space-between">
+          <button type="submit" class="button button-primary" id="loginButton">
+            Anmelden
           </button>
-        </form>
+
+          <button type="button" class="button" (click)="signInWithGoogle()">
+            <!--<i class="fa fa-google" aria-hidden="true"></i>-->
+            Google-Anmeldung
+          </button>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-sm-6">
+
+      <form class="form" #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+        <h3>Neu bei Zeitlos?
+          <!--<a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue">Registrieren Sie sich hier!</a>-->
+        </h3>
+        <!--<h4><i class="fa fa-user-plus"></i> Registrieren</h4>-->
+
+        <div class="alert alert-danger" role="alert" *ngIf="errorInUserCreate">
+          {{errorMessage.message}}
+        </div>
+        <!--<i class="fa fa-envelope prefix"></i>-->
+        <input mdbActive type="email" id="emailId" name="emailId" [(ngModel)]="createUser.emailId"
+          [email]="true" autocomplete="email" placeholder="E-Mail Adresse">
+        <!--<label for="emailId">E-Mail Adresse</label>-->
+
+        <br> <!-- TODO -->
+
+        <!--<i class="fa fa-lock prefix"></i>-->
+        <input type="password" id="password" name="password" [(ngModel)]="createUser.password" autocomplete="new-password" placeholder="Passwort">
+        <!--<label for="password">Passwort</label>-->
+
+        <br> <!-- TODO -->
+
+        <button class="button" id="signUpButton">
+          <i class="fa fa-sign-in"></i>
+          Registrieren
+        </button>
+      </form>
     </div>
   </div>
-  </div>
 </section>
-<ng2-toasty></ng2-toasty>

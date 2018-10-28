@@ -1,3 +1,6 @@
-.page-footer {
-  bottom: 0;
+// variables
+$gray: lighten(#e2e2e2, 8%);
+
+footer {
+  background: $gray;
 }

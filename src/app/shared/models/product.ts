@@ -15,6 +15,7 @@ export class Product {
   productCondition: string;
   productImageUrl: string;
   productAdded: number;
+  productAvailable: boolean;
   productQuatity: number;
   favourite: boolean;
 }
