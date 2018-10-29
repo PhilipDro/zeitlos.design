@@ -1,3 +1,5 @@
+$font-color-inactive: #626262;
+
 .container {
   position: relative;
 }
@@ -27,6 +29,11 @@
     &-personal {
       flex-direction: row;
       display: inline-block;
+      .nav-icon {
+        font-size: 1.4em;
+        position: relative;
+        top: .1em;
+      }
     }
   }
 
@@ -37,9 +44,16 @@
     li {
       display: inline;
       margin: 0 .5em;
+      position: relative;
       a {
         text-decoration: none;
-        color: black;
+        color: $font-color-inactive;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        &.active {
+          color: black;
+        }
       }
     }
   }

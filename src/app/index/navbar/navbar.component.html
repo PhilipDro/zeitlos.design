@@ -25,9 +25,10 @@
 
     <div class="main-nav__section">
       <div class="main-nav__section-sites">
+        <!-- Sites -->
         <ul class="main-nav__list nav-sites">
           <li>
-            <a href="javascript:;;" [routerLink]="[ '/' ]">Home
+            <a class="active" href="javascript:;;" [routerLink]="[ '/' ]">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -37,18 +38,19 @@
         </ul>
       </div>
       <div class="main-nav__section-personal">
+        <!-- Icons -->
         <ul class="main-nav__list nav-personal">
           <li>
             <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
-              <i class="fa fa-heart">
-                <span class="mt-2"> {{productService.navbarFavProdCount}}</span>
+              <i class="nav-icon fa fa-heart">
+                <span class="round-badge"> {{productService.navbarFavProdCount}}</span>
               </i>
             </a>
           </li>
           <li>
             <a href="javascript:;;" [routerLink]="['/products/cart-items']">
-              <i class="fa fa-shopping-cart">
-                <span class="mt-2"> {{productService.navbarCartCount}}</span>
+              <i class="nav-icon fa fa-shopping-cart">
+                <span class="round-badge"> {{productService.navbarCartCount}}</span>
               </i>
             </a>
           </li>
@@ -60,19 +62,19 @@
           <!--</li>-->
           <li *ngIf="authService.isLoggedIn()">
             <a [routerLink]="['/users']">
-              <i class="fa fa-user"></i>
+              <i class="nav-icon fa fa-user"></i>
               <!--Mein Konto-->
             </a>
           </li>
           <li *ngIf="!authService.isLoggedIn()">
             <a [routerLink]="[ '/index/login' ]">
-              <i class="fa fa-sign-in"></i>
+              <i class="nav-icon fa fa-sign-in"></i>
               <!--Login/ Registration-->
             </a>
           </li>
           <li *ngIf="authService.isLoggedIn()">
             <a (click)="logout()">
-              <i class="fa fa-sign-in"></i>
+              <i class="nav-icon fa fa-sign-in"></i>
               <!--Logout-->
             </a>
           </li>

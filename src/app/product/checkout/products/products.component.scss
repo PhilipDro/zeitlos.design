@@ -1,0 +1,21 @@
+.checkout-list-image {
+  width: 13em;
+}
+.item-list {
+  padding-left: 0;
+}
+.item{
+  list-style-type: none;
+
+  &-image {
+
+  }
+  &-title {
+    strong {
+      font-size: 2em;
+    }
+  }
+  &-price {
+
+  }
+}

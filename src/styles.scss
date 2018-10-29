@@ -1,9 +1,9 @@
 // Variables
 $gray: lighten(#e2e2e2, 8%);
-$color-primary: red;
-$color-secondary: #34b0a0;
+$color-primary: #d31111;
+$color-secondary: #34b0a0; // turkise
 $font-color-default: black;
-$font-color-inactive: #626262;
+$font-color-inactive: #626262; // grey
 
 // General
 body {
@@ -203,6 +203,21 @@ form.form {
 
 .float-right {
   float: right;
+}
+
+.round-badge {
+  background-color: $color-primary;
+  border-radius: 100%;
+  min-height: 22px;
+  min-width: 22px;
+  padding-left: 8px;
+  padding-top: 5px;
+  font-size: .6em;
+  color: white;
+  position: absolute;
+  font-weight: bold;
+  bottom: 13px;
+  left: 10px;
 }
 
 // Grid

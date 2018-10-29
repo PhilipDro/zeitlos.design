@@ -1,6 +1,6 @@
 <h3>
-  <span class="text-muted">Ihr Einkaufswagen</span>
-  <span class="badge">{{products.length}}</span>
+  <span class="text-muted">Ihr Warenkorb</span>
+  <span class="round-badge">{{products.length}}</span>
 </h3>
 <ul class="item-list">
   <li *ngFor="let product of products">
@@ -16,5 +16,5 @@
   </li>
 
 </ul>
-<a class="mr button button-primary" [routerLink]="['/checkouts']">Bezahlen</a>
+<a class="mr button button-primary" [routerLink]="['/checkouts']">Zur Kasse</a>
 <a class="mr button" [routerLink]="['/products/all-products']">Zum Shop</a>

@@ -1,9 +1,12 @@
 h3 {
   margin-top: 0;
+  position: relative;
 }
 
-.badge {
-  // TODO number of items in cart
+.round-badge {
+  right: 0;
+  top: 0;
+  left: auto;
 }
 
 ul.item-list {
