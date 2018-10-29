@@ -44,7 +44,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  margin: .5em 0;
+  margin: 1em 0;
 }
 
 img {
@@ -68,6 +68,14 @@ section {
 }
 .mt {
   margin-top: 1em;
+}
+.mn {
+  margin: 0;
+}
+
+// Fonts
+.heading-with-text {
+  margin: .5em 0;
 }
 
 // Buttons

@@ -13,6 +13,7 @@ import { ProductService } from "../../../shared/services/product.service";
 })
 export class ShippingDetailsComponent implements OnInit {
   userDetails: User;
+  user: User;
 
   userDetail: UserDetail;
 
@@ -33,6 +34,7 @@ export class ShippingDetailsComponent implements OnInit {
     this.userDetail = new UserDetail();
     this.products = productService.getLocalCartProducts();
     this.userDetails = authService.getLoggedInUser();
+    this.user = authService.getLoggedInUser();
   }
 
   ngOnInit() {}

@@ -23,5 +23,6 @@ export class UserDetail {
   address2: string;
   country: string;
   state: string;
+  city: string;
   zip: number;
 }
