@@ -1,17 +1,13 @@
 <app-product-list-intro></app-product-list-intro>
 <section>
   <div class="container">
-    <div class="row" *ngIf="authService.isAdmin()">
-      <div class="col-sm">
-        <button class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
-          Objekt hinzufügen
-        </button>
-      </div>
-    </div>
+    <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
+      Objekt hinzufügen
+    </button>
 
     <!-- Side column -->
-    <div *ngIf="!addProducts" class="row">
-      <div class="col-md-3">
+    <div *ngIf="!addProducts">
+      <div class="col-sm-3">
         <h2>Kategorien</h2>
         <!-- TODO -->
         <!--<label for="brand_select">Kategorien:</label>-->
@@ -28,9 +24,8 @@
       </ul>
 
       </div>
-      <div class="col-md-9">
+      <div class="col-sm-9">
 
-        <div class="row">
           <!-- List of Products -->
           <div class="item col-sm-4" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
             <!--Card-->
@@ -75,7 +70,6 @@
               <!--/.Card-->
 
           </div>
-        </div>
         <!-- Pagination -->
         <div class="text-center mt-3">
           <pagination-controls (pageChange)="page = $event"></pagination-controls>
@@ -85,5 +79,5 @@
     </div>
     <app-add-product *ngIf="addProducts"></app-add-product>
   </div>
+
 </section>
-<ng2-toasty></ng2-toasty>

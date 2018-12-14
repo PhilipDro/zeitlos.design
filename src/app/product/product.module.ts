@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 
 // configuration and services
 import { ProductRoutes } from "./product.routing";
+// import { FooterComponent } from "../index/footer/footer.component";
 
 // Components
 import { CheckoutModule } from "./checkout/checkout.module";
@@ -38,6 +39,7 @@ import { ProductListIntroComponent } from "./product-list-intro/product-list-int
     CartProductsComponent,
     CartCalculatorComponent,
     ProductListIntroComponent,
+    // FooterComponent
   ],
   exports: [BestProductComponent]
 })
