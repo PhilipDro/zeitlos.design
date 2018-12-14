@@ -2,6 +2,10 @@
   padding-bottom: 5vh;
 }
 
+.card {
+  padding-left: 1.5em;
+}
+
 .section .section-heading {
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -25,12 +29,6 @@
     height: auto;
   }
 
-  .card.card-cascade.narrower {
-    margin-top: 10px;
-  }
-  .card.card-cascade {
-    width: 100%;
-  }
   .card:not([class*="card-outline-"]) {
     border: 0;
   }

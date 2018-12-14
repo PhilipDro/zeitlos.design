@@ -12,6 +12,7 @@ $font-color-inactive: #626262;
 
 
   &__section {
+    overflow: visible;
   //  position: absolute;
   //  right: 0;
   //
@@ -29,6 +30,7 @@ $font-color-inactive: #626262;
     &-personal {
       flex-direction: row;
       display: inline-block;
+      overflow: visible;
       .nav-icon {
         font-size: 1.4em;
         position: relative;

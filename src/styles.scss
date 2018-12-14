@@ -8,6 +8,7 @@ $color-secondary: #34b0a0; // turkise
 $font-color-default: black;
 $font-color-inactive: #626262; // grey
 
+
 // General
 body {
   font-family: 'Krub', sans-serif;
@@ -21,11 +22,8 @@ input
 {
   font-family: 'Krub', sans-serif;
 }
-
-router-outlet ~ * {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+div {
+  //overflow: auto;
 }
 
 h1 {
@@ -84,7 +82,6 @@ section {
 .button-primary {
   background-color: $color-secondary;
   color: white;
-  border: none;
   border: 1px solid darken($color-secondary, 5%);
 
   a {
@@ -161,6 +158,7 @@ form.form {
   //background: #ededed;
   background: $gray;
 }
+
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -224,6 +222,13 @@ form.form {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  overflow: visible;
+}
+
+.rascal {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 // Grid
@@ -234,22 +239,22 @@ $neat-grid: (
 
 .col-sm-3 {
   @include grid-column(3);
-  //margin: 1em 1em 1em 0;
 }
 
 .col-sm-4 {
   @include grid-column(4);
-  //margin: 1em 1em 1em 0;
 }
 
 .col-sm-6 {
   @include grid-column(6);
-  //margin: 1em 1em 1em 0;
+}
+
+.col-sm-8 {
+  @include grid-column(8);
 }
 
 .col-sm-9 {
   @include grid-column(9);
-  //margin: 1em 1em 1em 0;
 }
 .row1 {
   @include grid-collapse;

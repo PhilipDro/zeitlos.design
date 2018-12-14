@@ -1,75 +1,73 @@
-<footer>
+<footer class="content-section">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-3">
-        <h4 class="list-heading heading-with-text">Kontakt</h4>
-        <ul class="list">
-          <li>Suarezstraße 61</li>
-          <li>14057 Berlin </li>
-          <li class="list-divider"></li>
-          <li>030 / 32 76 90 60</li>
-          <li>0172 / 525 25 31</li>
-          <li>info@zeitlos-artd.de</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <h4 class="list-heading heading-with-text">Öffnungszeiten</h4>
-        <ul class="list">
-          <li>Mo: 13- 18 Uhr</li>
-          <li>Di: 13- 18 Uhr</li>
-          <li>Mi: 13- 18 Uhr</li>
-          <li>Do: 13- 18 Uhr</li>
-          <li>Fr: 13- 18 Uhr</li>
-          <li>Sa: 11- 16 Uhr</li>
-          <li>So: geschlossen</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <h4 class="list-heading heading-with-text">Seiten</h4>
-        <ul class="list">
-          <li>
-            <a class="active" href="javascript:;;" [routerLink]="[ '/' ]">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;;" [routerLink]="[ '/products/all-products' ]">
-              Objekte
-            </a>
-          </li>
-          <li *ngIf="authService.isLoggedIn()">
-            <a [routerLink]="['/users']">
-              Mein Konto
-              <!--Mein Konto-->
-            </a>
-          </li>
-          <li *ngIf="!authService.isLoggedIn()">
-            <a [routerLink]="[ '/index/login' ]">
-              Mein Konto
-              <!--Login/ Registration-->
-            </a>
-          </li>
-          <li class="list-divider"></li>
-          <li>
-            <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
-              Wunschliste
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;;" [routerLink]="['/products/cart-items']">
-              Warenkorb
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <h4 class="list-heading heading-with-text">Soziale Medien</h4>
-        <ul class="list">
-          <li>Facebook</li>
-          <li>Pinterest</li>
-          <li>Houzz</li>
-        </ul>
-      </div>
+    <div class="col-xs-12 col-sm-3">
+      <h4 class="list-heading heading-with-text">Kontakt</h4>
+      <ul class="list">
+        <li>Suarezstraße 61</li>
+        <li>14057 Berlin </li>
+        <li class="list-divider"></li>
+        <li>030 / 32 76 90 60</li>
+        <li>0172 / 525 25 31</li>
+        <li>info@zeitlos-artd.de</li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h4 class="list-heading heading-with-text">Öffnungszeiten</h4>
+      <ul class="list">
+        <li>Mo: 13- 18 Uhr</li>
+        <li>Di: 13- 18 Uhr</li>
+        <li>Mi: 13- 18 Uhr</li>
+        <li>Do: 13- 18 Uhr</li>
+        <li>Fr: 13- 18 Uhr</li>
+        <li>Sa: 11- 16 Uhr</li>
+        <li>So: geschlossen</li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h4 class="list-heading heading-with-text">Seiten</h4>
+      <ul class="list">
+        <li>
+          <a class="active" href="javascript:;;" [routerLink]="[ '/' ]">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;;" [routerLink]="[ '/products/all-products' ]">
+            Objekte
+          </a>
+        </li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a [routerLink]="['/users']">
+            Mein Konto
+            <!--Mein Konto-->
+          </a>
+        </li>
+        <li *ngIf="!authService.isLoggedIn()">
+          <a [routerLink]="[ '/index/login' ]">
+            Mein Konto
+            <!--Login/ Registration-->
+          </a>
+        </li>
+        <li class="list-divider"></li>
+        <li>
+          <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
+            Wunschliste
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;;" [routerLink]="['/products/cart-items']">
+            Warenkorb
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h4 class="list-heading heading-with-text">Soziale Medien</h4>
+      <ul class="list">
+        <li>Facebook</li>
+        <li>Pinterest</li>
+        <li>Houzz</li>
+      </ul>
     </div>
   </div>
 </footer>

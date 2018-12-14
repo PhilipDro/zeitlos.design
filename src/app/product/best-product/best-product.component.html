@@ -11,57 +11,57 @@
       <a class="btn btn-default float-right" [routerLink]="[ '/products/all-products' ]">View All</a>
     </div>
   </div>
-  <owl-carousel [options]="options" [items]="bestProducts" [carouselClasses]="['owl-theme', 'row', 'sliding']">
-    <!--First column-->
-    <div class="item" style="padding:20px" *ngFor="let product of bestProducts;let i = index">
-      <div class=" mb-r">
+  <!--<owl-carousel [options]="options" [items]="bestProducts" [carouselClasses]="['owl-theme', 'row', 'sliding']">-->
+    <!--&lt;!&ndash;First column&ndash;&gt;-->
+    <!--<div class="item" style="padding:20px" *ngFor="let product of bestProducts;let i = index">-->
+      <!--<div class=" mb-r">-->
 
-        <!--Card-->
-        <div class="card card-cascade wider">
+        <!--&lt;!&ndash;Card&ndash;&gt;-->
+        <!--<div class="card card-cascade wider">-->
 
-          <!--Card image-->
-          <a [routerLink]="['/products/product', product.$key]">
-            <div class="view overlay hm-white-slight">
-              <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
-              <a>
-                <div class="mask waves-effect waves-light" mdbRippleRadius></div>
-              </a>
-            </div>
-          </a>
-          <!--/.Card image-->
+          <!--&lt;!&ndash;Card image&ndash;&gt;-->
+          <!--<a [routerLink]="['/products/product', product.$key]">-->
+            <!--<div class="view overlay hm-white-slight">-->
+              <!--<img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">-->
+              <!--<a>-->
+                <!--<div class="mask waves-effect waves-light" mdbRippleRadius></div>-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</a>-->
+          <!--&lt;!&ndash;/.Card image&ndash;&gt;-->
 
-          <!--Card content-->
-          <div class="card-body text-center no-padding">
-            <!--Category & Title-->
-            <a href="" class="text-muted">
-              <h5>{{ product.productCategory }}</h5>
-            </a>
-            <h5 class="card-title">
-              <strong>
-                <a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
-              </strong>
-            </h5>
+          <!--&lt;!&ndash;Card content&ndash;&gt;-->
+          <!--<div class="card-body text-center no-padding">-->
+            <!--&lt;!&ndash;Category & Title&ndash;&gt;-->
+            <!--<a href="" class="text-muted">-->
+              <!--<h5>{{ product.productCategory }}</h5>-->
+            <!--</a>-->
+            <!--<h5 class="card-title">-->
+              <!--<strong>-->
+                <!--<a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>-->
+              <!--</strong>-->
+            <!--</h5>-->
 
-            <!--Description-->
-            <p class="card-text">{{ product.productDescription }}
-            </p>
+            <!--&lt;!&ndash;Description&ndash;&gt;-->
+            <!--<p class="card-text">{{ product.productDescription }}-->
+            <!--</p>-->
 
-            <!--Card footer-->
-            <div class="card-footer">
-              <span class="left">₹ {{ product.productPrice }}</span>
-              <span class="right">
-                <a placement="top" mdbTooltip="Add to Wishlist" container="body">
-                  <i class="fa fa-heart"></i>
-                </a>
-              </span>
-            </div>
-          </div>
-          <!--/.Card content-->
-        </div>
-        <!--/.Card-->
-      </div>
-      <!--/First column-->
-    </div>
-  </owl-carousel>
+            <!--&lt;!&ndash;Card footer&ndash;&gt;-->
+            <!--<div class="card-footer">-->
+              <!--<span class="left">₹ {{ product.productPrice }}</span>-->
+              <!--<span class="right">-->
+                <!--<a placement="top" mdbTooltip="Add to Wishlist" container="body">-->
+                  <!--<i class="fa fa-heart"></i>-->
+                <!--</a>-->
+              <!--</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;/.Card content&ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash;/.Card&ndash;&gt;-->
+      <!--</div>-->
+      <!--&lt;!&ndash;/First column&ndash;&gt;-->
+    <!--</div>-->
+  <!--</owl-carousel>-->
 </section>
 <!--Section: Products v.2-->
