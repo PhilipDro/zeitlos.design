@@ -13,6 +13,8 @@ import { LoginComponent } from "./login/login.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SharedModule } from "../shared/shared.module";
+import { ImprintComponent } from "./imprint/imprint.component";
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { SharedModule } from "../shared/shared.module";
     IndexComponent,
     NavbarComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [NavbarComponent, FooterComponent],

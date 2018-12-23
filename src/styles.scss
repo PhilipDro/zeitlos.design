@@ -237,6 +237,10 @@ $neat-grid: (
   gutter: 0px,
 );
 
+.row {
+  @include grid-container;
+}
+
 .col-sm-3 {
   @include grid-column(3);
 }
