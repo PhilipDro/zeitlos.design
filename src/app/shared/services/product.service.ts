@@ -1,9 +1,5 @@
 import { Injectable } from "@angular/core";
-import {
-  AngularFireDatabase,
-  AngularFireList,
-  AngularFireObject
-} from "angularfire2/database";
+import { AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
 import { ToastOptions, ToastyService, ToastyConfig } from "ng2-toasty";
 import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
