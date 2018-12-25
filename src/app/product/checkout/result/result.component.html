@@ -1,85 +1,128 @@
-<div class="mt-5 mb-5" id="receipt">
-  <a name="" style="position: relative; float: right" id="" class="btn btn-primary" href="javascript:;;" role="button"
-    (click)="downloadReceipt()"><i class="fa fa-download"></i> Receipt</a>
+<h1>Zusammenfassung</h1>
 
-  <div class="row">
-    <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="margin: auto">
-      <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <address>
-            <strong>ikismail</strong>
-            <br>
-            Tamil Nadu, IN 600094
-            <br>
-            <abbr title="Phone">P:</abbr> (+91) 8124794942
-          </address>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-          <p>
-            <em>Date: {{date | date}}</em>
-          </p>
-          <p>
-            <em>Receipt #: 34522677W</em>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="text-center">
-          <h1>Receipt</h1>
-        </div>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <td></td>
-              <th class="text-center">Price</th>
-              <th class="text-center">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of products">
-              <td class="col-md-9">
-                <h6><em>{{product.productName}}</em></h6>
-              </td>
-              <td></td>
-              <td class="col-md-1 text-center">€ {{product.productPrice}}</td>
-              <td class="col-md-1 text-center">€ {{product.productPrice}}</td>
-            </tr>
-            <tr>
-              <td>   </td>
-              <td>   </td>
-              <td class="text-right">
-                <p>
-                  <strong>Subtotal: </strong>
-                </p>
-                <p>
-                  <strong>Tax: </strong>
-                </p>
-              </td>
-              <td class="text-center">
-                <p>
-                  <strong>{{totalPrice}}</strong>
-                </p>
-                <p>
-                  <strong>€ {{tax}}</strong>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>   </td>
-              <td>   </td>
-              <td class="text-right">
-                <p><strong>Total: </strong></p>
-              </td>
-              <td class="text-center text-danger">
-                <h4><strong>€ {{totalPrice + tax }}</strong></h4>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button" class="btn btn-success btn-lg btn-block">
-          Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
-        </button>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Auftragsdetails</h3>
+    <table>
+      <tbody>
+      <tr>
+        <td>
+          Auftragsnummer:
+        </td>
+        <td class="align-right">
+          #14924
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Hinzugefügt am:
+        </td>
+        <td class="align-right">
+          25.12.2018
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Zahlungsverfahren
+        </td>
+        <td class="align-right">
+          Überweisung
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
+  <div class="col-sm-6">
+    <h3>Bankdaten</h3>
+    <p>
+      Bitte benutzen Sie folgende Bankdaten für die Überweisung. Die Lieferung wird sofort in Auftrag
+      gegeben, sobald die Zahlung eingegangen ist.
+    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            Begünstigter:
+          </td>
+          <td class="align-right">
+            Artur Drozd
+          </td>
+        </tr>
+        <tr>
+          <td>
+            IBAN:
+          </td>
+          <td class="align-right">
+            DE39 9432 0123 3923
+          </td>
+        </tr>
+        <tr>
+          <td>
+            BIC:
+          </td>
+          <td class="align-right">
+            BELADEBEISKU222
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Rechnungsadresse</h3>
+    <address>
+      Philip Drozd <br>
+      Eisnerstr. <br>
+      37B <br>
+      12305 Berlin <br>
+      Deutschland <br>
+    </address>
+  </div>
+  <div class="col-sm-6">
+    <h3>Lieferadresse</h3>
+    <address>
+      Philip Drozd <br>
+      Eisnerstr. <br>
+      37B <br>
+      12305 Berlin <br>
+      Deutschland <br>
+    </address>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Produktübersicht</h3>
+    <table>
+      <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.productName}}</td>
+        <td class="align-right">{{product.productPrice}} €</td>
+      </tr>
+      <tr class="bold">
+        <td>
+          Gesamt
+        </td>
+        <td class="align-right">
+          {{totalPrice}} €
+        </td>
+      </tr>
+      <tr>
+        <td>
+          inkl. Mwst.
+        </td>
+        <td class="align-right">
+          {{mwst}} €
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="button-container" id="receipt">
+  <a class="button" href="javascript:;;" role="button"
+     (click)="downloadReceipt()"><i class="fa fa-download"></i> Rechnung</a>
+</div>

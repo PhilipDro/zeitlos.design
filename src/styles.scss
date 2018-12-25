@@ -69,6 +69,9 @@ section {
 }
 
 // Buttons
+.button-container {
+  margin-top: 2em;
+}
 .button {
   padding: 1em 2em;
   font-weight: bold;
@@ -111,6 +114,7 @@ section {
 
 // Tables
 table {
+  width: 100%;
   tr {
     //border-collapse: separate;
     //border-spacing: 3em;
@@ -198,12 +202,18 @@ form.form {
   text-transform: uppercase;
   font-weight: bold;
 }
+.bold {
+  font-weight: bold;
+}
 .block {
   display: block;
 }
 
 .float-right {
   float: right;
+}
+.align-right {
+  text-align: right;
 }
 
 .round-badge {
@@ -225,12 +235,6 @@ form.form {
   overflow: visible;
 }
 
-.rascal {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
 // Grid
 $neat-grid: (
   columns: 12,
@@ -241,6 +245,14 @@ $neat-grid: (
   @include grid-container;
 }
 
+.col-sm-1 {
+  @include grid-column(1);
+}
+
+.col-sm-2 {
+  @include grid-column(2);
+}
+
 .col-sm-3 {
   @include grid-column(3);
 }
@@ -249,8 +261,16 @@ $neat-grid: (
   @include grid-column(4);
 }
 
+.col-sm-5 {
+  @include grid-column(5);
+}
+
 .col-sm-6 {
   @include grid-column(6);
+}
+
+.col-sm-7 {
+  @include grid-column(7);
 }
 
 .col-sm-8 {
@@ -260,6 +280,19 @@ $neat-grid: (
 .col-sm-9 {
   @include grid-column(9);
 }
+
+.col-sm-10 {
+  @include grid-column(10);
+}
+
+.col-sm-11 {
+  @include grid-column(11);
+}
+
+.col-sm-12 {
+  @include grid-column(12);
+}
+
 .row1 {
   @include grid-collapse;
 }

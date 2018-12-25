@@ -3,7 +3,7 @@ import { ProductService } from "./../../../shared/services/product.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
-declare var $: any;
+
 @Component({
   selector: "app-result",
   templateUrl: "./result.component.html",
@@ -13,7 +13,8 @@ export class ResultComponent implements OnInit {
   products: Product[];
   date: number;
   totalPrice = 0;
-  tax = 6.4;
+  mwst = 0;
+  tax = 0.16;
 
   constructor(private productService: ProductService) {
     /* Hiding Billing Tab Element */
@@ -27,7 +28,7 @@ export class ResultComponent implements OnInit {
     this.products.forEach(product => {
       this.totalPrice += product.productPrice;
     });
-
+    this.mwst = this.totalPrice * this.tax;
     this.date = Date.now();
   }
 
@@ -48,7 +49,7 @@ export class ResultComponent implements OnInit {
       const pdf = new jspdf("p", "mm", "a4"); // A4 size page of PDF
       const position = 0;
       pdf.addImage(contentDataURL, "PNG", 0, position, imgWidth, imgHeight);
-      pdf.save("ikismail.pdf"); // Generated PDF
+      pdf.save("rechnung.pdf"); // Generated PDF
     });
   }
 }

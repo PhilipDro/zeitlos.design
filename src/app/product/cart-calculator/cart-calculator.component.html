@@ -2,19 +2,33 @@
   <span class="text-muted">Ihr Warenkorb</span>
   <span class="round-badge">{{products.length}}</span>
 </h3>
-<ul class="item-list">
-  <li *ngFor="let product of products">
-    <div>
-      <h4>{{product.productName}}</h4>
-    </div>
-    <span class="text-muted">€ {{product.productPrice}}</span>
-  </li>
-  <hr>
-  <li>
-    <span>Total (INR)</span>
-    <strong>€ {{totalValue}}</strong>
-  </li>
 
-</ul>
+<table>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.productName}}</td>
+      <td class="align-right">{{product.productPrice}} €</td>
+    </tr>
+    <tr class="bold">
+      <td>
+        Gesamt
+      </td>
+      <td class="align-right">
+        {{totalValue}} €
+      </td>
+    </tr>
+    <tr>
+      <td>
+        inkl. Mwst.
+      </td>
+      <td class="align-right">
+        {{mwst}} €
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="button-container">
 <a class="mr button button-primary" [routerLink]="['/checkouts']">Zur Kasse</a>
 <a class="mr button" [routerLink]="['/products/all-products']">Zum Shop</a>
+
+</div>
