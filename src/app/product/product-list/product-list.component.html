@@ -9,19 +9,12 @@
     <div *ngIf="!addProducts">
       <div class="col-sm-3">
         <h2>Kategorien</h2>
-        <!-- TODO -->
-        <label for="brand_select">Kategorien:</label>
-        <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
-          <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
-        </select>
-        <!--<ul class="list">-->
-          <!--<li>Tische</li>-->
-          <!--<li>Stühle</li>-->
-          <!--<li class="active">Vitrinen</li>-->
-          <!--<li>Schränke</li>-->
-          <!--<li>Kommoden</li>-->
-          <!--<li>Sideboards</li>-->
-        <!--</ul>-->
+        <ul class="list">
+          <li><a routerLink="/products/all-products" routerLinkActive="active">Alle</a></li>
+          <li><a routerLink="/products/Tische" routerLinkActive="active">Tische</a></li>
+          <li><a routerLink="/products/Lampen" routerLinkActive="active">Lampen</a></li>
+          <li><a routerLink="/products/Stühle" routerLinkActive="active">Stühle</a></li>
+        </ul>
 
       </div>
       <div class="col-sm-9">
