@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import { AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
 import { ToastOptions, ToastyService, ToastyConfig } from "ng2-toasty";
 import { Product } from "../models/product";
@@ -7,6 +7,7 @@ import { AuthService } from "./auth.service";
 @Injectable()
 export class ProductService {
   products: AngularFireList<Product>;
+  productsByCategory: AngularFireList<Product>;
   product: AngularFireObject<Product>;
 
   // favouriteProducts
@@ -34,6 +35,11 @@ export class ProductService {
   getProducts() {
     this.products = this.db.list("products");
     return this.products;
+  }
+
+  getProductsByCategory(category) {
+    this.productsByCategory = this.db.list("products", ref => ref.orderByChild("productCategory").equalTo(category))
+    return this.productsByCategory;
   }
 
   createProduct(data: Product) {

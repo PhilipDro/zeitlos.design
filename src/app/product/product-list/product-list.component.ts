@@ -4,6 +4,7 @@ import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-product-list",
@@ -11,6 +12,8 @@ import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
   styleUrls: ["./product-list.component.scss"]
 })
 export class ProductListComponent implements OnInit {
+  private sub: any;
+
   productList: Product[];
   addProducts = false;
 
@@ -25,6 +28,7 @@ export class ProductListComponent implements OnInit {
   page = 1;
   constructor(
     public authService: AuthService,
+    private route: ActivatedRoute,
     private productService: ProductService,
     private spinnerService: LoaderSpinnerService,
     private toastyService: ToastyService,
@@ -35,7 +39,42 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllProducts();
+    // this.getAllProducts();
+    this.sub = this.route.params.subscribe(params => {
+      const category = params["productCategory"]; // (+) converts string 'id' to a number
+      if(category) {
+        this.getProductsByCategory(category);
+      }
+      else {
+        this.getAllProducts();
+      }
+    });
+  }
+
+  getProductsByCategory(category) {
+    this.spinnerService.show();
+    const x = this.productService.getProductsByCategory(category);
+    x.snapshotChanges().subscribe(
+      product => {
+        this.spinnerService.hide();
+        this.productList = [];
+        product.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.productList.push(y as Product);
+        });
+      },
+      err => {
+        const toastOption: ToastOptions = {
+          title: "Error while fetching Products",
+          msg: err,
+          showClose: true,
+          timeout: 5000,
+          theme: "material"
+        };
+        this.toastyService.error(toastOption);
+      }
+    );
   }
 
   getAllProducts() {

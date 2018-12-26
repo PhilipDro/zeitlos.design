@@ -4,6 +4,7 @@ export class Product {
   productName: string;
   productCategory: string;
   productPrice: number;
+  discount: number;
   productDescription: string;
   productMaterial: string;
   productSize: string;

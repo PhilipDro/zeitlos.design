@@ -19,6 +19,10 @@ export const ProductRoutes: Routes = [
         component: ProductListComponent
       },
       {
+        path: ":productCategory",
+        component: ProductListComponent
+      },
+      {
         path: "favourite-products",
         component: FavouriteProductsComponent
       },

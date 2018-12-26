@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-sm-6 col-xs-12">
     <form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
-      <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname"
+      <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname" value="test"
              required>
       <input type="text" [(ngModel)]="userDetail.lastName" name="lastName" placeholder="Nachname"
              required>
