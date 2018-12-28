@@ -15,6 +15,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { SharedModule } from "../shared/shared.module";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { CategoryTeaserComponent } from './category-teaser/category-teaser.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     LoginComponent,
     FooterComponent,
     ImprintComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    CategoryTeaserComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [NavbarComponent, FooterComponent],

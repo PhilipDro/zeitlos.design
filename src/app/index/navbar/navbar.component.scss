@@ -4,31 +4,16 @@ $font-color-inactive: #626262;
   position: relative;
 }
 .main-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   font-size: 1.1em;
-  align-items: flex-end;
-
+  margin-top: 1em;
 
   &__section {
     overflow: visible;
-  //  position: absolute;
-  //  right: 0;
-  //
-  //  &-info {
-  //    flex-direction: row;
-  //  }
-  //  &-brand {
-  //    flex-direction: column;
-  //    align-self: center;
-  //  }
+    margin-top: 0.7em;
     &-sites {
-      flex-direction: row;
       display: inline-block;
     }
     &-personal {
-      flex-direction: row;
       display: inline-block;
       overflow: visible;
       .nav-icon {
@@ -81,18 +66,17 @@ $font-color-inactive: #626262;
     }
   }
 
-
   .main-brand {
     a {
-      font-family: 'K2D', sans-serif;
-      font-size: 3em;
+      margin-right: .5em;
+      font-size: 2em;
+      display: inline;
       color: black;
       text-transform: uppercase;
       position: relative;
       top: .1em;
     }
     span {
-      display: block;
       font-size: .9em;
     }
   }

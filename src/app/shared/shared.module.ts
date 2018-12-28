@@ -20,6 +20,7 @@ import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
+import { ConsultingComponent } from "./components/consulting/consulting.component";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
     NoProductsFoundComponent,
     FilterByBrandPipe,
     NoAccessComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConsultingComponent
   ],
   exports: [
     NoProductsFoundComponent,

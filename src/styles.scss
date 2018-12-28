@@ -4,10 +4,12 @@
 // Variables
 $gray: lighten(#e2e2e2, 8%);
 $color-primary: #d31111;
-$color-secondary: #34b0a0; // turkise
+$color-secondary: #0e78d9; // blue
 $font-color-default: black;
+$font-color-default-light: white;
+$font-color-grey: #626262;
 $font-color-inactive: #626262; // grey
-
+$background-color-dark: #474747;
 
 // General
 body {
@@ -73,14 +75,14 @@ section {
   margin-top: 2em;
 }
 .button {
-  padding: 1em 2em;
+  padding: .8em 3em;
   font-weight: bold;
   text-transform: uppercase;
   background: transparent;
   border: 1px solid $font-color-default;
   cursor: pointer;
-  letter-spacing: .05em;
-  font-size: 1.1em;
+  letter-spacing: .13em;
+  font-size: 1.5em;
 }
 .button-primary {
   background-color: $color-secondary;
@@ -159,8 +161,45 @@ form.form {
 .content-section {
   margin: 3vh 0;
   padding: 5vh 0;
-  //background: #ededed;
   background: $gray;
+  overflow: hidden;
+
+  h1 {
+    font-size: 3.8em;
+    margin-bottom: -.2em
+  }
+  .lead {
+    font-size: 3.8em;
+    margin-top: 0;
+    margin-bottom: .5em;
+  }
+  .highlighted {
+    font-size: 1.7em;
+    letter-spacing: .15em;
+    margin-bottom: 0.4em
+  }
+  .right-side {
+    position: relative;
+
+    img {
+      position: absolute;
+    }
+  }
+}
+
+.dark-background {
+  background: $background-color-dark;
+  color: $font-color-default-light;
+
+  .lead {
+    color: darken($font-color-default-light, 20%);
+  }
+  .highlighted {
+    color: darken($font-color-default-light, 20%);
+  }
+  .button-primary {
+    background: $color-secondary;
+  }
 }
 
 .container {
@@ -197,7 +236,7 @@ form.form {
   justify-content: space-between;
 }
 
-// Miscellanous
+// Modifiers
 .highlighted {
   text-transform: uppercase;
   font-weight: bold;
@@ -205,12 +244,19 @@ form.form {
 .bold {
   font-weight: bold;
 }
+.colored {
+  color: $color-primary;
+}
+.grey {
+  color: $font-color-grey;
+}
 .block {
   display: block;
 }
 
 .float-right {
   float: right;
+  text-align: right;
 }
 .align-right {
   text-align: right;
@@ -233,6 +279,7 @@ form.form {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: visible;
+  text-align: left;
 }
 
 // Grid
