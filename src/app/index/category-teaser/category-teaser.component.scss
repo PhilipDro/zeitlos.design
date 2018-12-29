@@ -1,0 +1,43 @@
+.category-teaser {
+  display: block;
+  margin-right: 2em;
+  margin-bottom: 2em;
+  width: 95%;
+  height: 35em;
+  background: darken(white, 10%);
+  border: 1px solid darken(white, 12%);
+  text-align: center;
+  overflow: hidden;
+
+  h2 {
+    font-size: 3em;
+    margin-bottom: 0;
+    color: black;
+  }
+  p {
+    font-size: 1.6em;
+    color: #626262;
+    margin-top: 0;
+  }
+  button {
+    color: #0e78d9;
+    border: none;
+    background: none;
+    font-size: 1.6em;
+  }
+  img {
+    width: 80%;
+    height: auto;
+  }
+
+  &.dark-background {
+    background: #474747;
+
+    h2 {
+      color: white;
+    }
+    p {
+      color: darken(white, 12%);
+    }
+  }
+}

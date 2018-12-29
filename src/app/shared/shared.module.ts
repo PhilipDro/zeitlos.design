@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AgmCoreModule } from "@agm/core";
 import { NoAccessComponent } from "./components/no-access/no-access.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { ServiceListComponent } from "./components/service-list/service-list.component";
 import { FireBaseConfig } from "../../environments/firebaseConfigDummy";
 import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
 import { ProductService } from "./services/product.service";
@@ -20,7 +21,6 @@ import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
-import { ConsultingComponent } from "./components/consulting/consulting.component";
 
 @NgModule({
   imports: [
@@ -42,7 +42,7 @@ import { ConsultingComponent } from "./components/consulting/consulting.componen
     FilterByBrandPipe,
     NoAccessComponent,
     PageNotFoundComponent,
-    ConsultingComponent
+    ServiceListComponent
   ],
   exports: [
     NoProductsFoundComponent,
@@ -57,7 +57,8 @@ import { ConsultingComponent } from "./components/consulting/consulting.componen
     FilterByBrandPipe,
     AgmCoreModule,
     NoAccessComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ServiceListComponent
   ],
   providers: [
     AuthService,

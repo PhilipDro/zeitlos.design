@@ -16,6 +16,8 @@ import { SharedModule } from "../shared/shared.module";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CategoryTeaserComponent } from './category-teaser/category-teaser.component';
+import { ConsultingComponent } from './consulting/consulting.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { CategoryTeaserComponent } from './category-teaser/category-teaser.compo
     FooterComponent,
     ImprintComponent,
     PrivacyPolicyComponent,
-    CategoryTeaserComponent
+    CategoryTeaserComponent,
+    ConsultingComponent,
+    AboutUsComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [NavbarComponent, FooterComponent],

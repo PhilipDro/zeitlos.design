@@ -1,0 +1,22 @@
+.background-image {
+  //background-image: url('../assets/aboutus.jpg');
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  background: #d31111;
+  width: 100vw;
+  height: 300px;
+}
+
+article {
+  padding: 2em;
+  background: darken(white, 12%);
+  margin: 0 auto;
+  position:relative;
+  bottom: 7em;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 3.7em;
+}

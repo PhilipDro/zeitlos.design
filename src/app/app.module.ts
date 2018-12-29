@@ -8,12 +8,10 @@ import { UserModule } from "./user/user.module";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { AppRoutes } from "./app.routing";
-import { ImprintComponent } from "./index/imprint/imprint.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    // ImprintComponent
   ],
   imports: [
     BrowserModule,
