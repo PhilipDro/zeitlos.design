@@ -86,13 +86,32 @@ section {
 }
 .button-primary {
   letter-spacing: .13em;
-  background-color: $color-secondary;
+  background-color: $color-primary;
   color: white;
-  border: 1px solid darken($color-secondary, 5%);
+  border: 1px solid darken($color-primary, 5%);
 
   a {
     color: white;
   }
+  .dark-background & {
+    background-color: $color-secondary;
+    border: 1px solid darken($color-secondary, 5%);
+  }
+}
+
+.button-secondary {
+  letter-spacing: .1em;
+  background-color: $background-color-dark;
+  color: white;
+  border: 1px solid darken($background-color-dark, 5%);
+
+  a {
+    color: white;
+  }
+  //.dark-background & {
+  //  background-color: $color-secondary;
+  //  border: 1px solid darken($color-secondary, 5%);
+  //}
 }
 
 // Lists
@@ -104,10 +123,10 @@ section {
 
   li {
     list-style-type: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 2em;
-    color: $font-color-inactive;
+    //font-weight: bold;
+    //text-transform: uppercase;
+    line-height: 1.7em;
+    //color: $font-color-inactive;
 
     &.active {
       color: $font-color-default;

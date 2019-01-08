@@ -1,14 +1,14 @@
 .background-image {
-  //background-image: url('../assets/aboutus.jpg');
-  //background-repeat: no-repeat;
-  //background-size: cover;
-  background: #d31111;
+  background-image: url('../../../assets/about/ausstellung.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   width: 100vw;
   height: 300px;
 }
 
 article {
-  padding: 2em;
+  padding: 4em;
   background: darken(white, 12%);
   margin: 0 auto;
   position:relative;
@@ -19,4 +19,9 @@ h3 {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 3.7em;
+}
+
+.lead {
+  font-size: 1.3em;
+  margin: 0em 0 1em 0;
 }

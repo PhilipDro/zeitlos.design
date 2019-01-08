@@ -4,4 +4,43 @@ $gray: lighten(#e2e2e2, 8%);
 footer {
   background: $gray;
   width: 100%;
+  ul li,
+  p,
+  a,
+  & {
+    color: #626262;
+  }
+  a:hover {
+    color: black;
+  }
+  ul.black li{
+    color: black;
+  }
+}
+
+.footer-brand {
+  text-transform: uppercase;
+  font-size: 2.7em;
+  margin: 0;
+}
+.footer-description {
+  margin-top: 0;
+}
+.col-follow {
+  .follow-brand {
+    margin-right: 1em;
+    img {
+      height: 35px;
+      width: auto;
+    }
+  }
+  .ssl {
+    margin-top: 1em;
+
+    i.fa-lock {
+      color: #22c222;
+      float: left;
+      margin-right: .4em;
+    }
+  }
 }
