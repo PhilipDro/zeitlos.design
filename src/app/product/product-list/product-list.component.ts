@@ -37,15 +37,12 @@ export class ProductListComponent implements OnInit {
   ) {
     this.toastyConfig.position = "top-right";
     this.toastyConfig.theme = "material";
-    console.log(route.snapshot.url);
-
-
   }
   ngOnInit() {
     // this.getAllProducts();
     // this.path = this.route.snapshot.url;
     // console.log(this.route.snapshot.data['breadcrumb']);
-    
+
     this.sub = this.route.params.subscribe(params => {
       const category = params["productCategory"]; // (+) converts string 'id' to a number
 

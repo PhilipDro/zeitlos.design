@@ -1,12 +1,16 @@
-.col {
-  text-align: center;
-  h4 {
-    font-size: 1.6em;
-    margin-bottom: 0;
-  }
-  p {
-    color: #626262;
-    font-size: 1.1em;
-    margin-top: 0.2em;
+section {
+  margin: 7em 0;
+
+  .col {
+    text-align: center;
+    h4 {
+      font-size: 1.6em;
+      margin-bottom: 0;
+    }
+    p {
+      color: #626262;
+      font-size: 1.1em;
+      margin-top: 0.2em;
+    }
   }
 }

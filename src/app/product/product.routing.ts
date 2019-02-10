@@ -19,10 +19,6 @@ export const ProductRoutes: Routes = [
         component: ProductListComponent
       },
       {
-        path: ":productCategory",
-        component: ProductListComponent,
-      },
-      {
         path: "favourite-products",
         component: FavouriteProductsComponent
       },
@@ -37,7 +33,11 @@ export const ProductRoutes: Routes = [
       {
         path: "product/:id",
         component: ProductDetailComponent
-      }
+      },
+      {
+        path: ":productCategory",
+        component: ProductListComponent
+      },
     ]
   }
 ]

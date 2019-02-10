@@ -2,20 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <div class="product-image">
-          <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
-          <img src="assets/products/product-122.jpg" [alt]="product.productName" width="100%">
-        </div>
-      </div>
-      <div class="col-sm-6">
         <h2 class="product-title">{{product.productName}}</h2>
+
         <p class="price">€ <span>{{product.productPrice}}</span></p>
         <div class="product-detail">
-          <h3>Details</h3>
           <table>
             <!--<tr>-->
-              <!--<th>Nummer:</th>-->
-              <!--<td>{{product.productId}}</td>-->
+            <!--<th>Nummer:</th>-->
+            <!--<td>{{product.productId}}</td>-->
             <!--</tr>-->
             <tr>
               <th>Material:</th>
@@ -50,13 +44,23 @@
               <td>{{product.productCondition}}</td>
             </tr>
             <!--<tr>-->
-              <!--<th>Product Added on:</th>-->
-              <!--<td>{{product.productAdded * 1000 | date}}</td>-->
+            <!--<th>Product Added on:</th>-->
+            <!--<td>{{product.productAdded * 1000 | date}}</td>-->
             <!--</tr>-->
           </table>
         </div>
-        <button class="button">In den Warenkorb</button>
+        <button (click)="addToCart(product)" class="button button-primary">In den Warenkorb</button>
+        <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="product-image">
+          <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
+          <img src="assets/products/product-122.jpg" [alt]="product.productName" width="100%">
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<app-service-list></app-service-list>

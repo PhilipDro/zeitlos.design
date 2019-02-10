@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {AfterViewChecked, Component, OnDestroy, OnInit} from "@angular/core";
 
 @Component({
   selector: "app-index",
@@ -6,7 +6,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./index.component.scss"],
 })
 export class IndexComponent implements OnInit {
-  constructor() {}
+  destroy: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit() {}
+
 }

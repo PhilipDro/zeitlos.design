@@ -1,6 +1,7 @@
 <app-product-list-intro
-  [path]="path"
-></app-product-list-intro>
+  [path]="path">
+
+</app-product-list-intro>
 <section>
   <div class="container">
     <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">

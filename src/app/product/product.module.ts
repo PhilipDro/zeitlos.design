@@ -2,6 +2,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // configuration and services
 import { ProductRoutes } from "./product.routing";
@@ -27,7 +28,8 @@ import { ProductListIntroComponent } from "./product-list-intro/product-list-int
     CommonModule,
     RouterModule.forChild(ProductRoutes),
     SharedModule,
-    CheckoutModule
+    CheckoutModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     ProductComponent,
