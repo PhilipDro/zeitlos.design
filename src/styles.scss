@@ -131,6 +131,18 @@ section {
     &.active {
       color: $font-color-default;
     }
+
+    a {
+      color: $font-color-grey;
+    }
+  }
+}
+
+.filter {
+  a,
+  h2 {
+    text-transform: uppercase;
+    line-height: 2em;
   }
 }
 
@@ -183,6 +195,9 @@ form.form {
   padding: 5vh 0;
   background: $gray;
   overflow: hidden;
+  &.no-background {
+    background: transparent;
+  }
 
   h1 {
     font-size: 3.8em;
@@ -273,13 +288,18 @@ form.form {
 .block {
   display: block;
 }
-
+.rounded {
+  border-radius: 50%;
+}
 .float-right {
   float: right;
   text-align: right;
 }
 .align-right {
   text-align: right;
+}
+.align-center {
+  text-align: center;
 }
 
 .round-badge {

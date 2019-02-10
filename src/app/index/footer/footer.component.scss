@@ -1,6 +1,8 @@
 // variables
 $gray: lighten(#e2e2e2, 8%);
-
+.content-section {
+  margin-bottom: 0;
+}
 footer {
   background: $gray;
   width: 100%;

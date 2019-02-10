@@ -1,4 +1,6 @@
-<app-product-list-intro></app-product-list-intro>
+<app-product-list-intro
+  [path]="path"
+></app-product-list-intro>
 <section>
   <div class="container">
     <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
@@ -7,20 +9,22 @@
 
     <!-- Side column -->
     <div *ngIf="!addProducts">
-      <div class="col-sm-3">
+      <div class="col-sm-3 filter">
         <h2>Kategorien</h2>
         <ul class="list">
-          <li><a routerLink="/products/all-products" routerLinkActive="active">Alle</a></li>
+          <li><a routerLink="/products/alle-produkte" routerLinkActive="active">Alle</a></li>
           <li><a routerLink="/products/Tische" routerLinkActive="active">Tische</a></li>
           <li><a routerLink="/products/Lampen" routerLinkActive="active">Lampen</a></li>
           <li><a routerLink="/products/Stühle" routerLinkActive="active">Stühle</a></li>
+          <li><a routerLink="/products/Sessel" routerLinkActive="active">Sessel</a></li>
+          <li><a routerLink="/products/Schränke" routerLinkActive="active">Schränke</a></li>
         </ul>
 
       </div>
       <div class="col-sm-9">
 
           <!-- List of Products -->
-          <div class="item col-sm-4" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+          <div class="item col-sm-4" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 5, currentPage: page }">
             <!--Card-->
             <div class="card">
               <!--Item image-->
@@ -63,11 +67,11 @@
               <!--/.Card-->
 
           </div>
-        <!-- Pagination -->
-        <div class="text-center mt-3">
-          <pagination-controls (pageChange)="page = $event"></pagination-controls>
-        </div>
         <!--/.Card-->
+      </div>
+      <!-- Pagination -->
+      <div class="float-right">
+        <pagination-controls (pageChange)="page = $event" previousLabel="Zurück" nextLabel="Nächste"></pagination-controls>
       </div>
     </div>
     <app-add-product *ngIf="addProducts"></app-add-product>

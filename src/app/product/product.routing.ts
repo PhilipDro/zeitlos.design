@@ -15,12 +15,12 @@ export const ProductRoutes: Routes = [
         component: IndexComponent
       },
       {
-        path: "all-products",
+        path: "alle-produkte",
         component: ProductListComponent
       },
       {
         path: ":productCategory",
-        component: ProductListComponent
+        component: ProductListComponent,
       },
       {
         path: "favourite-products",
@@ -40,4 +40,4 @@ export const ProductRoutes: Routes = [
       }
     ]
   }
-];
+]
