@@ -10,26 +10,26 @@
 
     <!-- Side column -->
     <div *ngIf="!addProducts">
-      <div class="col-sm-3 filter">
+      <div class="col-sm-3 col-xs-12 filter">
         <h2>Kategorien</h2>
         <ul class="list">
-          <li><a routerLink="/products/alle-produkte" routerLinkActive="active">Alle</a></li>
-          <li><a routerLink="/products/Tische" routerLinkActive="active">Tische</a></li>
-          <li><a routerLink="/products/Lampen" routerLinkActive="active">Lampen</a></li>
-          <li><a routerLink="/products/Stühle" routerLinkActive="active">Stühle</a></li>
-          <li><a routerLink="/products/Sessel" routerLinkActive="active">Sessel</a></li>
-          <li><a routerLink="/products/Schränke" routerLinkActive="active">Schränke</a></li>
+          <li><a routerLink="/produkte/alle-produkte" routerLinkActive="active">Alle</a></li>
+          <li><a routerLink="/produkte/Tische" routerLinkActive="active">Tische</a></li>
+          <li><a routerLink="/produkte/Lampen" routerLinkActive="active">Lampen</a></li>
+          <li><a routerLink="/produkte/Stühle" routerLinkActive="active">Stühle</a></li>
+          <li><a routerLink="/produkte/Sessel" routerLinkActive="active">Sessel</a></li>
+          <li><a routerLink="/produkte/Schränke" routerLinkActive="active">Schränke</a></li>
         </ul>
 
       </div>
-      <div class="col-sm-9">
+      <div class="col-sm-9 col-xs-12">
 
           <!-- List of Products -->
-          <div class="item col-sm-4" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 5, currentPage: page }">
+          <div class="item col-sm-4 col-xs-12" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 5, currentPage: page }">
             <!--Card-->
             <div class="card">
               <!--Item image-->
-              <a [routerLink]="['/products/product', product.$key]">
+              <a [routerLink]="['/produkte/product', product.$key]">
                 <img src="assets/products/product-122.jpg" alt="">
               </a>
               <!--/.Card image-->
@@ -38,7 +38,7 @@
                 <!--Category & Title-->
                 <p class="title">
                   <strong>
-                    <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
+                    <a [routerLink]="['/produkte/product', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
                   </strong>
                   <span class="sub-title">von Rudolf Vichr</span>
                 </p>

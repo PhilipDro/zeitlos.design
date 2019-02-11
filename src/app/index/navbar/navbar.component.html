@@ -20,12 +20,15 @@
           <!-- Sites -->
           <ul class="main-nav__list nav-sites">
             <li>
-              <a href="javascript:;;" [routerLink]="[ '/' ]" routerLinkActive="active">Home
+              <a routerLink="/" routerLinkActive="active">
+                Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li>
-              <a href="javascript:;;" [routerLink]="[ '/products/alle-produkte' ]" routerLinkActive="active">Objekte</a>
+              <a routerLink="/produkte/alle-produkte" routerLinkActive="active">
+                Produkte
+              </a>
             </li>
           </ul>
         </div>
@@ -33,14 +36,14 @@
           <!-- Icons -->
           <ul class="main-nav__list nav-personal">
             <li>
-              <a href="javascript:;;" [routerLink]="['/products/favourite-products']">
+              <a href="javascript:;;" [routerLink]="['/produkte/wunschliste']">
                 <i class="nav-icon fa fa-heart">
                   <span class="round-badge"> {{productService.navbarFavProdCount}}</span>
                 </i>
               </a>
             </li>
             <li>
-              <a href="javascript:;;" [routerLink]="['/products/cart-items']">
+              <a href="javascript:;;" [routerLink]="['/produkte/warenkorb']">
                 <i class="nav-icon fa fa-shopping-cart">
                   <span class="round-badge"> {{productService.navbarCartCount}}</span>
                 </i>

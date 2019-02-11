@@ -8,7 +8,7 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 
 export const ProductRoutes: Routes = [
   {
-    path: "products",
+    path: "produkte",
     children: [
       {
         path: "",
@@ -19,11 +19,11 @@ export const ProductRoutes: Routes = [
         component: ProductListComponent
       },
       {
-        path: "favourite-products",
+        path: "wunschliste",
         component: FavouriteProductsComponent
       },
       {
-        path: "cart-items",
+        path: "warenkorb",
         component: CartProductsComponent
       },
       {

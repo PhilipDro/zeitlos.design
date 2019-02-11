@@ -1,7 +1,10 @@
 <section>
   <div class="container">
+  <span>
+    <a routerLink="/index">Home</a> > <a routerLink="/produkte/alle-produkte">Produkte</a> > {{product.productName}}
+  </span>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12">
         <h2 class="product-title">{{product.productName}}</h2>
 
         <p class="price">€ <span>{{product.productPrice}}</span></p>
@@ -53,7 +56,7 @@
         <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
 
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12">
         <div class="product-image">
           <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
           <img src="assets/products/product-122.jpg" [alt]="product.productName" width="100%">

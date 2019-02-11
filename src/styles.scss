@@ -11,6 +11,12 @@ $font-color-grey: #626262;
 $font-color-inactive: #626262; // grey
 $background-color-dark: #474747;
 
+// Media queries
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+
 // General
 body {
   font-family: 'Krub', sans-serif;
@@ -381,6 +387,24 @@ $neat-grid: (
 .col-sm-12 {
   @include grid-column(12);
 }
+
+@media (max-width: $md) {
+  .col-xs-1,
+  .col-xs-2,
+  .col-xs-3,
+  .col-xs-4,
+  .col-xs-5,
+  .col-xs-6,
+  .col-xs-7,
+  .col-xs-8,
+  .col-xs-9,
+  .col-xs-10,
+  .col-xs-11,
+  .col-xs-12 {
+    @include grid-column(12);
+  }
+}
+
 
 .row1 {
   @include grid-collapse;

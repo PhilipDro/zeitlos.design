@@ -61,4 +61,12 @@ h2 {
   padding-top: 1em;
   margin-right: 2em;
   width: 20%;
+  ul li a{
+    &:hover {
+      color: lighten(#333333, 40%);
+    }
+  }
+  .active {
+    color: black;
+  }
 }
