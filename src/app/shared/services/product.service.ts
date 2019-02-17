@@ -76,8 +76,8 @@ export class ProductService {
   addFavouriteProduct(data: Product): void {
     // Toast Product Already exists
     const toastAlreadyExists: ToastOptions = {
-      title: "Product Already Added",
-      msg: "You have already added this product to favourite list",
+      title: "Das Produkt befindet sich bereits in der Wunschliste.",
+      msg: "",
       showClose: true,
       timeout: 5000,
       theme: "material"
@@ -85,8 +85,8 @@ export class ProductService {
 
     // Toaster Adding
     const toastAdd: ToastOptions = {
-      title: "Adding Product",
-      msg: "Adding Product as Favourite",
+      title: "Produkt erfolgreich zur Wunschliste hinzugefügt.",
+      msg: "",
       showClose: true,
       timeout: 5000,
       theme: "material"
@@ -149,10 +149,10 @@ export class ProductService {
     a.push(data);
 
     const toastOption: ToastOptions = {
-      title: "Adding Product to Cart",
-      msg: "Product Adding to the cart",
+      title: "Produkt erfolgreich zum Warenkorb hinzugefügt.",
+      msg: "",
       showClose: true,
-      timeout: 1000,
+      timeout: 5000,
       theme: "material"
     };
     this.toastyService.wait(toastOption);

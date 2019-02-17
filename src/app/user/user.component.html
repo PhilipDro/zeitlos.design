@@ -1,18 +1,13 @@
-<br>
-<br>
-
 <div class="container">
+  <h1>Ihr Profil</h1>
   <div class="row">
     <div class="col-sm-4">
-      <ul class="list-group">
-        <li class="list-group-item hoverable">
-          <a [routerLink]="['/users']">Your Profile</a>
+      <ul class="list">
+        <li>
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['favourite-products']}}]">Ihre Wunschliste</a>
         </li>
-        <li class="list-group-item hoverable">
-          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['favourite-products']}}]">Your Wishlist</a>
-        </li>
-        <li class="list-group-item hoverable">
-          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['cart-items']}}]">Your Cart</a>
+        <li>
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['cart-items']}}]">Ihr Warenkorb</a>
         </li>
       </ul>
     </div>

@@ -5,6 +5,7 @@
 $gray: lighten(#e2e2e2, 8%);
 $color-primary: #d31111;
 $color-secondary: #0e78d9; // blue
+$color-success: palegreen;
 $font-color-default: black;
 $font-color-default-light: white;
 $font-color-grey: #626262;
@@ -82,15 +83,17 @@ section {
 }
 .button {
   //padding: .8em 2.2em;
-  padding: .4em 1.2em;
-  margin-right: 1em;
-  font-weight: bold;
+
   text-transform: uppercase;
   background: transparent;
   border: 1px solid $font-color-default;
   cursor: pointer;
   letter-spacing: .1em;
-  font-size: 1.5em;
+
+  font-weight: normal;
+  font-size: 1em;
+  padding: .6em 1.9em;
+  margin: .5em 1em .5em 0;
 }
 .button-primary {
   letter-spacing: .13em;
@@ -122,6 +125,13 @@ section {
   //}
 }
 
+.button-lead {
+  padding: .4em 1.2em;
+  margin-right: 1em;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
 // Lists
 .list-heading {
   font-size: 1.4em;
@@ -131,8 +141,6 @@ section {
 
   li {
     list-style-type: none;
-    //font-weight: bold;
-    //text-transform: uppercase;
     line-height: 1.7em;
     //color: $font-color-inactive;
 
@@ -144,6 +152,9 @@ section {
       color: $font-color-grey;
     }
   }
+}
+.list-light-background {
+
 }
 
 .filter {
@@ -408,4 +419,16 @@ $neat-grid: (
 
 .row1 {
   @include grid-collapse;
+}
+
+.toast-text {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  font-size: 1.1em;
+  padding: 1em 0;
+  bottom: 0;
+  //background: $color-success;
+  background: rgba(120, 238, 151, 0.9);
+  border-top: 1px solid darken($color-success, 20%);
 }
