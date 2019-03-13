@@ -416,7 +416,6 @@ $neat-grid: (
   }
 }
 
-
 .row1 {
   @include grid-collapse;
 }
@@ -428,7 +427,8 @@ $neat-grid: (
   font-size: 1.1em;
   padding: 1em 0;
   bottom: 0;
-  //background: $color-success;
-  background: rgba(120, 238, 151, 0.9);
+  color: white;
+  background: #0e78d9;
+  //background: rgba(120, 238, 151, 0.9);
   border-top: 1px solid darken($color-success, 20%);
 }

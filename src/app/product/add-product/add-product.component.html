@@ -1,15 +1,22 @@
 <form #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)">
-  <label for="productName">Objekt Name</label>
+  <label for="productName">Produktbezeichnung</label>
   <input type="text" id="productName" name="productName" [(ngModel)]="product.productName"
    placeholder="Name des Objekts (z.B. '1930er Art Deco Sideboard von Jiri Jiroutek')" value="" required>
   <div class="invalid-feedback">
     Objekt name benötigt.
   </div>
 
+  <!-- Artikelnummer -->
+  <div>
+    <label for="productId">Artikelnummer</label>
+    <input type="number" id="productId" [(ngModel)]="product.productId" name="productId"
+           placeholder="Arikelnummer prinzipiell wie bei alter Zeitlos Seite." required>
+  </div>
+
   <!-- Kategorie -->
   <label for="productCategory">Kategorie</label>
   <input type="text" id="productCategory" name="productCategory" [(ngModel)]="product.productCategory"
-    placeholder="Kategorie" value="" required>
+    placeholder="Kategorie (Tische/Lampen/Stühle/Sessel/Schränke/Sofas)" value="" required>
   <div class="invalid-feedback">
     Kategorie benötigt.
   </div>
@@ -22,7 +29,7 @@
   <!-- Size -->
   <label for="productSize">Maße</label>
   <input type="text" id="productSize" name="productSize" [(ngModel)]="product.productSize"
-         placeholder="Maße im Format Breite cm x Höhe cm x Tiefe cm (z.B. '145 cm x 75 cm x 77,5 cm') bzw. Höhe cm x Durchmesser cm (z.B. '35cm x Ø 20 cm')" value="">
+         placeholder="Maße im Format Breite cm x Tiefe cm x Höhe cm (z.B. '145 cm x 75 cm x 77,5 cm') bzw. Höhe cm x Durchmesser cm (z.B. '35cm x Ø 20 cm')" value="">
 
   <!-- Style -->
   <label for="productStyle">Stil</label>
@@ -58,25 +65,64 @@
   <div>
     <label for="productDescription">Beschreibung
     </label>
-    <textarea type="text" id="productDescription" placeholder="Allgemein gehaltene Beschreibung zum Objekt" name="productDescription"
+    <textarea type="text" id="productDescription" placeholder="Allgemein gehaltene Beschreibung zum Produkt. Fasst die Eckdaten in zusammenhängenden Sätzen zusammen. Hier kann auch über Anfertigung nach Wunsch oder Varianten des Produktes informiert werden. Wichtig für Suchmaschinenoptimierung!" name="productDescription"
       [(ngModel)]="product.productDescription"></textarea>
   </div>
 
   <!-- Price -->
-  <label for="productPrice">Preis</label>
-  <input type="number" name="productPrice" [(ngModel)]="product.productPrice" placeholder="Preis"
+  <label for="productPrice">Preis in €</label>
+  <input type="number" name="productPrice" [(ngModel)]="product.productPrice" placeholder="Preis (z.B. '3200')"
     id="productPrice" value="" required>
   <div class="invalid-feedback">
     Preis benötigt.
   </div>
 
-  <!-- Bild -->
+  <!-- Discount -->
+  <label for="productPrice">Rabatt in %</label>
+  <input type="number" name="productDiscount" [(ngModel)]="product.productDiscount" placeholder="Rabatt (z.B. '15'). Standardmäßig auf 0"
+         id="productDiscount" value="">
+  <div class="invalid-feedback">
+    Preis benötigt.
+  </div>
+
+  <!-- Image -->
   <div>
     <label for="productImageUrl">Bildpfad</label>
     <input type="text" id="productImageUrl" [(ngModel)]="product.productImageUrl" name="productImageUrl"
-      placeholder="Bildpfad (z.B. 'product-112.jpg')" required>
+      placeholder="Bildpfad kann ausgelassen werden und wird dann automatisch auf Grundlage der Artikelnummer generiert (z.B. 'product-112.jpg')">
   </div>
 
+  <!-- Image alt tag -->
+  <div>
+    <label for="productImageAlt">Bildbeschreibung</label>
+    <input type="text" id="productImageAlt" [(ngModel)]="product.productImageAlt" name="productImageAlt"
+           placeholder="Was ist auf dem Bild zu sehen (z.B. 'Das Bild zeigt einen schwarz lackierten Beistelltisch von der Seite.')? Sehr wichtig für Suchmaschinenoptimierung!" required>
+  </div>
 
-  <button class="float-right" type="submit">Hinzufügen</button>
+  <!-- Quantity -->
+  <div>
+    <label for="productQuantity">Produktmenge</label>
+    <input type="number" id="productQuantity" [(ngModel)]="product.productQuantity" name="productQuantity"
+           placeholder="Wieviele Exemplare sind verfügbar? Standardmäßig auf 1. Falls unbegrenzt viele Exemplare besorgt werden können, 999 eintragen." required>
+  </div>
+
+  <!-- Availability -->
+  <div>
+    <label for="productAvailable">Jetzt verfügbar (Ist das Produkt sofort lieferbar?)</label>
+    <input name="productAvailable" id="productAvailable" type="checkbox" [(ngModel)]="product.productAvailable">
+  </div>
+
+  <!-- Verkauft -->
+  <div>
+    <label for="productSold">Verkauft</label>
+    <input name="productSold" id="productSold" type="checkbox" [value]="0"  [(ngModel)]="product.productSold">
+  </div>
+
+  <!-- Active -->
+  <div>
+    <label for="productActive">Aktiv</label>
+    <input name="productActive" id="productActive" type="checkbox" [value]="1"  [(ngModel)]="product.productActive" checked>
+  </div>
+
+  <button class="float-right button" type="submit">Hinzufügen</button>
 </form>

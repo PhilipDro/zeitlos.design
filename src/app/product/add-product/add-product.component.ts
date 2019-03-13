@@ -33,14 +33,14 @@ export class AddProductComponent implements OnInit {
 
   createProduct(productForm: NgForm) {
     const toastOptions: ToastOptions = {
-      title: "Product Creation",
+      title: "",
       msg:
-        "product " + productForm.value["productName"] + "is added successfully",
+        "Produkt " + productForm.value["productName"] + "wurde erfolgreich hinzugefügt.",
       showClose: true,
       timeout: 5000,
       theme: "default"
     };
-    productForm.value["productId"] = "PROD_" + shortId.generate();
+    // productForm.value["productId"] = "PROD_" + shortId.generate();
     productForm.value["productAdded"] = moment().unix();
     productForm.value["ratings"] = Math.floor(Math.random() * 5 + 1);
     if (productForm.value["productImageUrl"] === undefined) {
@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit {
 
     this.product = new Product();
 
-    $("#exampleModalLong").modal("hide");
+    // $("#exampleModalLong").modal("hide");
 
     this.toastyService.success(toastOptions);
   }
