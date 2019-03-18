@@ -15,10 +15,17 @@ export class Product {
   productTime: string = null;
   productCondition: string = null;
   productImageUrl: string = null;
+  productImageUrl2: string = null;
+  productImageUrl3: string = null;
+  productImageUrl4: string = null;
+  productImageUrl5: string = null;
+  productImageUrl6: string = null;
+  productImageUrl7: string = null;
+  productImageUrl8: string = null;
   productImageAlt: string = null;
   productAdded: number;
   productAvailable = true;
-  productQuatity = 1;
+  productQuantity = 1;
   productActive = true;
   productSold = false;
   favourite: boolean;

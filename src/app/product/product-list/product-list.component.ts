@@ -123,6 +123,5 @@ export class ProductListComponent implements OnInit {
 
   toggleAddProducts(any) {
     this.addProducts = !this.addProducts;
-    console.log(this.addProducts);
   }
 }

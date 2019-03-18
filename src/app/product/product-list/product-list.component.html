@@ -5,7 +5,8 @@
 <section>
   <div class="container">
     <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
-      Objekt hinzufügen
+      <span *ngIf="!this.addProducts">Objekt hinzufügen</span>
+      <span *ngIf="this.addProducts">Objekt löschen</span>
     </button>
 
     <!-- Side column -->
@@ -19,6 +20,7 @@
           <li><a routerLink="/produkte/Stühle" routerLinkActive="active">Stühle</a></li>
           <li><a routerLink="/produkte/Sessel" routerLinkActive="active">Sessel</a></li>
           <li><a routerLink="/produkte/Schränke" routerLinkActive="active">Schränke</a></li>
+          <li><a routerLink="/produkte/Sofas" routerLinkActive="active">Sofas</a></li>
         </ul>
 
       </div>

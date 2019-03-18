@@ -13,6 +13,7 @@ import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub: any;
   product: Product;
+  imgUrl;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,10 +44,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
         y["$key"] = id;
         this.product = y;
+        this.product.productImageUrl = "assets/products/product-" + this.product.productId + "-1.jpg";
+        this.product.productImageUrl2 = "assets/products/product-" + this.product.productId + "-2.jpg";
+        this.product.productImageUrl3 = "assets/products/product-" + this.product.productId + "-3.jpg";
+        this.product.productImageUrl4 = "assets/products/product-" + this.product.productId + "-4.jpg";
+        this.product.productImageUrl5 = "assets/products/product-" + this.product.productId + "-5.jpg";
+        this.product.productImageUrl6 = "assets/products/product-" + this.product.productId + "-6.jpg";
+        this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
+        this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
       },
       error => {
         const toastOption: ToastOptions = {
-          title: "Error while fetching Product Detail",
+          title: "Fehler bei der Abfrage der Detail-Ansicht",
           msg: error,
           showClose: true,
           timeout: 5000,
@@ -67,5 +76,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+  handleBrokenImage() {
+    console.log("yeah uhhh");
   }
 }
