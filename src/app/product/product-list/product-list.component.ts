@@ -20,7 +20,6 @@ export class ProductListComponent implements OnInit {
   showUpdateProducts = false;
   productToUpdate: Product;
   keyToUpdate: string;
-  test;
 
   brands = [
     "Tische",
@@ -94,7 +93,6 @@ export class ProductListComponent implements OnInit {
         product.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
-          this.test = y;
           this.productList.push(y as Product);
         });
       },

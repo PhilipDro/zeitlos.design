@@ -1,10 +1,10 @@
 <section>
   <div class="container">
-  <span>
+  <span class="breadcrumb">
     <a routerLink="/index">Home</a> > <a routerLink="/produkte/alle-produkte">Produkte</a> > {{product.productName}}
   </span>
     <div class="row">
-      <div class="col-sm-6 col-xs-12">
+      <div class="info-column col-sm-6 col-xs-12">
         <h2 class="product-title">{{product.productName}}</h2>
 
         <p class="price">€ <span>{{product.productPrice}}</span></p>
@@ -14,7 +14,7 @@
             <th>Artikelnummer:</th>
             <td>{{product.productId}}</td>
             </tr>
-            <tr *ngIf="product.productMaterial != null">
+            <tr *ngIf="product.productDescription ">
               <th>Beschreibung:</th>
               <td>{{product.productDescription}}</td>
             </tr>
@@ -22,41 +22,45 @@
               <th>Kategorie:</th>
               <td>{{product.productCategory}}</td>
             </tr>
-            <tr *ngIf="product.productMaterial != null">
+            <tr *ngIf="product.productMaterial">
               <th>Material:</th>
               <td>{{product.productMaterial}}</td>
             </tr>
-            <tr *ngIf="product.productSize != null">
+            <tr *ngIf="product.productSize">
               <th>Maße:</th>
               <td>{{product.productSize}}</td>
             </tr>
-            <tr *ngIf="product.productStyle != null">
+            <tr *ngIf="product.productStyle">
               <th>Stil:</th>
               <td>{{product.productStyle}}</td>
             </tr>
-            <tr *ngIf="product.productOrigin != null">
+            <tr *ngIf="product.productOrigin">
               <th>Herkunftsland:</th>
               <td>{{product.productOrigin}}</td>
             </tr>
-            <tr *ngIf="product.productManufacturer != null">
+            <tr *ngIf="product.productManufacturer">
               <th>Hersteller:</th>
               <td>{{product.productManufacturer}}</td>
             </tr>
-            <tr *ngIf="product.productDesigner != null">
+            <tr *ngIf="product.productDesigner">
               <th>Designer:</th>
               <td>{{product.productDesigner}}</td>
             </tr>
-            <tr *ngIf="product.productTime != null">
+            <tr *ngIf="product.productTime">
               <th>Jahr:</th>
               <td>{{product.productTime}}</td>
             </tr>
-            <tr *ngIf="product.productCondition != null">
+            <tr *ngIf="product.productCondition">
               <th>Zustand:</th>
               <td>{{product.productCondition}}</td>
             </tr>
-            <tr *ngIf="product.productAvailable != null">
+            <tr *ngIf="product.productAvailable === true">
               <th>Verfügbarkeit:</th>
               <td>Ab sofort lieferbar!</td>
+            </tr>
+            <tr *ngIf="product.productAvailable === false">
+              <th>Verfügbarkeit:</th>
+              <td>2 - 4 Wochen</td>
             </tr>
             <!--<tr>-->
             <!--<th>Product Added on:</th>-->
@@ -65,26 +69,27 @@
           </table>
         </div>
 
-        <button (click)="addToCart(product)" class="button button-primary">In den Warenkorb</button>
-        <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
-
       </div>
-      <div class="col-sm-6 col-xs-12">
+      <div class="main-image-column col-sm-6 col-xs-12">
         <div class="product-image">
           <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
           <img [src]="product.productImageUrl" [alt]="product.productName" width="100%">
         </div>
+
+        <button (click)="addToCart(product)" class="button button-primary margin">In den Warenkorb</button>
+        <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
+
       </div>
     </div>
 
     <div class="additional-pictures">
-      <img class="additional-images" [src]="product.productImageUrl2" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl3" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl4" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl5" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl6" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl7" [alt]="product.productName">
-      <img class="additional-images" [src]="product.productImageUrl8" [alt]="product.productName">
+      <img class="additional-images" [src]="product.productImageUrl2" alt="">
+      <img class="additional-images" [src]="product.productImageUrl3" alt="">
+      <img class="additional-images" [src]="product.productImageUrl4" alt="">
+      <img class="additional-images" [src]="product.productImageUrl5" alt="">
+      <img class="additional-images" [src]="product.productImageUrl6" alt="">
+      <img class="additional-images" [src]="product.productImageUrl7" alt="">
+      <img class="additional-images" [src]="product.productImageUrl8" alt="">
     </div>
 
   </div>

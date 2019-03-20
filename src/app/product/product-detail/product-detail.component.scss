@@ -1,16 +1,33 @@
-.product-title {
-  font-size: 4em;
-  margin: 0;
+.info-column {
+  h2 {
+    line-height: 1.2em;
+  }
 
+  .product-title {
+    font-size: 4em;
+    margin: 0;
+  }
+
+  .price {
+    font-weight: bold;
+    display: inline;
+    font-size: 1.5em;
+    margin-right: 1em;
+    float: right;
+    span {
+      font-size: 2em;
+    }
+  }
+
+  .product-detail table tr th {
+    vertical-align: top;
+  }
 }
-.price {
-  font-weight: bold;
-  display: inline;
-  font-size: 1.5em;
-  margin-right: 1em;
-  float: right;
-  span {
-    font-size: 2em;
+
+.main-image-column {
+  img {
+    width: 90%;
+    margin-left: 10%;
   }
 }
 
@@ -19,5 +36,18 @@ span a {
 }
 
 .additional-images {
-  width: 33.3%
+  width: 30%;
+  margin-right: 3.3%;
+  margin-top: 1.5em;
+}
+
+.breadcrumb,
+.breadcrumb a{
+  color: #d31111;
+  font-weight: bold;
+}
+
+.margin {
+  margin-left: 10%;
+  margin-top: 1.5em;
 }

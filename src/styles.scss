@@ -420,6 +420,10 @@ $neat-grid: (
   @include grid-collapse;
 }
 
+/**
+Custom overrides
+ */
+
 .toast-text {
   position: fixed;
   text-align: center;
@@ -431,4 +435,8 @@ $neat-grid: (
   background: #0e78d9;
   //background: rgba(120, 238, 151, 0.9);
   border-top: 1px solid darken($color-success, 20%);
+}
+
+.ngx-pagination .current {
+  background: $color-primary !important;
 }

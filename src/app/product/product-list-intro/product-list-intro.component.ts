@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
     }
     .content-section {
       padding: 1em 0;
-      background-image: url("../../../assets/category-teaser/Tische.png");
+      background-image: url("assets/category-teaser/Tische.png");
       background-repeat: no-repeat;
       background-position: right;
       -webkit-filter: grayscale(50%);

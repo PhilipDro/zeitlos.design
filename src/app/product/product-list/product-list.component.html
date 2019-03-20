@@ -5,8 +5,8 @@
 <section>
   <div class="container">
     <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
-      <span *ngIf="!this.addProducts">Objekt hinzufügen</span>
-      <span *ngIf="this.addProducts">Objekt löschen</span>
+      <span *ngIf="!this.showAddProducts">Objekt hinzufügen</span>
+      <span *ngIf="this.showAddProducts">Objekt löschen</span>
     </button>
 
     <!-- Side column -->
@@ -27,12 +27,12 @@
       <div class="col-sm-9 col-xs-12">
 
           <!-- List of Products -->
-          <div class="item col-sm-4 col-xs-12" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 5, currentPage: page }">
+          <div class="item col-sm-4 col-xs-12" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
             <!--Card-->
             <div class="card">
               <!--Item image-->
               <a [routerLink]="['/produkte/product', product.$key]">
-                <img [src]="'../../../src/assets/products/product-' + product.productId + '-1.jpg'" alt="">
+                <img [src]="'assets/products/product-' + product.productId + '-1.jpg'" alt="">
               </a>
               <!--/.Item image-->
               <!--Card content-->
@@ -43,6 +43,7 @@
                     <a [routerLink]="['/produkte/product', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
                   </strong>
                   <span *ngIf="product.productDesigner && product.productDesigner != '-'" class="sub-title">von {{product.productDesigner}}</span>
+                  <span *ngIf="!product.productDesigner || product.productDesigner === '-'" class="sub-title"><br /></span>
                 </p>
                 <p class="price">
                   € {{ product.productPrice }}
@@ -86,3 +87,4 @@
 
 </section>
 
+<app-service-list></app-service-list>

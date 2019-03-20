@@ -5,6 +5,14 @@ h2 {
 .item {
   height: 45vh;
   padding-bottom: 5vh;
+
+  @media (min-width: 680px) {
+    img {
+      height: 275px;
+      width: 275px;
+      object-fit: cover;
+    }
+  }
 }
 .card {
   margin-left: 1.5em;
@@ -37,7 +45,14 @@ h2 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  cursor: pointer;
+
+  a:hover {
+    color: darken(#e2e2e2, 27%);
+  }
 }
+
+
 
 .item .item-footer .right a.active {
   color: #d50000;
@@ -47,7 +62,7 @@ h2 {
 }
 
 .item .item-footer .right a .fa-heart {
-  color: #3f51b5;
+  color: #d31111;
 }
 
 // Other
