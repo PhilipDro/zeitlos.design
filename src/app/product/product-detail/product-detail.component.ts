@@ -36,8 +36,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   getProductDetail(id: string) {
     this.spinnerService.show();
-    const x = this.productService.getProductById(id);
-    x.snapshotChanges().subscribe(
+    const selectedProduct = this.productService.getProductById(id);
+    selectedProduct.snapshotChanges().subscribe(
       product => {
         this.spinnerService.hide();
         const y = product.payload.toJSON() as Product;

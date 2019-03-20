@@ -21,6 +21,7 @@ import { FavouriteProductsComponent } from "./favourite-products/favourite-produ
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.component";
 import { ProductListIntroComponent } from "./product-list-intro/product-list-intro.component";
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ProductListIntroComponent } from "./product-list-intro/product-list-int
     CartProductsComponent,
     CartCalculatorComponent,
     ProductListIntroComponent,
+    UpdateProductComponent,
     // FooterComponent
   ],
   exports: [BestProductComponent]

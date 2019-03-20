@@ -1,0 +1,126 @@
+<form #updateProductForm="ngForm" (ngSubmit)="updateProduct(updateProductForm)">
+  <label for="productName">Produktbezeichnung*</label>
+  <input type="text" id="productName" name="productName" [(ngModel)]="product.productName"
+         placeholder="Name des Objekts (z.B. '1930er Art Deco Sideboard von Jiri Jiroutek')" value="product.productName" required>
+  <div class="invalid-feedback">
+    Objekt name benötigt.
+  </div>
+
+  <!-- Artikelnummer -->
+  <div>
+    <label for="productId">Artikelnummer*</label>
+    <input type="number" id="productId" [(ngModel)]="product.productId" name="productId"
+           placeholder="Arikelnummer prinzipiell wie bei alter Zeitlos Seite." value="product.productId" required>
+  </div>
+
+  <!-- Kategorie -->
+  <label for="productCategory">Kategorie*</label>
+  <input type="text" id="productCategory" name="productCategory" [(ngModel)]="product.productCategory"
+         placeholder="Kategorie (Tische/Lampen/Stühle/Sessel/Schränke/Sofas)" value="product.productCategory" required>
+  <div class="invalid-feedback">
+    Kategorie benötigt.
+  </div>
+
+  <!-- Material -->
+  <label for="productMaterial">Material und Technik</label>
+  <input type="text" id="productMaterial" name="productMaterial" [(ngModel)]="product.productMaterial"
+         placeholder="Material und Arbeitstechnik (z.B. 'vernickeltes Stahlrohr, Kufen schwarz polliert, neu gepolstert')"
+         value="product.productMaterial">
+
+  <!-- Size -->
+  <label for="productSize">Maße</label>
+  <input type="text" id="productSize" name="productSize" [(ngModel)]="product.productSize"
+         placeholder="Maße im Format Breite cm x Tiefe cm x Höhe cm (z.B. '145 cm x 75 cm x 77,5 cm') bzw. Höhe cm x Durchmesser cm (z.B. '35cm x Ø 20 cm')"
+         value="product.productSize">
+
+  <!-- Style -->
+  <label for="productStyle">Stil</label>
+  <input type="text" id="productStyle" name="productStyle" [(ngModel)]="product.productStyle"
+         placeholder="Stil (z.B. 'Bauhaus' oder 'Art Deco')" value="product.productStyle">
+
+  <!-- Origin -->
+  <label for="productOrigin">Herkunftsland</label>
+  <input type="text" id="productOrigin" name="productOrigin" [(ngModel)]="product.productOrigin"
+         placeholder="Herkunftsland" value="product.productOrigin">
+
+  <!-- Manufacturer -->
+  <label for="productManufacturer">Hersteller</label>
+  <input type="text" id="productManufacturer" name="productManufacturer" [(ngModel)]="product.productManufacturer"
+         placeholder="Hersteller / Manufakteur" value="product.productManufacturer">
+
+  <!-- Designer -->
+  <label for="productDesigner">Designer</label>
+  <input type="text" id="productDesigner" name="productDesigner" [(ngModel)]="product.productDesigner"
+         placeholder="Designer" value="product.productDesigner">
+
+  <!-- Jahr -->
+  <label for="productTime">Jahr</label>
+  <input type="text" id="productTime" name="productTime" [(ngModel)]="product.productTime"
+         placeholder="Jahr (z.B. '1930er' oder '1934')" value="product.productTime">
+
+  <!-- Condition -->
+  <label for="productCondition">Zustand</label>
+  <input type="text" id="productCondition" name="productCondition" [(ngModel)]="product.productCondition"
+         placeholder="Zustand (z.B. 'Exzellenter Zustand, neu restauriert')" value="product.productCondition">
+
+  <!-- Description -->
+  <div>
+    <label for="productDescription">Beschreibung
+    </label>
+    <textarea type="text" id="productDescription" placeholder="Allgemein gehaltene Beschreibung zum Produkt. Fasst die Eckdaten in zusammenhängenden Sätzen zusammen. Hier kann auch über Anfertigung nach Wunsch oder Varianten des Produktes informiert werden. Wichtig für Suchmaschinenoptimierung!"
+          name="productDescription" [(ngModel)]="product.productDescription">{{product.productDescription}}</textarea>
+  </div>
+
+  <!-- Price -->
+  <label for="productPrice">Preis in €*</label>
+  <input type="number" name="productPrice" [(ngModel)]="product.productPrice" placeholder="Preis (z.B. '3200')"
+         id="productPrice" value="product.productPrice" required>
+  <div class="invalid-feedback">
+    Preis benötigt.
+  </div>
+
+  <!-- Discount -->
+  <label for="productPrice">Rabatt in %</label>
+  <input type="number" name="productDiscount" [(ngModel)]="product.productDiscount" placeholder="Rabatt (z.B. '15'). Standardmäßig auf 0"
+         id="productDiscount" value="product.productDiscount">
+  <div class="invalid-feedback">
+    Preis benötigt.
+  </div>
+
+  <!-- Image alt tag -->
+  <div>
+    <label for="productImageAlt">Bildbeschreibung</label>
+    <input type="text" id="productImageAlt" [(ngModel)]="product.productImageAlt" name="productImageAlt"
+           placeholder="Was ist auf dem Bild zu sehen (z.B. 'Das Bild zeigt einen schwarz lackierten Beistelltisch von der Seite.')? Sehr wichtig für Suchmaschinenoptimierung!"
+           required value="product.productValue">
+  </div>
+
+  <!-- Quantity -->
+  <div>
+    <label for="productQuantity">Produktmenge</label>
+    <input type="number" id="productQuantity" [(ngModel)]="product.productQuantity" name="productQuantity"
+           placeholder="Wieviele Exemplare sind verfügbar? Standardmäßig auf 1. Falls unbegrenzt viele Exemplare besorgt werden können, 999 eintragen."
+           required value="product.product">
+  </div>
+
+  <!-- Availability -->
+  <div>
+    <label for="productAvailable">Jetzt verfügbar (Ist das Produkt sofort lieferbar?)</label>
+    <input name="productAvailable" id="productAvailable" type="checkbox"
+           [(ngModel)]="product.productAvailable" [value]="product.productAvailable">
+  </div>
+
+  <!-- Verkauft -->
+  <div>
+    <label for="productSold">Verkauft</label>
+    <input name="productSold" id="productSold" type="checkbox" [value]="product.productSold"  [(ngModel)]="product.productSold">
+  </div>
+
+  <!-- Active -->
+  <div>
+    <label for="productActive">Aktiv</label>
+    <input name="productActive" id="productActive" type="checkbox" [value]="product.productActive"  [(ngModel)]="product.productActive" checked>
+  </div>
+
+  <button class="float-right button" type="submit">Aktualisieren</button>
+</form>

@@ -10,6 +10,8 @@ export class ProductService {
   productsByCategory: AngularFireList<Product>;
   product: AngularFireObject<Product>;
 
+  selectedProduct = new Product();
+
   // favouriteProducts
   favouriteProducts: AngularFireList<FavouriteProduct>;
   cartProducts: AngularFireList<FavouriteProduct>;
@@ -51,11 +53,20 @@ export class ProductService {
     return this.product;
   }
 
-  updateProduct(data: Product) {
-    this.products.update(data.$key, data);
+  updateProduct(key: string, data: Product) {
+    this.products.update(key, data);
   }
 
+  // updateProduct(product: Product){
+  //   this.products.update(product.$key, {
+  //     productName: product.productName,
+  //     productId: product.productId,
+  //     productCategory: product.productCategory,
+  //   })
+  // }
+
   deleteProduct(key: string) {
+    console.log(key);
     this.products.remove(key);
   }
 

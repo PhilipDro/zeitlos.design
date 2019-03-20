@@ -16,7 +16,11 @@ export class ProductListComponent implements OnInit {
 
   path;
   productList: Product[];
-  addProducts = false;
+  showAddProducts = false;
+  showUpdateProducts = false;
+  productToUpdate: Product;
+  keyToUpdate: string;
+  test;
 
   brands = [
     "Tische",
@@ -39,10 +43,6 @@ export class ProductListComponent implements OnInit {
     this.toastyConfig.theme = "material";
   }
   ngOnInit() {
-    // this.getAllProducts();
-    // this.path = this.route.snapshot.url;
-    // console.log(this.route.snapshot.data['breadcrumb']);
-
     this.sub = this.route.params.subscribe(params => {
       const category = params["productCategory"]; // (+) converts string 'id' to a number
 
@@ -59,20 +59,21 @@ export class ProductListComponent implements OnInit {
 
   getProductsByCategory(category) {
     this.spinnerService.show();
-    const x = this.productService.getProductsByCategory(category);
-    x.snapshotChanges().subscribe(
+    const products = this.productService.getProductsByCategory(category);
+    products.snapshotChanges().subscribe(
       product => {
         this.spinnerService.hide();
         this.productList = [];
         product.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
+          console.log(y["$key"]);
           this.productList.push(y as Product);
         });
       },
       err => {
         const toastOption: ToastOptions = {
-          title: "Error while fetching Products",
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen.",
           msg: err,
           showClose: true,
           timeout: 5000,
@@ -85,20 +86,21 @@ export class ProductListComponent implements OnInit {
 
   getAllProducts() {
     this.spinnerService.show();
-    const x = this.productService.getProducts();
-    x.snapshotChanges().subscribe(
+    const products = this.productService.getProducts();
+    products.snapshotChanges().subscribe(
       product => {
         this.spinnerService.hide();
         this.productList = [];
         product.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
+          this.test = y;
           this.productList.push(y as Product);
         });
       },
       err => {
         const toastOption: ToastOptions = {
-          title: "Error while fetching Products",
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
           msg: err,
           showClose: true,
           timeout: 5000,
@@ -122,6 +124,12 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleAddProducts(any) {
-    this.addProducts = !this.addProducts;
+    this.showAddProducts = !this.showAddProducts;
+  }
+
+  toggleUpdateProduct(key: string, product: Product) {
+    this.keyToUpdate = key;
+    this.productToUpdate = product;
+    this.showUpdateProducts = !this.showUpdateProducts;
   }
 }

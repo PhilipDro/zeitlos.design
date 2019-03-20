@@ -1,5 +1,6 @@
 <form #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)">
-  <label for="productName">Produktbezeichnung</label>
+
+  <label for="productName">Produktbezeichnung*</label>
   <input type="text" id="productName" name="productName" [(ngModel)]="product.productName"
    placeholder="Name des Objekts (z.B. '1930er Art Deco Sideboard von Jiri Jiroutek')" value="" required>
   <div class="invalid-feedback">
@@ -8,13 +9,13 @@
 
   <!-- Artikelnummer -->
   <div>
-    <label for="productId">Artikelnummer</label>
+    <label for="productId">Artikelnummer*</label>
     <input type="number" id="productId" [(ngModel)]="product.productId" name="productId"
            placeholder="Arikelnummer prinzipiell wie bei alter Zeitlos Seite." required>
   </div>
 
   <!-- Kategorie -->
-  <label for="productCategory">Kategorie</label>
+  <label for="productCategory">Kategorie*</label>
   <input type="text" id="productCategory" name="productCategory" [(ngModel)]="product.productCategory"
     placeholder="Kategorie (Tische/Lampen/Stühle/Sessel/Schränke/Sofas)" value="" required>
   <div class="invalid-feedback">
@@ -70,7 +71,7 @@
   </div>
 
   <!-- Price -->
-  <label for="productPrice">Preis in €</label>
+  <label for="productPrice">Preis in €*</label>
   <input type="number" name="productPrice" [(ngModel)]="product.productPrice" placeholder="Preis (z.B. '3200')"
     id="productPrice" value="" required>
   <div class="invalid-feedback">
@@ -83,13 +84,6 @@
          id="productDiscount" value="">
   <div class="invalid-feedback">
     Preis benötigt.
-  </div>
-
-  <!-- Image -->
-  <div>
-    <label for="productImageUrl">Bildpfad</label>
-    <input type="text" id="productImageUrl" [(ngModel)]="product.productImageUrl" name="productImageUrl"
-      placeholder="Bildpfad kann ausgelassen werden und wird dann automatisch auf Grundlage der Artikelnummer generiert (z.B. 'product-112.jpg')">
   </div>
 
   <!-- Image alt tag -->
