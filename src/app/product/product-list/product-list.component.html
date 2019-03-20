@@ -32,9 +32,9 @@
             <div class="card">
               <!--Item image-->
               <a [routerLink]="['/produkte/product', product.$key]">
-                <img src="assets/products/product-122.jpg" alt="">
+                <img [src]="'../../../src/assets/products/product-' + product.productId + '-1.jpg'" alt="">
               </a>
-              <!--/.Card image-->
+              <!--/.Item image-->
               <!--Card content-->
               <div class="item-body text-center no-padding">
                 <!--Category & Title-->

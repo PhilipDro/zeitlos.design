@@ -48,15 +48,21 @@ export class AddProductComponent implements OnInit {
         "http://via.placeholder.com/640x360/007bff/ffffff";
     }
 
-    productForm.value["favourite"] = false;
+    // productForm.value["productImageUrl"] = "assets/products/product-" + this.product.productId + "-1.jpg";
+    // productForm.value["productImageUrl2"] = "assets/products/product-" + this.product.productId + "-2.jpg";
+    // productForm.value["productImageUrl3"] = "assets/products/product-" + this.product.productId + "-3.jpg";
+    // productForm.value["productImageUrl4"] = "assets/products/product-" + this.product.productId + "-4.jpg";
+    // productForm.value["productImageUrl5"] = "assets/products/product-" + this.product.productId + "-5.jpg";
+    // productForm.value["productImageUrl6"] = "assets/products/product-" + this.product.productId + "-6.jpg";
+    // productForm.value["productImageUrl7"] = "assets/products/product-" + this.product.productId + "-7.jpg";
+    // productForm.value["productImageUrl8"] = "assets/products/product-" + this.product.productId + "-8.jpg";
+    // productForm.value["favourite"] = false;
 
     const date = productForm.value["productAdded"];
 
     this.productService.createProduct(productForm.value);
 
     this.product = new Product();
-
-    // $("#exampleModalLong").modal("hide");
 
     this.toastyService.success(toastOptions);
   }
