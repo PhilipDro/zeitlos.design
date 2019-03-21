@@ -1,14 +1,26 @@
+//h2 {
+//  margin-top: .3em;
+//}
+//p.highlighted {
+//  color: red !important;
+//}
+//.content-section {
+//  padding: 1em 0;
+//  //background-image: url("../../../assets/category-teaser/Tische.png");
+//  background-repeat: no-repeat;
+//  background-position: right;
+//  -webkit-filter: grayscale(20%);
+//  filter: grayscale(20%);
+//}
+
 h2 {
   margin-top: .3em;
 }
-p.highlighted {
-  color: red !important;
-}
 .content-section {
-  padding: 1em 0;
-  //background-image: url("../../../assets/category-teaser/Tische.png");
-  background-repeat: no-repeat;
-  background-position: right;
+  padding: 3em 0;
+  //background-image: url("/assets/category-teaser/Tische.png");
+  background-repeat: no-repeat !important;
+  background-position: right !important;
   -webkit-filter: grayscale(20%);
   filter: grayscale(20%);
 }

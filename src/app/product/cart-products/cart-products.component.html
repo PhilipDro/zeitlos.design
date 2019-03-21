@@ -9,9 +9,9 @@
             <div class="card">
 
               <!--Card image-->
-              <a [routerLink]="['/products/product', product.$key ]">
+              <a [routerLink]="['/produkte/produkt', product.$key ]">
 
-                <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
+                <img [src]="product.productImageUrl" alt="">
                 <!--<a>-->
                   <!--<div class="mask waves-effect waves-light" mdbRippleRadius></div>-->
                 <!--</a>-->
@@ -27,7 +27,7 @@
                 </a>
                 <h5 class="card-title">
                   <strong>
-                    <a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
+                    <a [routerLink]="['/produkte/produkt', product.$key]">{{ product.productName }}</a>
                   </strong>
                 </h5>
 

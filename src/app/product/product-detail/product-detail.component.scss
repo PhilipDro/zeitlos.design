@@ -44,7 +44,9 @@ span a {
 .breadcrumb,
 .breadcrumb a{
   color: #d31111;
-  font-weight: bold;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 .margin {

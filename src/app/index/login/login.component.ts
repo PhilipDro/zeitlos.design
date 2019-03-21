@@ -77,8 +77,7 @@ export class LoginComponent implements OnInit {
       .signInRegular(userForm.value["emailId"], userForm.value["loginPassword"])
       .then(res => {
         const toastOption: ToastOptions = {
-          title: "Authentication Success",
-          msg: "Logging in please wait",
+          title: "Erfolgreich eingeloggt",
           showClose: true,
           timeout: 5000,
           theme: "material"
@@ -95,8 +94,8 @@ export class LoginComponent implements OnInit {
       .catch(err => {
         console.log("logging Error: ", err);
         const toastOption: ToastOptions = {
-          title: "Authentication Failed",
-          msg: "Invalid Credentials, Please Check your credentials",
+          title: "Beim Login-Versuch ist ein Fehler unterlaufen.",
+          msg: "Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
           showClose: true,
           timeout: 5000,
           theme: "material"

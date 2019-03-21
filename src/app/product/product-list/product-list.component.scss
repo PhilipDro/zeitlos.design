@@ -5,14 +5,106 @@ h2 {
 .item {
   height: 45vh;
   padding-bottom: 5vh;
+  position: relative;
+  overflow: hidden;
 
   @media (min-width: 680px) {
+    .img-wrapper {
+      position: relative;
+      z-index: 1000;
+
+    }
     img {
       height: 275px;
       width: 275px;
       object-fit: cover;
+      bottom: 0;
+      -webkit-transition: bottom .5s; /* Safari */
+      transition: bottom .5s;
+
+      &:hover {
+        //bottom: 3em; experimental hover animation. May optimize later. Probably not though
+        //position: relative;
+      }
+    }
+    .hidden-element {
+      display: none;
+      position: absolute;
+      bottom: 1em;
+      z-index: -100;
+      width: 100%;
+      color: lighten(#e2e2e2, 8%);
+      text-align: center;
+      height: 2em;
+      background: #d31111;
     }
   }
+
+  .corner-ribbon{
+    position: absolute;
+    overflow: hidden;
+    width: 200px;
+    background: #d31111;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  .corner-ribbon.shadow{
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+  }
+
+  /* Different positions */
+
+  .corner-ribbon.top-left{
+    top: 25px;
+    left: -50px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  .corner-ribbon.top-right{
+    top: 25px;
+    right: -50px;
+    left: auto;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  .corner-ribbon.bottom-left{
+    top: auto;
+    bottom: 25px;
+    left: -50px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  .corner-ribbon.bottom-right{
+    top: auto;
+    right: -50px;
+    bottom: 25px;
+    left: auto;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  /* Colors */
+
+  .corner-ribbon.white{background: #f0f0f0; color: #555;}
+  .corner-ribbon.black{background: #333;}
+  .corner-ribbon.grey{background: #999;}
+  .corner-ribbon.blue{background: #39d;}
+  .corner-ribbon.green{background: #2c7;}
+  .corner-ribbon.turquoise{background: #1b9;}
+  .corner-ribbon.purple{background: #95b;}
+  .corner-ribbon.red{background: #e43;}
+  .corner-ribbon.orange{background: #e82;}
+  .corner-ribbon.yellow{background: #ec0;}
 }
 .card {
   margin-left: 1.5em;

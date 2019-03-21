@@ -11,8 +11,8 @@ export class CartProductsComponent implements OnInit {
   showDataNotFound = true;
 
   // Not Found Message
-  messageTitle = "No Products Found in Cart";
-  messageDescription = "Please, Add Products to Cart";
+  messageTitle = "Noch befinden sich keine Produkte im Warenkorb.";
+  messageDescription = "Werfen Sie einen Blick auf unsere Stücke. Sie können Objekte mithilfe des Warenkob-Symboles hinzufügen.";
 
   constructor(private productService: ProductService) {}
 

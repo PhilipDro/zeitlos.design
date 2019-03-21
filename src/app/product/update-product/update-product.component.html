@@ -106,8 +106,7 @@
   <!-- Availability -->
   <div>
     <label for="productAvailable">Jetzt verfügbar (Ist das Produkt sofort lieferbar?)</label>
-    <input name="productAvailable" id="productAvailable" type="checkbox"
-           [(ngModel)]="product.productAvailable" [value]="product.productAvailable">
+    <input name="productAvailable" id="productAvailable" type="checkbox" [value]="product.productAvailable" [(ngModel)]="product.productAvailable">
   </div>
 
   <!-- Verkauft -->
@@ -119,7 +118,7 @@
   <!-- Active -->
   <div>
     <label for="productActive">Aktiv</label>
-    <input name="productActive" id="productActive" type="checkbox" [value]="product.productActive"  [(ngModel)]="product.productActive" checked>
+    <input name="productActive" id="productActive" type="checkbox" [value]="product.productActive"  [(ngModel)]="product.productActive">
   </div>
 
   <button class="float-right button" type="submit">Aktualisieren</button>

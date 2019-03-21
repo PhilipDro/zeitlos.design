@@ -39,14 +39,14 @@ export class UpdateProductComponent implements OnInit {
     const toastOptions: ToastOptions = {
       title: "",
       msg:
-        "Produkt " + productForm.value["productName"] + "wurde erfolgreich hinzugefügt.",
+        "Produkt " + productForm.value["productName"] + "wurde erfolgreich aktualisiert.",
       showClose: true,
       timeout: 5000,
       theme: "default"
     };
 
     /**
-     * Map form values to Product.
+     * Map form values to newly generated Product.
      */
     this.product = new Product();
     this.product.productName = productForm.value["productName"];
@@ -63,7 +63,16 @@ export class UpdateProductComponent implements OnInit {
     this.product.productDescription = productForm.value["productDescription"];
     this.product.productPrice = productForm.value["productPrice"];
     this.product.productDiscount = productForm.value["productDiscount"];
+    this.product.productImageUrl = "assets/products/product-" + this.product.productId + "-1.jpg";
+    this.product.productImageUrl2 = "assets/products/product-" + this.product.productId + "-2.jpg";
+    this.product.productImageUrl3 = "assets/products/product-" + this.product.productId + "-3.jpg";
+    this.product.productImageUrl4 = "assets/products/product-" + this.product.productId + "-4.jpg";
+    this.product.productImageUrl5 = "assets/products/product-" + this.product.productId + "-5.jpg";
+    this.product.productImageUrl6 = "assets/products/product-" + this.product.productId + "-6.jpg";
+    this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
+    this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
     this.product.productImageAlt = productForm.value["productImageAlt"];
+    this.product.productAvailable = productForm.value["productAvailable"];
     this.product.productQuantity = productForm.value["productQuantity"];
     this.product.productSold = productForm.value["productSold"];
     this.product.productActive = productForm.value["productActive"];
@@ -79,7 +88,6 @@ export class UpdateProductComponent implements OnInit {
     const date = productForm.value["productAdded"];
 
     this.productService.updateProduct(this.key, this.product);
-
 
     this.toastyService.success(toastOptions);
   }

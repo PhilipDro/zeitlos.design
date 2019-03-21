@@ -10,7 +10,7 @@ export class Product {
   productSize: string = null;
   productStyle: string = null;
   productOrigin: string = null;
-  productManufacturer: string = null;
+  productManufacturer: "n/a";
   productDesigner: string = null;
   productTime: string = null;
   productCondition: string = null;

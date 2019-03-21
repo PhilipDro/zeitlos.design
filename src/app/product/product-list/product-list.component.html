@@ -26,16 +26,19 @@
       </div>
       <div class="col-sm-9 col-xs-12">
 
-          <!-- List of Products -->
-          <div class="item col-sm-4 col-xs-12" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
+        <!-- List of Products -->
+        <div class="item-wrapper" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 13, currentPage: page }">
+          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-sm-4 col-xs-12">
+            <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
             <!--Card-->
             <div class="card">
               <!--Item image-->
-              <a [routerLink]="['/produkte/product', product.$key]">
-                <img [src]="'assets/products/product-' + product.productId + '-1.jpg'" alt="">
+              <a class="img-wrapper" [routerLink]="['/produkte/product', product.$key]">
+                <img [src]="product.productImageUrl" alt="product.productImageAlt">
+                <span class="hidden-element">Details ansehen!</span>
               </a>
               <!--/.Item image-->
-              <!--Card content-->
+              <!--Card contents-->
               <div class="item-body text-center no-padding">
                 <!--Category & Title-->
                 <p class="title">
@@ -50,7 +53,7 @@
                 </p>
                 <!--Card footer-->
                 <div class="item-footer">
-                  <span class="left">Sofort lieferbar</span>
+                  <span *ngIf="product.productAvailable === true" class="left">Sofort lieferbar</span>
                   <span class="right">
                     <a (click)="addFavourite(product)">
                       <i class="fa fa-heart"></i>
@@ -66,15 +69,10 @@
                     </a>
                   </span>
                 </div>
-
               </div>
-              <!--/.Card content-->
-
             </div>
-              <!--/.Card-->
-
           </div>
-        <!--/.Card-->
+        </div>
       </div>
       <!-- Pagination -->
       <div class="float-right">
