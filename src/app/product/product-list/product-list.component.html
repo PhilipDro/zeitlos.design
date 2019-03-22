@@ -21,6 +21,10 @@
           <li><a routerLink="/produkte/Sessel" routerLinkActive="active">Sessel</a></li>
           <li><a routerLink="/produkte/Schränke" routerLinkActive="active">Schränke</a></li>
           <li><a routerLink="/produkte/Sofas" routerLinkActive="active">Sofas</a></li>
+          <li><a routerLink="/produkte/Regale" routerLinkActive="active">Regale</a></li>
+          <li><a routerLink="/produkte/Gemälde" routerLinkActive="active">Gemälde</a></li>
+          <li><a routerLink="/produkte/Gläser" routerLinkActive="active">Gläser</a></li>
+          <li><a routerLink="/produkte/Vasen" routerLinkActive="active">Vasen</a></li>
         </ul>
 
       </div>
@@ -43,13 +47,14 @@
                 <!--Category & Title-->
                 <p class="title">
                   <strong>
-                    <a [routerLink]="['/produkte/product', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
+                    <a [routerLink]="['/produkte/produkt', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
                   </strong>
                   <span *ngIf="product.productDesigner && product.productDesigner != '-'" class="sub-title">von {{product.productDesigner}}</span>
                   <span *ngIf="!product.productDesigner || product.productDesigner === '-'" class="sub-title"><br /></span>
                 </p>
                 <p class="price">
-                  € {{ product.productPrice }}
+                  <span *ngIf="product.productDiscount !== 0" class="discount">{{discountedPrice}}</span>
+                  <span>€ {{ product.productPrice }}</span>
                 </p>
                 <!--Card footer-->
                 <div class="item-footer">

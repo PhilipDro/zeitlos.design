@@ -3,7 +3,8 @@ h2 {
 }
 
 .item {
-  height: 45vh;
+  //height: 45vh;
+  min-height: 500px;
   padding-bottom: 5vh;
   position: relative;
   overflow: hidden;
@@ -11,8 +12,6 @@ h2 {
   @media (min-width: 680px) {
     .img-wrapper {
       position: relative;
-      z-index: 1000;
-
     }
     img {
       height: 275px;
@@ -31,7 +30,6 @@ h2 {
       display: none;
       position: absolute;
       bottom: 1em;
-      z-index: -100;
       width: 100%;
       color: lighten(#e2e2e2, 8%);
       text-align: center;
@@ -123,6 +121,9 @@ h2 {
 .price {
   font-weight: bold;
   margin: .3em 0;
+}
+.discount {
+  text-decoration: line-through;
 }
 
 .item .item-footer .left {

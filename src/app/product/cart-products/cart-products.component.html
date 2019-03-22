@@ -5,23 +5,13 @@
       <div class="col-sm-8">
         <div class="row">
           <div class="item col-sm-4" *ngFor="let product of cartProducts">
-            <!--Card-->
             <div class="card">
 
-              <!--Card image-->
               <a [routerLink]="['/produkte/produkt', product.$key ]">
-
-                <img [src]="product.productImageUrl" alt="">
-                <!--<a>-->
-                  <!--<div class="mask waves-effect waves-light" mdbRippleRadius></div>-->
-                <!--</a>-->
+                <img [src]="product.productImageUrl" [alt]="product.productImageAlt">
               </a>
 
-              <!--/.Card image-->
-
-              <!--Card content-->
               <div class="card-body no-padding">
-                <!--Category & Title-->
                 <a class="text-muted">
                   <h5>{{ product.productCategory }}</h5>
                 </a>
@@ -31,31 +21,24 @@
                   </strong>
                 </h5>
 
-                <!--Description-->
                 <p class="card-text">{{ product.productDescription }}
                 </p>
 
-                <!--Card footer-->
                 <div class="card-footer">
                   <span class="left">€ {{ product.productPrice }}</span>
                   <span class="right">
-                    <a placement="top" mdbTooltip="Quick Look" container="body" [routerLink]="['/products/product', product.$key]">
+                    <a [routerLink]="['/produkte/produkt', product.$key]">
                       <i class="fa fa-eye"></i>
                     </a>
-                    <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeCartProduct(product)">
+                    <a (click)="removeCartProduct(product)">
                       <i class="fa fa-trash"></i>
                     </a>
                   </span>
                 </div>
-
               </div>
-              <!--/.Card content-->
-
             </div>
-            <!--/.Card-->
           </div>
         </div>
-
       </div>
       <div class="col-sm-4">
         <app-cart-calculator [products]="cartProducts"></app-cart-calculator>

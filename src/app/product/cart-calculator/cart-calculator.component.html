@@ -7,14 +7,14 @@
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.productName}}</td>
-      <td class="align-right">{{product.productPrice}} €</td>
+      <td class="align-right">{{product.productPrice}}€</td>
     </tr>
     <tr class="bold">
       <td>
         Gesamt
       </td>
       <td class="align-right">
-        {{totalValue}} €
+        {{totalValue}}€
       </td>
     </tr>
     <tr>
@@ -22,13 +22,13 @@
         inkl. Mwst.
       </td>
       <td class="align-right">
-        {{mwst}} €
+        {{mwst}}€
       </td>
     </tr>
   </tbody>
 </table>
 <div class="button-container">
 <a class="mr button button-primary" [routerLink]="['/checkouts']">Zur Kasse</a>
-<a class="mr button" [routerLink]="['/products/all-products']">Zum Shop</a>
+<a class="mr button" [routerLink]="['/produkte/alle-produkte']">Zum Shop</a>
 
 </div>
