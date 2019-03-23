@@ -31,7 +31,7 @@
       <div class="col-sm-9 col-xs-12">
 
         <!-- List of Products -->
-        <div class="item-wrapper" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 13, currentPage: page }">
+        <div class="item-wrapper" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
           <div *ngIf="authService.isAdmin() || product.productActive" class="item col-sm-4 col-xs-12">
             <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
             <!--Card-->
