@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../../shared/services/user.service";
 import { AuthService } from "../../shared/services/auth.service";
 import { User } from "../../shared/models/user";
-declare var $: any;
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -46,15 +45,13 @@ export class LoginComponent implements OnInit {
       )
       .then(res => {
         const toastOption: ToastOptions = {
-          title: "User Registeration",
-          msg: "Registering",
+          title: "Nutzer wird registriert.",
           showClose: true,
           timeout: 3000,
           theme: "material"
         };
         this.toastyService.wait(toastOption);
         setTimeout((router: Router) => {
-          $("#createUserForm").modal("hide");
           this.router.navigate(["/"]);
         }, 1500);
       })
@@ -62,7 +59,7 @@ export class LoginComponent implements OnInit {
         this.errorInUserCreate = true;
         this.errorMessage = err;
         const toastOption: ToastOptions = {
-          title: "Error while Creating User",
+          title: "Fehler bei Erstellung neuen Nutzers.",
           msg: err,
           showClose: true,
           timeout: 5000,
@@ -80,7 +77,6 @@ export class LoginComponent implements OnInit {
           title: "Erfolgreich eingeloggt",
           showClose: true,
           timeout: 5000,
-          theme: "material"
         };
         this.toastyService.wait(toastOption);
         const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
@@ -98,7 +94,6 @@ export class LoginComponent implements OnInit {
           msg: "Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
           showClose: true,
           timeout: 5000,
-          theme: "material"
         };
         this.toastyService.error(toastOption);
       });
@@ -115,11 +110,10 @@ export class LoginComponent implements OnInit {
       .catch(err => {
         console.log(err);
         const toastOption: ToastOptions = {
-          title: "Error Occured",
-          msg: "Please try again later",
+          title: "Beim Login-Versuch ist ein Fehler unterlaufen.",
+          msg: "Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
           showClose: true,
           timeout: 5000,
-          theme: "material"
         };
         this.toastyService.error(toastOption);
       });

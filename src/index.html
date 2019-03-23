@@ -24,7 +24,6 @@
       position: absolute;
       z-index: 2000;
       background: white;
-      color: gray;
       top: 0;
       bottom: 0;
       left: 0;
@@ -32,16 +31,19 @@
     }
 
     .splash-title {
-    text-align: center;
+      text-align: center;
       max-width: 500px;
       margin: 15% auto;
       padding: 20px
     }
 
     .splash-title h1 {
-      font-size: 26px
+      font-size: 5em;
+      font-family: "Krub";
     }
-
+    .colorful {
+      color: #d31111;
+    }
     .color-line {
       border-radius: 4px 4px 0 0
     }
@@ -61,8 +63,8 @@
     <div class="splash">
       <div class="color-line"></div>
       <div class="splash-title">
-        <h1>Zeitlos</h1>
-        <img src="./assets/img/loader.svg" width="64" height="64" />
+        <h1>Zeitlos<span class="colorful">.</span></h1>
+        <img src="./assets/img/loading.svg" width="64" height="64" />
       </div>
     </div>
   </app-root>

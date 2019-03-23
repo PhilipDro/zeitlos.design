@@ -3,10 +3,11 @@
 
 // Variables
 $gray: lighten(#e2e2e2, 8%);
+$color-medium: darken(#e2e2e2, 5%);
 $color-primary: #d31111;
 $color-secondary: #0e78d9; // blue
 $color-success: palegreen;
-$font-color-default: black;
+$font-color-default: lighten(black, 25%);
 $font-color-default-light: white;
 $font-color-grey: #626262;
 $font-color-inactive: #626262; // grey
@@ -23,7 +24,7 @@ body {
   font-family: 'Krub', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
+  color: $font-color-default;
   margin: 0;
 }
 button,
@@ -44,6 +45,7 @@ h1 {
 h2 {
   font-weight: bold;
   margin: 1em 0;
+  line-height: 1.1em;
 }
 
 img {
@@ -94,6 +96,10 @@ section {
   font-size: 1em;
   padding: .6em 1.9em;
   margin: .5em 1em .5em 0;
+}
+.button-invert {
+  border: 1px solid $gray;
+  color: $gray;
 }
 .button-primary {
   letter-spacing: .13em;
@@ -150,6 +156,10 @@ section {
 
     a {
       color: $font-color-grey;
+
+      &.active {
+        color: $color-primary;
+      }
     }
   }
 }
@@ -157,11 +167,21 @@ section {
 
 }
 
-.filter {
+.box {
+  border: 1px solid $color-medium;
+  background-color: #f6f6f6;
+  padding: 1em;
+  margin-right: 2em;
   a,
   h2 {
     text-transform: uppercase;
     line-height: 2em;
+  }
+
+  ul li a{
+    &:hover {
+      color: lighten(#333333, 40%);
+    }
   }
 }
 
@@ -203,7 +223,7 @@ form.form {
     font-size: 1em;
     width: 100%;
     padding: 0 0 .8em 0;
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
 
 }
@@ -214,8 +234,12 @@ form.form {
   padding: 5vh 0;
   background: $gray;
   overflow: hidden;
+  border-top: 1px solid darken(#e2e2e2, 5%);
+  border-bottom: 1px solid darken(#e2e2e2, 5%);
+
   &.no-background {
     background: transparent;
+    border: none;
   }
 
   h1 {
@@ -301,6 +325,12 @@ form.form {
 .colored {
   color: $color-primary;
 }
+.seagreen {
+  color: seagreen;
+}
+.linethrough {
+  text-decoration: line-through;
+}
 .grey {
   color: $font-color-grey;
 }
@@ -339,6 +369,72 @@ form.form {
   box-sizing: border-box;
   overflow: visible;
   text-align: left;
+}
+
+// Ribbons and badges.
+
+.discount-badge {
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  background-color: #d31111;
+  color: white;
+  font-weight: bold;
+  padding: .5em 1em;
+}
+
+.corner-ribbon{
+  position: absolute;
+  overflow: hidden;
+  width: 200px;
+  background: #d31111;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  z-index: 100;
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+/* Different positions */
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right{
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left{
+  top: auto;
+  bottom: 25px;
+  left: -50px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right{
+  top: auto;
+  right: -50px;
+  bottom: 25px;
+  left: auto;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 // Grid

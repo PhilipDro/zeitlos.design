@@ -4,18 +4,19 @@
     <div class="item-image col-sm-2">
       <img class="checkout-list-image" [src]="product.productImageUrl" [alt]="product.productName">
     </div>
-    <div class="item-title col-sm-2">
+    <div class="item-title col-sm-6">
       <strong>{{product.productName}}</strong>
       <p>{{product.productDescription}}</p>
     </div>
-    <div class="item-price col-sm-2">
-      € {{product.productPrice}}
+    <div class="item-price col-sm-4">
+      Preis:
+      {{product.productPrice}} €
     </div>
   </li>
 </ul>
 <p>
-  <span>Gesamt</span>
-  <strong>€ {{totalPrice}}</strong>
+  <span>Gesamt: </span>
+  <strong>{{totalPrice}} €</strong>
 </p>
 
 <div class="">

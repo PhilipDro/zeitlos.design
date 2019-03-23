@@ -26,7 +26,7 @@ export class ShippingService {
   }
 
   getshippingById(key: string) {
-    this.shipping = this.db.object("products/" + key);
+    this.shipping = this.db.object("shippings/" + key);
     return this.shipping;
   }
 

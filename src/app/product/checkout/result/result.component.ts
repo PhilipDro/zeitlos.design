@@ -1,5 +1,6 @@
 import { Product } from "./../../../shared/models/product";
 import { ProductService } from "./../../../shared/services/product.service";
+import { ShippingService } from "./../../../shared/services/shipping.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
@@ -11,12 +12,16 @@ import html2canvas from "html2canvas";
 })
 export class ResultComponent implements OnInit {
   products: Product[];
+  shipping;
   date: number;
   totalPrice = 0;
   mwst = 0;
   tax = 0.16;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private shippingService: ShippingService
+  ) {
     /* Hiding Billing Tab Element */
     document.getElementById("productsTab").style.display = "none";
     document.getElementById("shippingTab").style.display = "none";
@@ -24,12 +29,17 @@ export class ResultComponent implements OnInit {
     document.getElementById("resultTab").style.display = "block";
 
     this.products = productService.getLocalCartProducts();
+    // this.shipping = shippingService.getshippingById("arTWto0Tz0crToWliStNXPLPAVk2");
+    this.shipping = shippingService.getshippingById("-LafG5MrHMx69hLTnGoT");
+
+    console.log(this.shipping);
 
     this.products.forEach(product => {
       this.totalPrice += product.productPrice;
     });
     this.mwst = this.totalPrice * this.tax;
     this.date = Date.now();
+
   }
 
   ngOnInit() {}

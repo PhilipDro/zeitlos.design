@@ -75,6 +75,7 @@ export class AddProductComponent implements OnInit {
     this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
     this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
     this.product.productImageAlt = productForm.value["productImageAlt"];
+    this.product.productShippingCost = productForm.value["productShippingCost"];
     this.product.productAvailable = productForm.value["productAvailable"];
     this.product.productQuantity = productForm.value["productQuantity"];
     this.product.productSold = productForm.value["productSold"];

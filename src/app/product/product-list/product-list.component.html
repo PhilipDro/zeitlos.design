@@ -11,7 +11,7 @@
 
     <!-- Side column -->
     <div *ngIf="!showAddProducts && !showUpdateProducts">
-      <div class="col-sm-3 col-xs-12 filter">
+      <div class="col-sm-3 col-xs-12 box filter">
         <h2>Kategorien</h2>
         <ul class="list">
           <li><a routerLink="/produkte/alle-produkte" routerLinkActive="active">Alle</a></li>
@@ -37,7 +37,8 @@
             <!--Card-->
             <div class="card">
               <!--Item image-->
-              <a class="img-wrapper" [routerLink]="['/produkte/product', product.$key]">
+              <a class="img-wrapper" [routerLink]="['/produkte/produkt', product.$key]">
+                <span *ngIf="product.productDiscount !== 0" class="discount-badge">-{{product.productDiscount}}%</span>
                 <img [src]="product.productImageUrl" alt="product.productImageAlt">
                 <span class="hidden-element">Details ansehen!</span>
               </a>
@@ -53,8 +54,8 @@
                   <span *ngIf="!product.productDesigner || product.productDesigner === '-'" class="sub-title"><br /></span>
                 </p>
                 <p class="price">
-                  <span *ngIf="product.productDiscount !== 0" class="discount">{{discountedPrice}}</span>
-                  <span>€ {{ product.productPrice }}</span>
+                  <span *ngIf="product.productDiscount !== 0" class="discount">{{product.productPrice - (product.productPrice * (product.productDiscount/100))}} €</span>
+                  <span [class.linethrough]="product.productDiscount !== 0">{{ product.productPrice }} €</span>
                 </p>
                 <!--Card footer-->
                 <div class="item-footer">

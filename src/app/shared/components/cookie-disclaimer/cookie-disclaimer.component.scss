@@ -1,0 +1,20 @@
+section {
+  margin: 0;
+  padding: .5em;
+  background: lighten(black, 35%);
+  color: white;
+
+  h4 {
+    margin: 0;
+  }
+
+  a {
+    color: lighten(#0e78d9, 10%);
+  }
+
+  button {
+    float: right;
+    position: relative;
+    top: .6em;
+  }
+}

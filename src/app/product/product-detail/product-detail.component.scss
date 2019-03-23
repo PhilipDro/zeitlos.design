@@ -17,6 +17,13 @@
     span {
       font-size: 2em;
     }
+    .discount {
+      margin-right: .5em;
+      color: #d31111;
+    }
+    .linethrough {
+      font-size: 1.2em;
+    }
   }
 
   .product-detail table tr th {
@@ -25,9 +32,15 @@
 }
 
 .main-image-column {
-  img {
-    width: 90%;
-    margin-left: 10%;
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 90%;
+      margin-left: 10%;
+    }
   }
 }
 

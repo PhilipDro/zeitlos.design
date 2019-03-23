@@ -35,6 +35,8 @@ export class ShippingDetailsComponent implements OnInit {
     this.products = productService.getLocalCartProducts();
     this.userDetails = authService.getLoggedInUser();
     this.user = authService.getLoggedInUser();
+
+    console.log(this.userDetail.address1);
   }
 
   ngOnInit() {}
@@ -43,6 +45,9 @@ export class ShippingDetailsComponent implements OnInit {
     const data = form.value;
 
     data["emailId"] = this.userDetails.emailId;
+    /**
+     * Connect instance of User to the userDetails.
+     */
     data["userId"] = this.userDetails.$key;
     const products = [];
 

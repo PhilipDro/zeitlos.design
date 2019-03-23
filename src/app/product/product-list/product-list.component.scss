@@ -4,7 +4,7 @@ h2 {
 
 .item {
   //height: 45vh;
-  min-height: 500px;
+  min-height: 420px;
   padding-bottom: 5vh;
   position: relative;
   overflow: hidden;
@@ -12,6 +12,10 @@ h2 {
   @media (min-width: 680px) {
     .img-wrapper {
       position: relative;
+      display: block;
+      border-top: 1px solid darken(#e2e2e2, 5%);
+      border-right: 1px solid darken(#e2e2e2, 5%);
+      border-left: 1px solid darken(#e2e2e2, 5%);
     }
     img {
       height: 275px;
@@ -19,8 +23,13 @@ h2 {
       object-fit: cover;
       bottom: 0;
       -webkit-transition: bottom .5s; /* Safari */
-      transition: bottom .5s;
-
+      //transition: bottom .5s;
+      transition: box-shadow .5s;
+      &:hover {
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
       &:hover {
         //bottom: 3em; experimental hover animation. May optimize later. Probably not though
         //position: relative;
@@ -37,72 +46,6 @@ h2 {
       background: #d31111;
     }
   }
-
-  .corner-ribbon{
-    position: absolute;
-    overflow: hidden;
-    width: 200px;
-    background: #d31111;
-    top: 25px;
-    left: -50px;
-    text-align: center;
-    line-height: 50px;
-    color: #f0f0f0;
-    text-transform: uppercase;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-
-  .corner-ribbon.shadow{
-    box-shadow: 0 0 3px rgba(0,0,0,.3);
-  }
-
-  /* Different positions */
-
-  .corner-ribbon.top-left{
-    top: 25px;
-    left: -50px;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-
-  .corner-ribbon.top-right{
-    top: 25px;
-    right: -50px;
-    left: auto;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-  }
-
-  .corner-ribbon.bottom-left{
-    top: auto;
-    bottom: 25px;
-    left: -50px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-  }
-
-  .corner-ribbon.bottom-right{
-    top: auto;
-    right: -50px;
-    bottom: 25px;
-    left: auto;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-
-  /* Colors */
-
-  .corner-ribbon.white{background: #f0f0f0; color: #555;}
-  .corner-ribbon.black{background: #333;}
-  .corner-ribbon.grey{background: #999;}
-  .corner-ribbon.blue{background: #39d;}
-  .corner-ribbon.green{background: #2c7;}
-  .corner-ribbon.turquoise{background: #1b9;}
-  .corner-ribbon.purple{background: #95b;}
-  .corner-ribbon.red{background: #e43;}
-  .corner-ribbon.orange{background: #e82;}
-  .corner-ribbon.yellow{background: #ec0;}
 }
 .card {
   margin-left: 1.5em;
@@ -120,10 +63,14 @@ h2 {
 
 .price {
   font-weight: bold;
+  font-size: 1em;
   margin: .3em 0;
 }
 .discount {
-  text-decoration: line-through;
+  font-size: 1.2em;
+  margin-right: .5em;
+  font-weight: bold;
+  color: #d31111;
 }
 
 .item .item-footer .left {
@@ -144,8 +91,6 @@ h2 {
     color: darken(#e2e2e2, 27%);
   }
 }
-
-
 
 .item .item-footer .right a.active {
   color: #d50000;
@@ -175,11 +120,9 @@ h2 {
       color: lighten(#333333, 40%);
     }
   }
-  .active {
-    color: black;
-  }
 }
 
 button {
   margin-bottom: -2.5vh;
 }
+

@@ -19,8 +19,12 @@ export class CartCalculatorComponent implements OnInit, OnChanges {
   totalValue = 0;
   mwst = 0;
   tax = 0.16;
+  shippingCost: number;
+  standardShippingCost = 150;
 
   constructor() {}
+
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     const dataChanges: SimpleChange = changes.products;
@@ -28,11 +32,14 @@ export class CartCalculatorComponent implements OnInit, OnChanges {
     const products: Product[] = dataChanges.currentValue;
     this.totalValue = 0;
     this.mwst = 0;
+
+    this.shippingCost = this.products.length > 1 ? this.standardShippingCost : this.products[0].productShippingCost;
+    this.totalValue = this.shippingCost;
+
     products.forEach(product => {
       this.totalValue += product.productPrice;
     });
     this.mwst = this.totalValue * this.tax;
   }
 
-  ngOnInit() {}
 }

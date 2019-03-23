@@ -8,6 +8,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CheckoutComponent } from "./checkout.component";
 import { BillingDetailsComponent } from "./billing-details/billing-details.component";
+import { OrderDetailsCollectorComponent } from './order-details-collector/order-details-collector.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, CheckoutRoutingModule],
@@ -17,7 +18,8 @@ import { BillingDetailsComponent } from "./billing-details/billing-details.compo
     ShippingDetailsComponent,
     ProductsComponent,
     ResultComponent,
-    CheckoutNavbarComponent
+    CheckoutNavbarComponent,
+    OrderDetailsCollectorComponent
   ],
   exports: [CheckoutComponent]
 })

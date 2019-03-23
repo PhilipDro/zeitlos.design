@@ -1,26 +1,20 @@
-//h2 {
-//  margin-top: .3em;
-//}
-//p.highlighted {
-//  color: red !important;
-//}
-//.content-section {
-//  padding: 1em 0;
-//  //background-image: url("../../../assets/category-teaser/Tische.png");
-//  background-repeat: no-repeat;
-//  background-position: right;
-//  -webkit-filter: grayscale(20%);
-//  filter: grayscale(20%);
-//}
-
 h2 {
   margin-top: .3em;
+}
+a {
+  color: lighten(black, 25%);
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .content-section {
   padding: 3em 0;
   //background-image: url("/assets/category-teaser/Tische.png");
   background-repeat: no-repeat !important;
-  background-position: right !important;
+  background-position: right bottom !important;
   -webkit-filter: grayscale(20%);
   filter: grayscale(20%);
+
+  border-top: 1px solid darken(#e2e2e2, 5%);
+  border-bottom: 1px solid darken(#e2e2e2, 5%);
 }

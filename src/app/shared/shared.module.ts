@@ -21,6 +21,7 @@ import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
+import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
     FilterByBrandPipe,
     NoAccessComponent,
     PageNotFoundComponent,
-    ServiceListComponent
+    ServiceListComponent,
+    CookieDisclaimerComponent
   ],
   exports: [
     NoProductsFoundComponent,
@@ -58,7 +60,8 @@ import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
     AgmCoreModule,
     NoAccessComponent,
     PageNotFoundComponent,
-    ServiceListComponent
+    ServiceListComponent,
+    CookieDisclaimerComponent
   ],
   providers: [
     AuthService,

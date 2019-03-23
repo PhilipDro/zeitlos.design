@@ -24,6 +24,7 @@ export class Product {
   productImageUrl8: string = null;
   productImageAlt: string = null;
   productAdded: number;
+  productShippingCost = 150;
   productAvailable = true;
   productQuantity = 1;
   productActive = true;

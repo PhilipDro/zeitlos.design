@@ -3,27 +3,20 @@
     <div class="row">
       <!-- List of Products -->
       <div class="item col-sm-4" *ngFor="let product of favoruiteProducts">
-        <div class="card card-cascade wider">
+        <div class="card">
           <a [routerLink]="['/produkte/produkt', product.$key ]">
-            <div class="view overlay hm-white-slight">
               <img [src]="product.productImageUrl">
-              <a>
-                <div class="mask waves-effect waves-light"></div>
-              </a>
-            </div>
           </a>
           <div class="card-body no-padding">
-            <!--Category & Title-->
-            <a class="text-muted">
-              <h5>{{ product.productCategory }}</h5>
-            </a>
+            <h5>{{ product.productCategory }}</h5>
             <h5 class="card-title">
               <strong>
                 <a [routerLink]="['/produkte/produkt', product.$key]">{{ product.productName }}</a>
               </strong>
             </h5>
 
-            <p class="card-text">{{ product.productDescription }}
+            <p class="card-text">
+              {{ product.productDescription }}
             </p>
 
             <div class="card-footer">
@@ -32,7 +25,7 @@
                 <a [routerLink]="['/produkte/produkt', product.$key]">
                   <i class="fa fa-eye"></i>
                 </a>
-                <a placement="top" mdbTooltip="Remove Product" container="body" (click)="removeFavourite(product)">
+                <a (click)="removeFavourite(product)">
                   <i class="fa fa-trash"></i>
                 </a>
               </span>

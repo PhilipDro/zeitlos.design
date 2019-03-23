@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
   showUpdateProducts = false;
   productToUpdate: Product;
   keyToUpdate: string;
+  discountPrice: number;
 
   brands = [
     "Tische",
