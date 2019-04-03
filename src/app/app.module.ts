@@ -20,7 +20,7 @@ import { AppRoutes } from "./app.routing";
     ProductModule,
     UserModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes, { scrollPositionRestoration: 'enabled' })
   ],
   providers: [],
   bootstrap: [AppComponent],

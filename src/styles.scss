@@ -173,8 +173,7 @@ section {
 
 .box {
   background-color: #f6f6f6;
-  padding-left: 1em;
-  padding-top: 1em;
+  padding: 1em;
   border: 1px solid darken(#e2e2e2, 5%);
 
   @media(min-width: 576px) {
@@ -517,73 +516,119 @@ $neat-grid: (
   @include grid-container;
 }
 
-.col-sm-1 {
-  @include grid-column(1);
-}
-
-.col-sm-2 {
-  @include grid-column(2);
-}
-
-.col-sm-3 {
-  @include grid-column(3);
-}
-
-.col-sm-4 {
-  @include grid-column(4);
-}
-
-.col-sm-5 {
-  @include grid-column(5);
-}
-
-.col-sm-6 {
-  @include grid-column(6);
-}
-
-.col-sm-7 {
-  @include grid-column(7);
-}
-
-.col-sm-8 {
-  @include grid-column(8);
-}
-
-.col-sm-9 {
-  @include grid-column(9);
-}
-
-.col-sm-10 {
-  @include grid-column(10);
-}
-
-.col-sm-11 {
-  @include grid-column(11);
-}
-
-.col-sm-12 {
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
   @include grid-column(12);
 }
 
-@media (max-width: $md) {
-  .col-xs-1,
-  .col-xs-2,
-  .col-xs-3,
-  .col-xs-4,
-  .col-xs-5,
-  .col-xs-6,
-  .col-xs-7,
-  .col-xs-8,
-  .col-xs-9,
-  .col-xs-10,
-  .col-xs-11,
-  .col-xs-12 {
+@media(min-width: $sm) {
+  .col-sm-1 {
+    @include grid-column(1);
+  }
+
+  .col-sm-2 {
+    @include grid-column(2);
+  }
+
+  .col-sm-3 {
+    @include grid-column(3);
+  }
+
+  .col-sm-4 {
+    @include grid-column(4);
+  }
+
+  .col-sm-5 {
+    @include grid-column(5);
+  }
+
+  .col-sm-6 {
+    @include grid-column(6);
+  }
+
+  .col-sm-7 {
+    @include grid-column(7);
+  }
+
+  .col-sm-8 {
+    @include grid-column(8);
+  }
+
+  .col-sm-9 {
+    @include grid-column(9);
+  }
+
+  .col-sm-10 {
+    @include grid-column(10);
+  }
+
+  .col-sm-11 {
+    @include grid-column(11);
+  }
+
+  .col-sm-12 {
     @include grid-column(12);
   }
 }
 
-.row1 {
-  @include grid-collapse;
+@media (min-width: $md) {
+  .col-md-1 {
+    @include grid-column(1);
+  }
+
+  .col-md-2 {
+    @include grid-column(2);
+  }
+
+  .col-md-3 {
+    @include grid-column(3);
+  }
+
+  .col-md-4 {
+    @include grid-column(4);
+  }
+
+  .col-md-5 {
+    @include grid-column(5);
+  }
+
+  .col-md-6 {
+    @include grid-column(6);
+  }
+
+  .col-md-7 {
+    @include grid-column(7);
+  }
+
+  .col-md-8 {
+    @include grid-column(8);
+  }
+
+  .col-md-9 {
+    @include grid-column(9);
+  }
+
+  .col-md-10 {
+    @include grid-column(10);
+  }
+
+  .col-md-11 {
+    @include grid-column(11);
+  }
+
+  .col-md-12 {
+    @include grid-column(12);
+  }
 }
 
 /**

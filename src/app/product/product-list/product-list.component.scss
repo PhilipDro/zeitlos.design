@@ -25,7 +25,6 @@ h2 {
       object-fit: cover;
       bottom: 0;
       -webkit-transition: bottom .5s; /* Safari */
-      //transition: bottom .5s;
       transition: box-shadow .5s;
       &:hover {
         -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
@@ -35,6 +34,14 @@ h2 {
       &:hover {
         //bottom: 3em; experimental hover animation. May optimize later. Probably not though
         //position: relative;
+      }
+      @media(min-width: 576px) {
+        width: 342px;
+        height: 342px;
+      }
+      @media(min-width: 768px) {
+        width: 275px;
+        height: 275px;
       }
     }
     .hidden-element {

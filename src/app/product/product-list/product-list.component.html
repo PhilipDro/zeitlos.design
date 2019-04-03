@@ -11,7 +11,7 @@
 
     <!-- Side column -->
     <div *ngIf="!showAddProducts && !showUpdateProducts" class="row">
-      <div class="col-sm-3 col-xs-12">
+      <div class="col-xs-12 col-sm-3">
         <div class="box">
           <h2>Kategorien</h2>
           <ul class="list">
@@ -31,11 +31,11 @@
         </div>
       </div>
 
-      <div class="col-sm-9 col-xs-12">
+      <div class="col-xs-12 col-sm-9">
 
         <!-- List of Products -->
         <div class="item-wrapper" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 60, currentPage: page }">
-          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-sm-4 col-xs-12">
+          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6 col-md-4">
             <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
             <!--Card-->
             <div class="card">

@@ -2,7 +2,7 @@
   <div class="container" *ngIf="favoruiteProducts.length > 0">
     <div class="row">
       <!-- List of Products -->
-      <div class="item col-sm-4" *ngFor="let product of favoruiteProducts">
+      <div class="item col-sm-4 col-xs-12" *ngFor="let product of favoruiteProducts">
         <div class="card">
           <a [routerLink]="['/produkte/produkt', product.$key ]">
               <img [src]="product.productImageUrl">

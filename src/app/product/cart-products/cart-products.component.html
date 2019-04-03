@@ -2,15 +2,13 @@
   <div class="container" *ngIf="cartProducts.length > 0">
     <div class="row">
       <!-- List of Products -->
-      <div class="col-sm-8">
+      <div class="col-sm-8 col-xs-12">
         <div class="row">
-          <div class="item col-sm-4" *ngFor="let product of cartProducts">
+          <div class="item col-sm-4 col-xs-12" *ngFor="let product of cartProducts">
             <div class="card">
-
               <a [routerLink]="['/produkte/produkt', product.$key ]">
                 <img [src]="product.productImageUrl" [alt]="product.productImageAlt">
               </a>
-
               <div class="card-body no-padding">
                 <a class="text-muted">
                   <h5>{{ product.productCategory }}</h5>
@@ -20,10 +18,8 @@
                     <a [routerLink]="['/produkte/produkt', product.$key]">{{ product.productName }}</a>
                   </strong>
                 </h5>
-
                 <p class="card-text">{{ product.productDescription }}
                 </p>
-
                 <div class="card-footer">
                   <span class="left">€ {{ product.productPrice }}</span>
                   <span class="right">
@@ -40,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 col-xs-12">
         <app-cart-calculator [products]="cartProducts"></app-cart-calculator>
       </div>
     </div>
