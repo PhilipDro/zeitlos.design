@@ -172,10 +172,20 @@ section {
 }
 
 .box {
-  border: 1px solid $color-medium;
   background-color: #f6f6f6;
-  padding: 1em;
-  margin-right: 2em;
+  padding-left: 1em;
+  padding-top: 1em;
+  border: 1px solid darken(#e2e2e2, 5%);
+
+  @media(min-width: 576px) {
+    margin-right: 2em;
+  }
+
+  ul li a{
+    &:hover {
+      color: lighten(#333333, 40%);
+    }
+  }
   a,
   h2 {
     text-transform: uppercase;

@@ -4,8 +4,8 @@
     <a routerLink="/index">Home</a> > <a routerLink="/produkte/alle-produkte">Produkte</a> > {{product.productName}}
   </span>
     <div class="row">
-      <div class="info-column col-sm-6 col-xs-12">
-        <h2 class="product-title">{{product.productName}}</h2>
+      <div class="info-column content-article content-article-main col-sm-6 col-xs-12">
+        <h2 class="product-title content-article-heading">{{product.productName}}</h2>
 
         <p class="price">
           <span *ngIf="product.productDiscount !== 0" class="discount">{{product.productPrice - (product.productPrice * (product.productDiscount/100))}} €</span>
