@@ -13,6 +13,14 @@ $font-color-grey: #626262;
 $font-color-inactive: #626262; // grey
 $background-color-dark: #474747;
 
+$font-size-default: 1em;
+$font-size-h1: $font-size-default * 3;
+$font-size-h2: $font-size-default * 2;
+$font-size-h3: $font-size-default * 1.5;
+
+$font-size-article-secondary-heading: $font-size-default * 1.2;
+$font-size-article-text: 1em;
+
 // Media queries
 $xs: 576px;
 $sm: 768px;
@@ -32,20 +40,19 @@ input
 {
   font-family: 'Krub', sans-serif;
 }
-div {
-  //overflow: auto;
-}
 
 h1 {
-  //text-transform: uppercase;
   margin-bottom: 0;
-  font-size: 3em;
+  font-size: $font-size-h1;
 }
 
 h2 {
+  font-size: $font-size-h2;
   font-weight: bold;
-  margin: 1em 0;
-  line-height: 1.1em;
+}
+
+h3 {
+  font-size: $font-size-h3;
 }
 
 img {
@@ -90,7 +97,7 @@ section {
   background: transparent;
   border: 1px solid $font-color-default;
   cursor: pointer;
-  letter-spacing: .1em;
+  //letter-spacing: .1em;
 
   font-weight: normal;
   font-size: 1em;
@@ -102,7 +109,7 @@ section {
   color: $gray;
 }
 .button-primary {
-  letter-spacing: .13em;
+  //letter-spacing: .13em;
   background-color: $color-primary;
   color: white;
   border: 1px solid darken($color-primary, 5%);
@@ -117,7 +124,7 @@ section {
 }
 
 .button-secondary {
-  letter-spacing: .1em;
+  //letter-spacing: .1em;
   background-color: $background-color-dark;
   color: white;
   border: 1px solid darken($background-color-dark, 5%);
@@ -162,9 +169,6 @@ section {
       }
     }
   }
-}
-.list-light-background {
-
 }
 
 .box {
@@ -242,25 +246,79 @@ form.form {
     border: none;
   }
 
-  h1 {
-    font-size: 3.8em;
-    margin-bottom: -.2em
-  }
-  .lead {
-    font-size: 3.8em;
-    margin-top: 0;
-    margin-bottom: .5em;
-  }
-  .highlighted {
-    font-size: 1.7em;
-    letter-spacing: .15em;
-    margin-bottom: 0.4em
-  }
   .right-side {
     position: relative;
 
     img {
       position: absolute;
+    }
+
+    @media (max-width: $sm) {
+      img {
+        position: static;
+      }
+    }
+  }
+}
+
+// Default article
+.content-article {
+  &-heading {
+    margin: 0 0 0.3em 0;
+    line-height: 1.3em;
+    font-size: $font-size-h1 * 0.6;
+    color: black;
+
+    .dark-background & {
+      color: white;
+    }
+  }
+  h1.content-article-heading {
+    margin: 0 0 .3em 0;
+  }
+  &-secondary-heading {
+    font-size: $font-size-article-secondary-heading;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+  }
+  &-text {
+    font-size: $font-size-default;
+    margin-top: 0;
+    margin-bottom: .5em;
+    color: $font-color-grey;
+
+    .dark-background & {
+      color: white;
+    }
+  }
+
+  // Special modifier for bigger typo
+  &-main {
+    .content-article-heading {
+      font-size: $font-size-h1;
+    }
+    .content-article-text {
+      font-size: $font-size-default * 1.3;
+    }
+  }
+
+  // media queries for different font sizes
+  @media (max-width: $sm) {
+    .content-article-heading {
+      h1 {
+        font-size: $font-size-h1 * 0.4;
+      }
+    }
+    &-main {
+      .content-article-heading {
+        h1 {
+          font-size: $font-size-h1 * 0.7;
+        }
+      }
+      .content-article-text {
+        font-size: $font-size-default * 1.3;
+      }
     }
   }
 }
@@ -273,6 +331,9 @@ form.form {
     color: darken($font-color-default-light, 20%);
   }
   .highlighted {
+    color: darken($font-color-default-light, 20%);
+  }
+  .content-article-secondary-heading {
     color: darken($font-color-default-light, 20%);
   }
   .button-primary {
@@ -403,7 +464,6 @@ form.form {
   box-shadow: 0 0 3px rgba(0,0,0,.3);
 }
 
-/* Different positions */
 
 .corner-ribbon.top-left{
   top: 25px;
