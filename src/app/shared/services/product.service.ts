@@ -35,12 +35,13 @@ export class ProductService {
   }
 
   getProducts() {
-    this.products = this.db.list("products");
+    // this.products = this.db.list("products");
+    this.products = this.db.list("products", ref => ref.orderByChild("productId").startAt(1));
     return this.products;
   }
 
   getProductsByCategory(category) {
-    this.productsByCategory = this.db.list("products", ref => ref.orderByChild("productCategory").equalTo(category))
+    this.productsByCategory = this.db.list("products", ref => ref.orderByChild("productCategory").equalTo(category));
     return this.productsByCategory;
   }
 
