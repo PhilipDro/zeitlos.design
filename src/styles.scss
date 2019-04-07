@@ -186,15 +186,14 @@ table {
       text-align: left;
       padding: 0 4em .8em 0;
     }
-    td {
-
-    }
   }
 }
 
 // Forms
 form.form {
-  padding-right: 10em;
+  @media(min-width: $sm) {
+    padding-right: 10em;
+  }
 
   h2,
   h3 {

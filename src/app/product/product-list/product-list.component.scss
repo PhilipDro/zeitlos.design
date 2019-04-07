@@ -22,8 +22,6 @@ h2 {
       border-left: 1px solid darken(#e2e2e2, 5%);
     }
     img {
-      //height: 275px;
-      //width: 275px;
       object-fit: cover;
       bottom: 0;
       -webkit-transition: bottom .5s; /* Safari */
@@ -43,23 +41,12 @@ h2 {
         //position: relative;
       }
       @media(min-width: 576px) {
-        width: auto;
-        //width: 342px;
-        //height: 342px;
         height: auto;
         margin-left: 0;
-
-        width: 100%;
-        height: auto;
         max-height: 369px;
 
       }
       @media(min-width: 768px) {
-        width: 275px;
-        height: 275px;
-
-        width: 100%;
-        height: auto;
         max-height: 369px;
 
       }
@@ -79,8 +66,6 @@ h2 {
 .card {
   @media (min-width: 576px) {
     margin-left: 0;
-  }
-  @media (min-width: 770px) {
     margin-right: 1.5em;
   }
 }
@@ -158,9 +143,13 @@ button {
   }
 
   &:hover {
-    ul li {
-      display: block;
-      line-height: 2.6em;
+    ul {
+      opacity: 1;
+
+      li {
+        //display: block;
+        line-height: 2.6em;
+      }
     }
   }
   ul {
@@ -172,8 +161,11 @@ button {
     margin-top: 0;
     border: 1px solid $color-medium;
 
+    opacity: 0;
+    transition: opacity .5s;
+
     li {
-      display: none;
+      //display: none;
     }
   }
 }

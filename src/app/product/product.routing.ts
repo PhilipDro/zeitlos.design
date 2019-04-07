@@ -5,6 +5,8 @@ import { ProductListComponent } from "./product-list/product-list.component";
 import { Routes } from "@angular/router";
 import { IndexComponent } from "../index/index.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import {UpdateProductComponent} from "./update-product/update-product.component";
+import {AddProductComponent} from "./add-product/add-product.component";
 
 export const ProductRoutes: Routes = [
   {
@@ -37,6 +39,14 @@ export const ProductRoutes: Routes = [
       {
         path: ":productCategory",
         component: ProductListComponent
+      },
+      {
+        path: "produktbearbeitung",
+        component: UpdateProductComponent
+      },
+      {
+        path: "produkterstellung",
+        component: AddProductComponent
       },
     ]
   }

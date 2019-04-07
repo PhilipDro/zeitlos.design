@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+import { Router } from "@angular/router";
+import { ActivatedRoute} from "@angular/router";
 
 declare var $: any;
 declare var require: any;
@@ -29,7 +31,9 @@ export class UpdateProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    private toastyConfig: ToastyConfig,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.toastyConfig.theme = "material";
   }
@@ -42,7 +46,7 @@ export class UpdateProductComponent implements OnInit {
     const toastOptions: ToastOptions = {
       title: "",
       msg:
-        "Produkt " + productForm.value["productName"] + "wurde erfolgreich aktualisiert.",
+        "Produkt " + productForm.value["productName"] + " wurde erfolgreich aktualisiert.",
       showClose: true,
       timeout: 5000,
       theme: "default"
@@ -94,5 +98,7 @@ export class UpdateProductComponent implements OnInit {
     this.productService.updateProduct(this.key, this.product);
 
     this.toastyService.success(toastOptions);
+
+    this.router.navigate(["/users"]);
   }
 }
