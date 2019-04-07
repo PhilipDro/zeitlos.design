@@ -1,8 +1,10 @@
 import { Product } from "./../../../shared/models/product";
 import { ProductService } from "./../../../shared/services/product.service";
 import { ShippingService } from "./../../../shared/services/shipping.service";
+import { BillingService } from "./../../../shared/services/billing.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { User, UserDetail } from "../../../shared/models/user";
+import { Billing } from "../../../shared/models/billing";
 import { AuthService } from "../../../shared/services/auth.service";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
@@ -17,16 +19,18 @@ export class ResultComponent implements OnInit {
   loggedUser: User;
   products: Product[];
   shipping;
+  billing;
   date: number;
   totalPrice = 0;
   mwst = 0;
   tax = 0.16;
   shippingsList: UserDetail[];
-  recentShipping;
+  billingsList: Billing[];
 
   constructor(
     private productService: ProductService,
     private shippingService: ShippingService,
+    private billingService: BillingService,
     private authService: AuthService,
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig
@@ -45,6 +49,7 @@ export class ResultComponent implements OnInit {
     this.shipping = shippingService.getShippingOfUser(this.loggedUser.$key);
     console.log("Thats the new shipping: " + this.shipping);
 
+    this.getAllBillings();
     this.getAllShippings();
   }
 
@@ -55,9 +60,9 @@ export class ResultComponent implements OnInit {
   getAllShippings() {
     const shippings = this.shippingService.getShippingOfUser(this.loggedUser.$key);
     shippings.snapshotChanges().subscribe(
-      product => {
+      shipping => {
         this.shippingsList = [];
-        product.forEach(element => {
+        shipping.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
           this.shippingsList.push(y as UserDetail);
@@ -76,9 +81,28 @@ export class ResultComponent implements OnInit {
     );
   }
 
-  getLastShipping() {
-    this.recentShipping = this.shippingsList.slice(-1)[0];
-    return this.recentShipping;
+  getAllBillings() {
+    const billings = this.billingService.getBillingOfUser(this.loggedUser.$key);
+    billings.snapshotChanges().subscribe(
+      billing => {
+        this.billingsList = [];
+        billing.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.billingsList.push(y as Billing);
+        });
+      },
+      err => {
+        const toastOption: ToastOptions = {
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
+          msg: err,
+          showClose: true,
+          timeout: 5000,
+          theme: "material"
+        };
+        this.toastyService.error(toastOption);
+      }
+    );
   }
 
   downloadReceipt() {

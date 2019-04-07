@@ -13,6 +13,7 @@ export class ShippingService {
   shippings: AngularFireList<UserDetail>;
   shippingsOfUser: AngularFireList<UserDetail>;
   shipping: AngularFireObject<UserDetail>;
+
   constructor(private db: AngularFireDatabase) {
     this.getshippings();
   }

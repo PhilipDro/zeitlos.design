@@ -11,7 +11,9 @@ import { Injectable } from "@angular/core";
 })
 export class BillingService {
   billings: AngularFireList<Billing>;
+  billingOfUser: AngularFireList<Billing>;
   billing: AngularFireObject<Billing>;
+
   constructor(private db: AngularFireDatabase) {
     this.getBillings();
   }
@@ -28,6 +30,11 @@ export class BillingService {
   getBillingById(key: string) {
     this.billing = this.db.object("products/" + key);
     return this.billing;
+  }
+
+  getBillingOfUser(userId) {
+    this.billingOfUser =  this.db.list("billings", ref => ref.orderByChild("userId").equalTo(userId));
+    return this.billingOfUser;
   }
 
   updateBilling(data: Billing) {

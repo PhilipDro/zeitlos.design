@@ -73,25 +73,26 @@
 <div class="row">
   <div class="col-sm-6">
     <h3>Rechnungsadresse</h3>
-    {{shipping}}
-    <address>
-      Philip Drozd <br>
-      Eisnerstr. <br>
-      37B <br>
-      12305 Berlin <br>
-      Deutschland <br>
-    </address>
+    <div *ngFor="let billing of billingsList; last as isLast">
+      <address *ngIf="isLast">
+        {{billing.firstName}}<br>
+        {{billing.lastName}}<br>
+        {{billing.address1}}<br>
+        {{billing.address2}}<br>
+        {{billing.zip}}<br>
+      </address>
+    </div>
   </div>
   <div class="col-sm-6">
     <h3>Lieferadresse</h3>
-    <div *ngFor="let product of shippingsList; last as isLast">
+    <div *ngFor="let shipping of shippingsList; last as isLast">
       <address *ngIf="isLast">
-        {{product.firstName}}<br>
-        {{product.lastName}}<br>
-        {{product.address1}}<br>
-        {{product.address2}}<br>
-        {{product.city}}<br>
-        {{product.zip}}<br>
+        {{shipping.firstName}}<br>
+        {{shipping.lastName}}<br>
+        {{shipping.address1}}<br>
+        {{shipping.address2}}<br>
+        {{shipping.city}}<br>
+        {{shipping.zip}}<br>
       </address>
     </div>
   </div>
