@@ -35,7 +35,6 @@ export class ProductService {
   }
 
   getProducts() {
-    // this.products = this.db.list("products");
     this.products = this.db.list("products", ref => ref.orderByChild("productId").startAt(1));
     return this.products;
   }
@@ -58,22 +57,10 @@ export class ProductService {
     this.products.update(key, data);
   }
 
-  // updateProduct(product: Product){
-  //   this.products.update(product.$key, {
-  //     productName: product.productName,
-  //     productId: product.productId,
-  //     productCategory: product.productCategory,
-  //   })
-  // }
-
   deleteProduct(key: string) {
     console.log(key);
     this.products.remove(key);
   }
-
-  /*
-   ----------  Favourite Product Function  ----------
-  */
 
   // Get Favourite Product based on userId
   getUsersFavouriteProduct() {

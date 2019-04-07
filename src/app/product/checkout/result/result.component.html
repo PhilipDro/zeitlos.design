@@ -69,10 +69,11 @@
   </div>
 </div>
 
+
 <div class="row">
   <div class="col-sm-6">
     <h3>Rechnungsadresse</h3>
-    <!--{{shipping}}-->
+    {{shipping}}
     <address>
       Philip Drozd <br>
       Eisnerstr. <br>
@@ -83,13 +84,16 @@
   </div>
   <div class="col-sm-6">
     <h3>Lieferadresse</h3>
-    <address>
-      Philip Drozd <br>
-      Eisnerstr. <br>
-      37B <br>
-      12305 Berlin <br>
-      Deutschland <br>
-    </address>
+    <div *ngFor="let product of shippingsList; last as isLast">
+      <address *ngIf="isLast">
+        {{product.firstName}}<br>
+        {{product.lastName}}<br>
+        {{product.address1}}<br>
+        {{product.address2}}<br>
+        {{product.city}}<br>
+        {{product.zip}}<br>
+      </address>
+    </div>
   </div>
 </div>
 

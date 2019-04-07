@@ -135,4 +135,9 @@ export class ProductListComponent implements OnInit {
   removeUpdateForm(event) {
     this.showUpdateProducts = false;
   }
+
+  // TODO: create a service for that.
+  moveToTop() {
+    window.scrollTo(0, 0);
+  }
 }

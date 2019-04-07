@@ -1,17 +1,19 @@
 <app-product-list-intro
   [path]="path">
-
 </app-product-list-intro>
+
 <section>
   <div class="container">
     <!-- Side column -->
     <div class="row">
       <div class="filter-section">
 
-        <div class="col-xs-6 col-sm-3 md-hide">
+        <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-6 col-sm-3 md-hide">
           <h2>Sortiere nach: </h2>
         </div>
-        <div class="col-xs-6 col-sm-3 md-hide">
+
+        <!--For smaller screens-->
+        <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-6 col-sm-3 md-hide">
           <div class="product-filter">
             <h2>Kategorien &#9660;</h2>
             <ul class="list">
@@ -37,7 +39,8 @@
         </div>
       </div>
 
-      <div class="xs-hide sm-hide col-md-3">
+      <!--for bigger screens TODO: remove code duplication -->
+      <div *ngIf="!showAddProducts && !showUpdateProducts" class="xs-hide sm-hide col-md-3">
         <div class="box">
           <h2>Kategorien</h2>
           <ul class="list">
@@ -61,11 +64,11 @@
         <!-- List of Products -->
         <div class="item-wrapper" *ngFor="let product of productList.slice().reverse() | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
           <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6">
-            <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
             <!--Card-->
             <div class="card">
               <!--Item image-->
               <a class="img-wrapper" [routerLink]="['/produkte/produkt', product.$key]">
+                <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
                 <span *ngIf="product.productDiscount !== 0" class="discount-badge">-{{product.productDiscount}}%</span>
                 <img [src]="product.productImageUrl" alt="product.productImageAlt">
                 <span class="hidden-element">Details ansehen!</span>
@@ -110,7 +113,7 @@
       </div>
       <!-- Pagination -->
       <div *ngIf="!showAddProducts && !showUpdateProducts" class="float-right">
-        <pagination-controls (pageChange)="page = $event" previousLabel="Zurück" nextLabel="Nächste"></pagination-controls>
+        <pagination-controls (click)="moveToTop()" (pageChange)="page = $event" previousLabel="Zurück" nextLabel="Nächste"></pagination-controls>
       </div>
     </div>
     <app-add-product *ngIf="showAddProducts"></app-add-product>

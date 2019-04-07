@@ -2,8 +2,11 @@ import { Product } from "./../../../shared/models/product";
 import { ProductService } from "./../../../shared/services/product.service";
 import { ShippingService } from "./../../../shared/services/shipping.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { User, UserDetail } from "../../../shared/models/user";
+import { AuthService } from "../../../shared/services/auth.service";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
+import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 
 @Component({
   selector: "app-result",
@@ -11,28 +14,26 @@ import html2canvas from "html2canvas";
   styleUrls: ["./result.component.scss"]
 })
 export class ResultComponent implements OnInit {
+  loggedUser: User;
   products: Product[];
   shipping;
   date: number;
   totalPrice = 0;
   mwst = 0;
   tax = 0.16;
+  shippingsList: UserDetail[];
+  recentShipping;
 
   constructor(
     private productService: ProductService,
-    private shippingService: ShippingService
+    private shippingService: ShippingService,
+    private authService: AuthService,
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig
   ) {
-    /* Hiding Billing Tab Element */
-    document.getElementById("productsTab").style.display = "none";
-    document.getElementById("shippingTab").style.display = "none";
-    document.getElementById("billingTab").style.display = "none";
-    document.getElementById("resultTab").style.display = "block";
 
     this.products = productService.getLocalCartProducts();
-    // this.shipping = shippingService.getshippingById("arTWto0Tz0crToWliStNXPLPAVk2");
-    this.shipping = shippingService.getshippingById("-LafG5MrHMx69hLTnGoT");
-
-    console.log(this.shipping);
+    // this.shipping = shippingService.getshippingById("-LafG5MrHMx69hLTnGoT");
 
     this.products.forEach(product => {
       this.totalPrice += product.productPrice;
@@ -40,9 +41,45 @@ export class ResultComponent implements OnInit {
     this.mwst = this.totalPrice * this.tax;
     this.date = Date.now();
 
+    this.loggedUser = this.authService.getLoggedInUser();
+    this.shipping = shippingService.getShippingOfUser(this.loggedUser.$key);
+    console.log("Thats the new shipping: " + this.shipping);
+
+    this.getAllShippings();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("logged user" + this.loggedUser);
+  }
+
+  getAllShippings() {
+    const shippings = this.shippingService.getShippingOfUser(this.loggedUser.$key);
+    shippings.snapshotChanges().subscribe(
+      product => {
+        this.shippingsList = [];
+        product.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.shippingsList.push(y as UserDetail);
+        });
+      },
+      err => {
+        const toastOption: ToastOptions = {
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
+          msg: err,
+          showClose: true,
+          timeout: 5000,
+          theme: "material"
+        };
+        this.toastyService.error(toastOption);
+      }
+    );
+  }
+
+  getLastShipping() {
+    this.recentShipping = this.shippingsList.slice(-1)[0];
+    return this.recentShipping;
+  }
 
   downloadReceipt() {
     const data = document.getElementById("receipt");

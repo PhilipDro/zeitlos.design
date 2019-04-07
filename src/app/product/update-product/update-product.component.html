@@ -128,7 +128,7 @@
     <input name="productActive" id="productActive" type="checkbox" [value]="product.productActive"  [(ngModel)]="product.productActive">
   </div>
 
-  <button class="float-right button" type="submit">Aktualisieren</button>
+  <button (click)="moveToTop()" class="float-right button" type="submit">Aktualisieren</button>
   <!--<a href="javascript:;;" [routerLink]="['/produkte/wunschliste']" type="submit" class="float-right button">Aktualisieren</a>-->
 </form>
 

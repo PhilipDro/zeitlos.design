@@ -101,4 +101,8 @@ export class UpdateProductComponent implements OnInit {
 
     // this.router.navigate(["/users"]);
   }
+
+  moveToTop() {
+    window.scrollTo(0, 0);
+  }
 }

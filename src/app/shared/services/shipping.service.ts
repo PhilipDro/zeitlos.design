@@ -3,20 +3,21 @@ import {
   AngularFireObject,
   AngularFireDatabase
 } from "angularfire2/database";
-import { Billing } from "./../models/billing";
+import { UserDetail } from "./../models/user";
 import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root"
 })
 export class ShippingService {
-  shippings: AngularFireList<Billing>;
-  shipping: AngularFireObject<Billing>;
+  shippings: AngularFireList<UserDetail>;
+  shippingsOfUser: AngularFireList<UserDetail>;
+  shipping: AngularFireObject<UserDetail>;
   constructor(private db: AngularFireDatabase) {
     this.getshippings();
   }
 
-  createshippings(data: Billing) {
+  createshippings(data: UserDetail) {
     this.shippings.push(data);
   }
 
@@ -30,7 +31,12 @@ export class ShippingService {
     return this.shipping;
   }
 
-  updateshipping(data: Billing) {
+  getShippingOfUser(userId) {
+    this.shippingsOfUser =  this.db.list("shippings", ref => ref.orderByChild("userId").equalTo(userId));
+    return this.shippingsOfUser;
+  }
+
+  updateshipping(data: UserDetail) {
     this.shippings.update(data.$key, data);
   }
 
