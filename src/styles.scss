@@ -1,11 +1,10 @@
-//@import '~bourbon/app/assets/stylesheets/_bourbon';
 @import '~bourbon-neat/core/_neat';
 @import 'variables';
 
 // General
 body {
   font-family: 'Krub', sans-serif;
-  font-size: 14px;
+  font-size: $font-size-default;
   line-height: 1.42857143;
   color: $font-color-default;
   margin: 0;
@@ -125,7 +124,7 @@ section {
   font-size: 1.4em;
 }
 .list {
-  //padding-left: 0;
+  padding-left: 0;
 
   li {
     list-style-type: none;
@@ -490,23 +489,56 @@ $neat-grid: (
   @include grid-container;
 }
 
-// Temporary solution because current implementation does not need differentiated columns on xs.
-.col-xs-1,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9,
-.col-xs-10,
-.col-xs-11,
+.col-xs-1 {
+  @include grid-column(1);
+}
+
+.col-xs-2 {
+  @include grid-column(2);
+}
+
+.col-xs-3 {
+  @include grid-column(3);
+}
+
+.col-xs-4 {
+  @include grid-column(4);
+}
+
+.col-xs-5 {
+  @include grid-column(5);
+}
+
+.col-xs-6 {
+  @include grid-column(6);
+}
+
+.col-xs-7 {
+  @include grid-column(7);
+}
+
+.col-xs-8 {
+  @include grid-column(8);
+}
+
+.col-xs-9 {
+  @include grid-column(9);
+}
+
+.col-xs-10 {
+  @include grid-column(10);
+}
+
+.col-xs-11 {
+  @include grid-column(11);
+}
+
 .col-xs-12 {
   @include grid-column(12);
 }
-@media(max-width: $xs) {
-  .sm-hide {
+
+@media(max-width: $sm) {
+  .xs-hide {
     display: none;
   }
 }
@@ -570,6 +602,9 @@ $neat-grid: (
   }
   .sm-hide {
     display: block;
+  }
+  .md-hide {
+    display: none;
   }
   .col-md-1 {
     @include grid-column(1);

@@ -131,4 +131,8 @@ export class ProductListComponent implements OnInit {
     this.productToUpdate = product;
     this.showUpdateProducts = !this.showUpdateProducts;
   }
+
+  removeUpdateForm(event) {
+    this.showUpdateProducts = false;
+  }
 }

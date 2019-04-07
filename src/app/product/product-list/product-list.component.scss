@@ -5,7 +5,7 @@ h2 {
 }
 
 .item {
-  min-height: 500px;
+  min-height: 515px;
   padding-bottom: 5vh;
   position: relative;
   overflow: hidden;
@@ -30,6 +30,7 @@ h2 {
       width: 100%;
       height: auto;
       max-height: 369px;
+      min-height: 365px;
 
       &:hover {
         -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
@@ -43,12 +44,13 @@ h2 {
       @media(min-width: 576px) {
         height: auto;
         margin-left: 0;
+        //max-height: 550px;
         max-height: 369px;
-
+        //min-height: 550px;
       }
       @media(min-width: 768px) {
-        max-height: 369px;
-
+        // needed because certain images don't have a square aspect ratio and will destroy the layout.
+        max-height: 415px;
       }
     }
     .hidden-element {
@@ -71,6 +73,9 @@ h2 {
 }
 .title {
   margin-bottom: .3em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   strong a{
     color: black;
@@ -86,7 +91,7 @@ h2 {
   margin: .3em 0;
 }
 .discount {
-  font-size: 1.2em;
+  //font-size: 1.2em;
   margin-right: .5em;
   font-weight: bold;
   color: #d31111;
@@ -124,48 +129,63 @@ h2 {
 
 // Other
 .button-add-item {
-  position: relative;
-  bottom: 2.5vh;
+  margin: 0;
 }
 
 button {
   margin-bottom: -2.5vh;
 }
 
-.product-filter {
-  margin-bottom: 2em;
-  padding: 0;
+.filter-section {
 
   h2 {
     font-size: $font-size-h3;
-    padding-left: 1em;
-    margin: 0.5em;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+    cursor: pointer;
   }
 
-  &:hover {
-    ul {
-      opacity: 1;
+  .product-filter {
+    margin-bottom: 2em;
+    padding: 0;
 
-      li {
-        //display: block;
-        line-height: 2.6em;
+    &:hover {
+      ul {
+        opacity: 1;
+
+        li {
+          //display: block;
+          line-height: 2.6em;
+        }
       }
     }
-  }
-  ul {
-    padding-left: 1.5em;
-    position: absolute;
-    background: $gray;
-    width: 12em;
-    z-index: 1020;
-    margin-top: 0;
-    border: 1px solid $color-medium;
+    ul {
+      padding-left: 1.5em;
+      position: absolute;
+      background: $gray;
+      width: 12em;
+      z-index: 1020;
+      margin-top: 0;
+      border: 1px solid $color-medium;
 
-    opacity: 0;
-    transition: opacity .5s;
+      opacity: 0;
+      transition: opacity .5s;
 
-    li {
-      //display: none;
+      li {
+        //display: none;
+
+        a {
+          color: $font-color-default;
+          font-size: $font-size-lead;
+          transition: color .5s;
+          cursor: pointer;
+
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
     }
   }
 }

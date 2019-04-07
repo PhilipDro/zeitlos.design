@@ -10,10 +10,11 @@ $font-color-grey: #626262;
 $font-color-inactive: #626262; // grey
 $background-color-dark: #474747;
 
-$font-size-default: 1em;
+$font-size-default: .9em;
 $font-size-h1: $font-size-default * 3;
 $font-size-h2: $font-size-default * 2;
 $font-size-h3: $font-size-default * 1.5;
+$font-size-lead: $font-size-default * 1.2;
 
 $font-size-article-secondary-heading: $font-size-default * 1.2;
 $font-size-article-text: 1em;

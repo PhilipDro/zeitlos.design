@@ -4,15 +4,41 @@
 </app-product-list-intro>
 <section>
   <div class="container">
-    <button *ngIf="authService.isAdmin()" class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
-      <span *ngIf="!this.showAddProducts">Objekt hinzufügen</span>
-      <span *ngIf="this.showAddProducts">Objekt löschen</span>
-    </button>
-
     <!-- Side column -->
-    <div *ngIf="!showAddProducts && !showUpdateProducts" class="row">
-      <div class="col-xs-12 col-sm-3">
-        <div class="box product-filter ">
+    <div class="row">
+      <div class="filter-section">
+
+        <div class="col-xs-6 col-sm-3 md-hide">
+          <h2>Sortiere nach: </h2>
+        </div>
+        <div class="col-xs-6 col-sm-3 md-hide">
+          <div class="product-filter">
+            <h2>Kategorien &#9660;</h2>
+            <ul class="list">
+              <li><a routerLink="/produkte/alle-produkte" routerLinkActive="active">Alle</a></li>
+              <li><a routerLink="/produkte/Tische" routerLinkActive="active">Tische</a></li>
+              <li><a routerLink="/produkte/Lampen" routerLinkActive="active">Lampen</a></li>
+              <li><a routerLink="/produkte/Stühle" routerLinkActive="active">Stühle</a></li>
+              <li><a routerLink="/produkte/Sessel" routerLinkActive="active">Sessel</a></li>
+              <li><a routerLink="/produkte/Schränke" routerLinkActive="active">Schränke</a></li>
+              <li><a routerLink="/produkte/Sofas" routerLinkActive="active">Sofas</a></li>
+              <li><a routerLink="/produkte/Regale" routerLinkActive="active">Regale</a></li>
+              <li><a routerLink="/produkte/Gemälde" routerLinkActive="active">Gemälde</a></li>
+              <li><a routerLink="/produkte/Gläser" routerLinkActive="active">Gläser</a></li>
+              <li><a routerLink="/produkte/Vasen" routerLinkActive="active">Vasen</a></li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="authService.isAdmin()" class="col-xs-12 col-sm-6 md-hide">
+          <button class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
+            <span *ngIf="!this.showAddProducts">Objekt hinzufügen</span>
+            <span *ngIf="this.showAddProducts">Objekt löschen</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="xs-hide sm-hide col-md-3">
+        <div class="box">
           <h2>Kategorien</h2>
           <ul class="list">
             <li><a routerLink="/produkte/alle-produkte" routerLinkActive="active">Alle</a></li>
@@ -27,15 +53,14 @@
             <li><a routerLink="/produkte/Gläser" routerLinkActive="active">Gläser</a></li>
             <li><a routerLink="/produkte/Vasen" routerLinkActive="active">Vasen</a></li>
           </ul>
-
         </div>
       </div>
 
-      <div class="col-xs-12 col-sm-12">
+      <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-12 col-sm-12 col-md-9">
 
         <!-- List of Products -->
-        <div class="item-wrapper" *ngFor="let product of productList.slice().reverse() | filterByBrand: selectedBrand | paginate: { itemsPerPage: 60, currentPage: page }">
-          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6 col-md-4">
+        <div class="item-wrapper" *ngFor="let product of productList.slice().reverse() | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
+          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6">
             <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
             <!--Card-->
             <div class="card">
@@ -84,12 +109,12 @@
         </div>
       </div>
       <!-- Pagination -->
-      <div class="float-right">
+      <div *ngIf="!showAddProducts && !showUpdateProducts" class="float-right">
         <pagination-controls (pageChange)="page = $event" previousLabel="Zurück" nextLabel="Nächste"></pagination-controls>
       </div>
     </div>
     <app-add-product *ngIf="showAddProducts"></app-add-product>
-    <app-update-product [key]="keyToUpdate" [product]="productToUpdate" *ngIf="showUpdateProducts"></app-update-product>
+    <app-update-product (updated)="removeUpdateForm($event)" [key]="keyToUpdate" [product]="productToUpdate" *ngIf="showUpdateProducts"></app-update-product>
   </div>
 
 </section>

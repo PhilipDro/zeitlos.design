@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit {
     const toastOptions: ToastOptions = {
       title: "",
       msg:
-        "Produkt " + productForm.value["productName"] + "wurde erfolgreich hinzugefügt.",
+        "Produkt " + productForm.value["productName"] + " wurde erfolgreich hinzugefügt.",
       showClose: true,
       timeout: 5000,
       theme: "default"
@@ -52,20 +52,20 @@ export class AddProductComponent implements OnInit {
      * Map form values to newly generated Product.
      */
     this.product = new Product();
-    this.product.productName = productForm.value["productName"];
-    this.product.productId = productForm.value["productId"];
-    this.product.productCategory = productForm.value["productCategory"];
-    this.product.productMaterial = productForm.value["productMaterial"];
-    this.product.productSize = productForm.value["productSize"];
-    this.product.productStyle = productForm.value["productStyle"];
-    this.product.productOrigin = productForm.value["productOrigin"];
-    this.product.productManufacturer = productForm.value["productManufacturer"];
-    this.product.productDesigner = productForm.value["productDesigner"];
-    this.product.productTime = productForm.value["productTime"];
-    this.product.productCondition = productForm.value["productCondition"];
-    this.product.productDescription = productForm.value["productDescription"];
-    this.product.productPrice = productForm.value["productPrice"];
-    this.product.productDiscount = productForm.value["productDiscount"];
+    this.product.productName = productForm.value["productName"] || "";
+    this.product.productId = productForm.value["productId"] || "";
+    this.product.productCategory = productForm.value["productCategory"] || "";
+    this.product.productMaterial = productForm.value["productMaterial"] || "";
+    this.product.productSize = productForm.value["productSize"] || "";
+    this.product.productStyle = productForm.value["productStyle"] || "";
+    this.product.productOrigin = productForm.value["productOrigin"] || "";
+    this.product.productManufacturer = productForm.value["productManufacturer"] || "";
+    this.product.productDesigner = productForm.value["productDesigner"] || "";
+    this.product.productTime = productForm.value["productTime"] || "";
+    this.product.productCondition = productForm.value["productCondition"] || "";
+    this.product.productDescription = productForm.value["productDescription"] || "";
+    this.product.productPrice = productForm.value["productPrice"] || "";
+    this.product.productDiscount = productForm.value["productDiscount"] || 0;
     this.product.productImageUrl = "assets/products/product-" + this.product.productId + "-1.jpg";
     this.product.productImageUrl2 = "assets/products/product-" + this.product.productId + "-2.jpg";
     this.product.productImageUrl3 = "assets/products/product-" + this.product.productId + "-3.jpg";
@@ -74,12 +74,12 @@ export class AddProductComponent implements OnInit {
     this.product.productImageUrl6 = "assets/products/product-" + this.product.productId + "-6.jpg";
     this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
     this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
-    this.product.productImageAlt = productForm.value["productImageAlt"];
-    this.product.productShippingCost = productForm.value["productShippingCost"];
-    this.product.productAvailable = productForm.value["productAvailable"];
-    this.product.productQuantity = productForm.value["productQuantity"];
-    this.product.productSold = productForm.value["productSold"];
-    this.product.productActive = productForm.value["productActive"];
+    this.product.productImageAlt = productForm.value["productImageAlt"] || "";
+    this.product.productShippingCost = productForm.value["productShippingCost"] || 150;
+    this.product.productAvailable = productForm.value["productAvailable"] || true;
+    this.product.productQuantity = productForm.value["productQuantity"] || 1;
+    this.product.productSold = productForm.value["productSold"] || false;
+    this.product.productActive = productForm.value["productActive"] || true;
 
     const date = productForm.value["productAdded"];
 

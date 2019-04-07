@@ -1,5 +1,12 @@
+@import '../../../../variables';
+
 .checkout-list-image {
-  width: 13em;
+  width: 100%;
+  height: auto;
+
+  @media(min-width: $md) {
+    width: 13em;
+  }
 }
 .item-list {
   padding-left: 0;

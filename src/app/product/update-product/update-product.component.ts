@@ -4,12 +4,10 @@ import {
   ToastOptions,
   ToastData
 } from "ng2-toasty";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
-import { Router } from "@angular/router";
-import { ActivatedRoute} from "@angular/router";
 
 declare var $: any;
 declare var require: any;
@@ -28,12 +26,12 @@ export class UpdateProductComponent implements OnInit {
   @Input() key: string;
   @Input() product: Product;
 
+  @Output() updated = new EventEmitter();
+
   constructor(
     private productService: ProductService,
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig,
-    private route: ActivatedRoute,
-    private router: Router,
   ) {
     this.toastyConfig.theme = "material";
   }
@@ -56,20 +54,20 @@ export class UpdateProductComponent implements OnInit {
      * Map form values to newly generated Product.
      */
     this.product = new Product();
-    this.product.productName = productForm.value["productName"];
-    this.product.productId = productForm.value["productId"];
-    this.product.productCategory = productForm.value["productCategory"];
-    this.product.productMaterial = productForm.value["productMaterial"];
-    this.product.productSize = productForm.value["productSize"];
-    this.product.productStyle = productForm.value["productStyle"];
-    this.product.productOrigin = productForm.value["productOrigin"];
-    this.product.productManufacturer = productForm.value["productManufacturer"];
-    this.product.productDesigner = productForm.value["productDesigner"];
-    this.product.productTime = productForm.value["productTime"];
-    this.product.productCondition = productForm.value["productCondition"];
-    this.product.productDescription = productForm.value["productDescription"];
-    this.product.productPrice = productForm.value["productPrice"];
-    this.product.productDiscount = productForm.value["productDiscount"];
+    this.product.productName = productForm.value["productName"] || "";
+    this.product.productId = productForm.value["productId"] || "";
+    this.product.productCategory = productForm.value["productCategory"] || "";
+    this.product.productMaterial = productForm.value["productMaterial"] || "";
+    this.product.productSize = productForm.value["productSize"] || "";
+    this.product.productStyle = productForm.value["productStyle"] || "";
+    this.product.productOrigin = productForm.value["productOrigin"] || "";
+    this.product.productManufacturer = productForm.value["productManufacturer"] || "";
+    this.product.productDesigner = productForm.value["productDesigner"] || "";
+    this.product.productTime = productForm.value["productTime"] || "";
+    this.product.productCondition = productForm.value["productCondition"] || "";
+    this.product.productDescription = productForm.value["productDescription"] || "";
+    this.product.productPrice = productForm.value["productPrice"] || "";
+    this.product.productDiscount = productForm.value["productDiscount"] || 0;
     this.product.productImageUrl = "assets/products/product-" + this.product.productId + "-1.jpg";
     this.product.productImageUrl2 = "assets/products/product-" + this.product.productId + "-2.jpg";
     this.product.productImageUrl3 = "assets/products/product-" + this.product.productId + "-3.jpg";
@@ -78,12 +76,12 @@ export class UpdateProductComponent implements OnInit {
     this.product.productImageUrl6 = "assets/products/product-" + this.product.productId + "-6.jpg";
     this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
     this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
-    this.product.productImageAlt = productForm.value["productImageAlt"];
-    this.product.productShippingCost = productForm.value["productShippingCost"];
-    this.product.productAvailable = productForm.value["productAvailable"];
-    this.product.productQuantity = productForm.value["productQuantity"];
-    this.product.productSold = productForm.value["productSold"];
-    this.product.productActive = productForm.value["productActive"];
+    this.product.productImageAlt = productForm.value["productImageAlt"] || "";
+    this.product.productShippingCost = productForm.value["productShippingCost"] || 150;
+    this.product.productAvailable = productForm.value["productAvailable"] || true;
+    this.product.productQuantity = productForm.value["productQuantity"] || 1;
+    this.product.productSold = productForm.value["productSold"] || false;
+    this.product.productActive = productForm.value["productActive"] || true;
 
     // productForm.value["productId"] = "PROD_" + shortId.generate();
     productForm.value["productAdded"] = moment().unix();
@@ -99,6 +97,8 @@ export class UpdateProductComponent implements OnInit {
 
     this.toastyService.success(toastOptions);
 
-    this.router.navigate(["/users"]);
+    this.updated.emit(null);
+
+    // this.router.navigate(["/users"]);
   }
 }
