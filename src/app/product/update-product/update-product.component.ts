@@ -20,6 +20,9 @@ const moment = require("moment");
   styleUrls: ["./update-product.component.scss"]
 })
 export class UpdateProductComponent implements OnInit {
+  /**
+   * Input Key of product and actual Product selected.
+   */
   @Input() key: string;
   @Input() product: Product;
 

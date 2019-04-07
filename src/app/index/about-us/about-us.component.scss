@@ -8,10 +8,13 @@ section {
   background-size: cover;
   background-position: 0px -100px;
   width: 100vw;
-  height: 300px;
+  height: 500px;
 
   @media(min-width: 768px) {
-    background-position: 0px -558px;
+    background-position: 0px -58px;
+  }
+  @media(min-width: 992px) {
+    background-position: 0px -358px;
   }
 }
 

@@ -1,31 +1,6 @@
 //@import '~bourbon/app/assets/stylesheets/_bourbon';
 @import '~bourbon-neat/core/_neat';
-
-// Variables
-$gray: lighten(#e2e2e2, 8%);
-$color-medium: darken(#e2e2e2, 5%);
-$color-primary: #d31111;
-$color-secondary: #0e78d9; // blue
-$color-success: palegreen;
-$font-color-default: lighten(black, 25%);
-$font-color-default-light: white;
-$font-color-grey: #626262;
-$font-color-inactive: #626262; // grey
-$background-color-dark: #474747;
-
-$font-size-default: 1em;
-$font-size-h1: $font-size-default * 3;
-$font-size-h2: $font-size-default * 2;
-$font-size-h3: $font-size-default * 1.5;
-
-$font-size-article-secondary-heading: $font-size-default * 1.2;
-$font-size-article-text: 1em;
-
-// Media queries
-$xs: 576px;
-$sm: 768px;
-$md: 992px;
-$lg: 1200px;
+@import 'variables';
 
 // General
 body {
@@ -150,7 +125,7 @@ section {
   font-size: 1.4em;
 }
 .list {
-  padding-left: 0;
+  //padding-left: 0;
 
   li {
     list-style-type: none;
@@ -516,6 +491,7 @@ $neat-grid: (
   @include grid-container;
 }
 
+// Temporary solution because current implementation does not need differentiated columns on xs.
 .col-xs-1,
 .col-xs-2,
 .col-xs-3,
@@ -530,8 +506,16 @@ $neat-grid: (
 .col-xs-12 {
   @include grid-column(12);
 }
+@media(max-width: $xs) {
+  .sm-hide {
+    display: none;
+  }
+}
 
 @media(min-width: $sm) {
+  .sm-hide {
+    display: none;
+  }
   .col-sm-1 {
     @include grid-column(1);
   }
@@ -582,6 +566,12 @@ $neat-grid: (
 }
 
 @media (min-width: $md) {
+  .xs-hide {
+    display: block;
+  }
+  .sm-hide {
+    display: block;
+  }
   .col-md-1 {
     @include grid-column(1);
   }
