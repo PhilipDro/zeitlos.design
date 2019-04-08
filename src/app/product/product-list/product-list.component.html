@@ -31,7 +31,7 @@
             </ul>
           </div>
         </div>
-        <div *ngIf="authService.isAdmin()" class="col-xs-12 col-sm-6 md-hide">
+        <div *ngIf="authService.isAdmin()">
           <button class="button button-add-item float-right" type="button" (click)="toggleAddProducts()">
             <span *ngIf="!this.showAddProducts">Objekt hinzufügen</span>
             <span *ngIf="this.showAddProducts">Objekt löschen</span>
