@@ -1,14 +1,16 @@
-import { Product } from "./../../../shared/models/product";
-import { ProductService } from "./../../../shared/services/product.service";
-import { ShippingService } from "./../../../shared/services/shipping.service";
-import { BillingService } from "./../../../shared/services/billing.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Product } from "../../../shared/models/product";
+import { ProductService } from "../../../shared/services/product.service";
+import { ShippingService } from "../../../shared/services/shipping.service";
+import { BillingService } from "../../../shared/services/billing.service";
+import { OrderService } from "../../../shared/services/order.service";
+import { Component, OnInit } from "@angular/core";
 import { User, UserDetail } from "../../../shared/models/user";
 import { Billing } from "../../../shared/models/billing";
 import { AuthService } from "../../../shared/services/auth.service";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
+import { Order}  from "../../../shared/models/order";
 
 @Component({
   selector: "app-result",
@@ -26,14 +28,16 @@ export class ResultComponent implements OnInit {
   tax = 0.16;
   shippingsList: UserDetail[];
   billingsList: Billing[];
+  order: Order;
 
   constructor(
     private productService: ProductService,
     private shippingService: ShippingService,
     private billingService: BillingService,
+    private orderService: OrderService,
     private authService: AuthService,
     private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    private toastyConfig: ToastyConfig,
   ) {
 
     this.products = productService.getLocalCartProducts();
@@ -51,10 +55,24 @@ export class ResultComponent implements OnInit {
 
     this.getAllBillings();
     this.getAllShippings();
+    /**
+     * Create Order.
+     */
+    this.order = new Order();
+    // this.order.$key = "sdf3fq3f4f3423f";
+    this.order.orderId = 222;
+    this.order.userId = this.loggedUser.$key;
+    this.order.shippingId = this.shippingsList[0].$key;
+    this.order.billingId = this.billingsList[0].$key;
+    this.order.products = this.products;
+
+    this.orderService.createOrder(this.order);
+    console.log('The order: ' + this.order);
+    console.log('The Type: ' + typeof this.shippingsList);
+    console.log('The Type:!!!!!!!!!!!!!!!!!!!!!!!!!');
   }
 
   ngOnInit() {
-    console.log("logged user" + this.loggedUser);
   }
 
   getAllShippings() {

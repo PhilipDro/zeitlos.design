@@ -1,22 +1,24 @@
-import { Product } from "./../../../shared/models/product";
-import { ShippingService } from "./../../../shared/services/shipping.service";
-import { UserDetail, User } from "./../../../shared/models/user";
-import { AuthService } from "./../../../shared/services/auth.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "../../../../../node_modules/@angular/forms";
+import { Product } from "../../../shared/models/product";
+import { ShippingService } from "../../../shared/services/shipping.service";
+import { UserDetail, User } from "../../../shared/models/user";
+import { AuthService } from "../../../shared/services/auth.service";
+import { Component, OnInit} from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProductService } from "../../../shared/services/product.service";
+import {ToastOptions} from "ng2-toasty";
+
 @Component({
   selector: "app-shipping-details",
   templateUrl: "./shipping-details.component.html",
   styleUrls: ["./shipping-details.component.scss"]
 })
 export class ShippingDetailsComponent implements OnInit {
+  loggedUser: User;
   userDetails: User;
   user: User;
-
+  shippingsList: UserDetail[];
   userDetail: UserDetail;
-
   products: Product[];
 
   constructor(
@@ -35,8 +37,9 @@ export class ShippingDetailsComponent implements OnInit {
     this.products = productService.getLocalCartProducts();
     this.userDetails = authService.getLoggedInUser();
     this.user = authService.getLoggedInUser();
+    this.loggedUser = authService.getLoggedInUser();
 
-    console.log(this.userDetail.address1);
+    this.getAllShippings();
   }
 
   ngOnInit() {}
@@ -71,5 +74,29 @@ export class ShippingDetailsComponent implements OnInit {
       "checkouts",
       { outlets: { checkOutlet: ["billing-details"] } }
     ]);
+  }
+
+  getAllShippings() {
+    const shippings = this.shippingService.getShippingOfUser(this.loggedUser.$key);
+    shippings.snapshotChanges().subscribe(
+      shipping => {
+        this.shippingsList = [];
+        shipping.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.shippingsList.push(y as UserDetail);
+        });
+      },
+      err => {
+        const toastOption: ToastOptions = {
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
+          msg: err,
+          showClose: true,
+          timeout: 5000,
+          theme: "material"
+        };
+        // this.toastyService.error(toastOption);
+      }
+    );
   }
 }

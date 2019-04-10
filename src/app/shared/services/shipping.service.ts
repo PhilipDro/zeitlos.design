@@ -3,7 +3,7 @@ import {
   AngularFireObject,
   AngularFireDatabase
 } from "angularfire2/database";
-import { UserDetail } from "./../models/user";
+import { UserDetail } from "../models/user";
 import { Injectable } from "@angular/core";
 
 @Injectable({
