@@ -57,7 +57,7 @@ export class ShippingDetailsComponent implements OnInit {
     let totalPrice = 0;
 
     this.products.forEach(product => {
-      delete product["$key"];
+      delete product.$key;
       totalPrice += product.productPrice;
       products.push(product);
     });
@@ -76,7 +76,7 @@ export class ShippingDetailsComponent implements OnInit {
     ]);
   }
 
-  getAllShippings() {
+  updateShippingDetails() {
     const shippings = this.shippingService.getShippingOfUser(this.loggedUser.$key);
     shippings.snapshotChanges().subscribe(
       shipping => {
@@ -85,6 +85,16 @@ export class ShippingDetailsComponent implements OnInit {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
           this.shippingsList.push(y as UserDetail);
+
+          // map observable outcome to user properties.
+          // There will be only one shipping entry at time.
+          this.userDetail.firstName = y["firstName"];
+          this.userDetail.lastName = y["firstName"];
+          this.userDetail.address1 = y["firstName"];
+          this.userDetail.address2 = y["firstName"];
+          this.userDetail.zip = y["firstName"];
+          this.userDetail.city = y["firstName"];
+          this.user.phoneNumber = y["firstName"];
         });
       },
       err => {
@@ -95,7 +105,6 @@ export class ShippingDetailsComponent implements OnInit {
           timeout: 5000,
           theme: "material"
         };
-        // this.toastyService.error(toastOption);
       }
     );
   }

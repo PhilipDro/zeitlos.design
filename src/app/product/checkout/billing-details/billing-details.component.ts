@@ -36,7 +36,7 @@ export class BillingDetailsComponent implements OnInit {
 
   ngOnInit() {}
 
-  updateUserDetails(form: NgForm) {
+  updateBillingDetails(form: NgForm) {
     const data = form.value;
 
     data["emailId"] = this.userDetails.emailId;

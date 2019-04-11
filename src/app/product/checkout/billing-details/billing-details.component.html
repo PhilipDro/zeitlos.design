@@ -1,5 +1,5 @@
 <h1>Rechnungsadresse</h1>
-<form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
+<form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateBillingDetails(userDetailsForm)">
   <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname"
          required value="">
   <input type="text" [(ngModel)]="userDetail.lastName" name="lastName" placeholder="Nachname"

@@ -10,7 +10,7 @@ import { AuthService } from "../../../shared/services/auth.service";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
 import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
-import { Order}  from "../../../shared/models/order";
+import { Order} from "../../../shared/models/order";
 
 @Component({
   selector: "app-result",
@@ -29,6 +29,8 @@ export class ResultComponent implements OnInit {
   shippingsList: UserDetail[];
   billingsList: Billing[];
   order: Order;
+  latestShipping;
+  latestBilling;
 
   constructor(
     private productService: ProductService,
@@ -41,7 +43,6 @@ export class ResultComponent implements OnInit {
   ) {
 
     this.products = productService.getLocalCartProducts();
-    // this.shipping = shippingService.getshippingById("-LafG5MrHMx69hLTnGoT");
 
     this.products.forEach(product => {
       this.totalPrice += product.productPrice;
@@ -53,23 +54,10 @@ export class ResultComponent implements OnInit {
     this.shipping = shippingService.getShippingOfUser(this.loggedUser.$key);
     console.log("Thats the new shipping: " + this.shipping);
 
+    this.order = new Order();
+
     this.getAllBillings();
     this.getAllShippings();
-    /**
-     * Create Order.
-     */
-    this.order = new Order();
-    // this.order.$key = "sdf3fq3f4f3423f";
-    this.order.orderId = 222;
-    this.order.userId = this.loggedUser.$key;
-    this.order.shippingId = this.shippingsList[0].$key;
-    this.order.billingId = this.billingsList[0].$key;
-    this.order.products = this.products;
-
-    this.orderService.createOrder(this.order);
-    console.log('The order: ' + this.order);
-    console.log('The Type: ' + typeof this.shippingsList);
-    console.log('The Type:!!!!!!!!!!!!!!!!!!!!!!!!!');
   }
 
   ngOnInit() {
@@ -83,6 +71,8 @@ export class ResultComponent implements OnInit {
         shipping.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
+          // this.latestShipping = y;
+          this.order.shippingId = y["$key"];
           this.shippingsList.push(y as UserDetail);
         });
       },
@@ -107,6 +97,8 @@ export class ResultComponent implements OnInit {
         billing.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
+          // this.latestBilling = y["$key"];
+          this.order.billingId = y["$key"];
           this.billingsList.push(y as Billing);
         });
       },
@@ -119,8 +111,30 @@ export class ResultComponent implements OnInit {
           theme: "material"
         };
         this.toastyService.error(toastOption);
-      }
+      },
     );
+  }
+
+  createOrder() {
+    /**
+     * Create Order.
+     */
+    // Workaround: Remove $key from products because firebase does not accept "$" in strings.
+    this.products.forEach(product => {
+      delete product.$key;
+    });
+
+    this.order.orderId = Math.floor(Math.random() * 10000);
+    this.order.userId = this.loggedUser.$key;
+    // this.order.shippingId = "None";
+    // this.order.billingId = "None";
+    this.order.products = this.products;
+
+    if(this.order.shippingId && this.order.billingId) {
+      this.orderService.createOrder(this.order);
+      console.log("The order: " + this.order);
+    }
+
   }
 
   downloadReceipt() {

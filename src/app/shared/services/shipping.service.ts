@@ -19,6 +19,7 @@ export class ShippingService {
   }
 
   createshippings(data: UserDetail) {
+    this.shippings.remove();
     this.shippings.push(data);
   }
 
@@ -31,6 +32,11 @@ export class ShippingService {
     this.shipping = this.db.object("shippings/" + key);
     return this.shipping;
   }
+
+  // getShippingOfUser(userId) {
+  //   this.shippingsOfUser =  this.db.list("shippings", ref => ref.orderByChild("userId").equalTo(userId));
+  //   return this.shippingsOfUser;
+  // }
 
   getShippingOfUser(userId) {
     this.shippingsOfUser =  this.db.list("shippings", ref => ref.orderByChild("userId").equalTo(userId));

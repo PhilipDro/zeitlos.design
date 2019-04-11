@@ -19,6 +19,7 @@ export class BillingService {
   }
 
   createBillings(data: Billing) {
+    this.billings.remove();
     this.billings.push(data);
   }
 

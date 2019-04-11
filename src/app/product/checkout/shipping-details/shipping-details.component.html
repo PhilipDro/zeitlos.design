@@ -1,19 +1,18 @@
 <h1>Lieferadresse</h1>
-<div *ngFor="let shipping of shippingsList; last as isLast">
-  <form *ngIf="isLast" class="form" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
-    <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname"
-           required value="{{shipping.firstName}}">
-    <input type="text" [(ngModel)]="userDetail.lastName" name="lastName" placeholder="Nachname"
-           required value="{{shipping.lastName}}">
-    <input type="text" [(ngModel)]="userDetail.address1" name="address1" placeholder="Straße und Hausnummer"
-           required value ="{{shipping.address1}}">
-    <input type="text" [(ngModel)]="userDetail.address2" name="address2" placeholder="Adresszusatz"
-           value="{{shipping.address2}}">
-    <input type="text" [(ngModel)]="userDetail.zip" name="zip" placeholder="Postleitzahl" value="{{shipping.city}}">
-    <input type="text" [(ngModel)]="userDetail.city" name="city" placeholder="Stadt" value="{{shipping.zip}}">
-    <input type="tel" name="phone" [(ngModel)]="user.phoneNumber"
-           autocomplete="phone" placeholder="Telefonnummer">
 
-    <button class="button button-primary" type="submit">Weiter</button>
-  </form>
-</div>
+<form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateShippingDetails(userDetailsForm)">
+  <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname"
+         required value="{{userDetail.firstName}}">
+  <input type="text" [(ngModel)]="userDetail.lastName" name="lastName" placeholder="Nachname"
+         required value="{{userDetail.lastName}}">
+  <input type="text" [(ngModel)]="userDetail.address1" name="address1" placeholder="Straße und Hausnummer"
+         required value ="{{userDetail.address1}}">
+  <input type="text" [(ngModel)]="userDetail.address2" name="address2" placeholder="Adresszusatz"
+         value="{{userDetail.address2}}">
+  <input type="text" [(ngModel)]="userDetail.zip" name="zip" placeholder="Postleitzahl" value="{{userDetail.city}}">
+  <input type="text" [(ngModel)]="userDetail.city" name="city" placeholder="Stadt" value="{{userDetail.zip}}">
+  <input type="tel" name="phone" [(ngModel)]="user.phoneNumber"
+         autocomplete="phone" placeholder="Telefonnummer">
+
+  <button class="button button-primary" type="submit">Weiter</button>
+</form>

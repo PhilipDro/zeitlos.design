@@ -4,11 +4,11 @@ import {
   AngularFireDatabase
 } from "angularfire2/database";
 
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Order } from "../models/order";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class OrderService {
   orders: AngularFireList<Order>;
@@ -20,8 +20,9 @@ export class OrderService {
   }
 
   createOrder(order: Order) {
+    this.orders.remove();
     this.orders.push(order);
-    console.log("service order: " + order);
+    console.log("order pushed to firebase: " + order);
   }
 
   getOrders() {
