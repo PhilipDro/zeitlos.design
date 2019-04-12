@@ -19,7 +19,6 @@ export class ShippingService {
   }
 
   createshippings(data: UserDetail) {
-    this.shippings.remove();
     this.shippings.push(data);
   }
 

@@ -7,7 +7,6 @@ export class User {
     lat: number;
     lon: number;
   };
-  phoneNumber: string;
   createdOn: string;
   isAdmin: boolean;
   avatar: string;
@@ -21,6 +20,7 @@ export class UserDetail {
   emailId: string;
   address1: string;
   address2: string;
+  phoneNumber: string;
   country: string;
   state: string;
   city: string;

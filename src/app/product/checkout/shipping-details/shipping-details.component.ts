@@ -39,7 +39,7 @@ export class ShippingDetailsComponent implements OnInit {
     this.user = authService.getLoggedInUser();
     this.loggedUser = authService.getLoggedInUser();
 
-    this.getAllShippings();
+    this.getShipping();
   }
 
   ngOnInit() {}
@@ -76,7 +76,7 @@ export class ShippingDetailsComponent implements OnInit {
     ]);
   }
 
-  updateShippingDetails() {
+  getShipping() {
     const shippings = this.shippingService.getShippingOfUser(this.loggedUser.$key);
     shippings.snapshotChanges().subscribe(
       shipping => {
@@ -89,12 +89,12 @@ export class ShippingDetailsComponent implements OnInit {
           // map observable outcome to user properties.
           // There will be only one shipping entry at time.
           this.userDetail.firstName = y["firstName"];
-          this.userDetail.lastName = y["firstName"];
-          this.userDetail.address1 = y["firstName"];
-          this.userDetail.address2 = y["firstName"];
-          this.userDetail.zip = y["firstName"];
-          this.userDetail.city = y["firstName"];
-          this.user.phoneNumber = y["firstName"];
+          this.userDetail.lastName = y["lastName"];
+          this.userDetail.address1 = y["address1"];
+          this.userDetail.address2 = y["address2"];
+          this.userDetail.zip = y["zip"];
+          this.userDetail.city = y["city"];
+          this.userDetail.phoneNumber = y["phoneNumber"];
         });
       },
       err => {

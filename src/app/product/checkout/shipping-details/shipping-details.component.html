@@ -1,6 +1,6 @@
 <h1>Lieferadresse</h1>
 
-<form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateShippingDetails(userDetailsForm)">
+<form class="form" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
   <input type="text" [(ngModel)]="userDetail.firstName" name="firstName" placeholder="Vorname"
          required value="{{userDetail.firstName}}">
   <input type="text" [(ngModel)]="userDetail.lastName" name="lastName" placeholder="Nachname"
@@ -11,8 +11,8 @@
          value="{{userDetail.address2}}">
   <input type="text" [(ngModel)]="userDetail.zip" name="zip" placeholder="Postleitzahl" value="{{userDetail.city}}">
   <input type="text" [(ngModel)]="userDetail.city" name="city" placeholder="Stadt" value="{{userDetail.zip}}">
-  <input type="tel" name="phone" [(ngModel)]="user.phoneNumber"
-         autocomplete="phone" placeholder="Telefonnummer">
+  <input type="tel" name="phone" [(ngModel)]="userDetail.phoneNumber"
+         autocomplete="phone" placeholder="Telefonnummer" value="{{userDetail.phoneNumber}}">
 
   <button class="button button-primary" type="submit">Weiter</button>
 </form>

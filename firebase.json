@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angularShop",
+    "public": "dist/single-page-application-shop",
     "ignore": [
       "firebase.json",
       "**/.*",

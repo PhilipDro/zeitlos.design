@@ -29,6 +29,7 @@ export class ResultComponent implements OnInit {
   shippingsList: UserDetail[];
   billingsList: Billing[];
   order: Order;
+  orderCreated = false;
   latestShipping;
   latestBilling;
 
@@ -73,6 +74,10 @@ export class ResultComponent implements OnInit {
           y["$key"] = element.key;
           // this.latestShipping = y;
           this.order.shippingId = y["$key"];
+
+          if (this.order.shippingId && this.order.billingId) {
+            this.createOrder();
+          }
           this.shippingsList.push(y as UserDetail);
         });
       },
@@ -99,6 +104,10 @@ export class ResultComponent implements OnInit {
           y["$key"] = element.key;
           // this.latestBilling = y["$key"];
           this.order.billingId = y["$key"];
+
+          if (this.order.shippingId && this.order.billingId) {
+            this.createOrder();
+          }
           this.billingsList.push(y as Billing);
         });
       },
@@ -124,17 +133,13 @@ export class ResultComponent implements OnInit {
       delete product.$key;
     });
 
-    this.order.orderId = Math.floor(Math.random() * 10000);
+    this.order.orderId = Math.floor(Math.random() * 100000);
     this.order.userId = this.loggedUser.$key;
-    // this.order.shippingId = "None";
-    // this.order.billingId = "None";
     this.order.products = this.products;
 
-    if(this.order.shippingId && this.order.billingId) {
+    if (this.order.shippingId && this.order.billingId) {
       this.orderService.createOrder(this.order);
-      console.log("The order: " + this.order);
     }
-
   }
 
   downloadReceipt() {

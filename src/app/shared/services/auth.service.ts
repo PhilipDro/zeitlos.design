@@ -50,9 +50,8 @@ export class AuthService {
         loggedUser.$key = user.uid;
         loggedUser.userName = user.displayName;
         loggedUser.emailId = user.email;
-        loggedUser.phoneNumber = user.phoneNumber;
         loggedUser.avatar = user.photoURL;
-        loggedUser.isAdmin = user.email === "clarissahoffmann@freenet.de" ? true : false;
+        loggedUser.isAdmin = user.email === "clarissahoffmann@freenet.de" ? true : false;  // TODO make array of admins
       }
     } else {
       this.userDetails = null;

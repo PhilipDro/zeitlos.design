@@ -20,7 +20,6 @@ export class OrderService {
   }
 
   createOrder(order: Order) {
-    this.orders.remove();
     this.orders.push(order);
     console.log("order pushed to firebase: " + order);
   }

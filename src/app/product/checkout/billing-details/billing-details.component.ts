@@ -2,10 +2,12 @@ import { ProductService } from "./../../../shared/services/product.service";
 import { Product } from "./../../../shared/models/product";
 import { BillingService } from "./../../../shared/services/billing.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { User, UserDetail } from "../../../shared/models/user";
+import { Billing } from "../../../shared/models/billing";
+import { UserDetail, User } from "../../../shared/models/user";
 import { AuthService } from "../../../shared/services/auth.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
+import {ToastOptions} from "ng2-toasty";
 
 @Component({
   selector: "app-billing-details",
@@ -13,9 +15,11 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./billing-details.component.scss"]
 })
 export class BillingDetailsComponent implements OnInit {
+  loggedUser: User;
   userDetails: User;
   products: Product[];
   userDetail: UserDetail;
+  billingsList: Billing[];
 
   constructor(
     authService: AuthService,
@@ -23,15 +27,18 @@ export class BillingDetailsComponent implements OnInit {
     productService: ProductService,
     private router: Router
   ) {
-    /* Hiding Shipping Tab Element */
+    /* Hiding Billing Tab Element */
     document.getElementById("productsTab").style.display = "none";
-    document.getElementById("shippingTab").style.display = "none";
+    document.getElementById("billingTab").style.display = "none";
     document.getElementById("billingTab").style.display = "block";
     document.getElementById("resultTab").style.display = "none";
 
     this.userDetail = new UserDetail();
     this.products = productService.getLocalCartProducts();
     this.userDetails = authService.getLoggedInUser();
+    this.loggedUser = authService.getLoggedInUser();
+
+    this.getBilling();
   }
 
   ngOnInit() {}
@@ -61,5 +68,37 @@ export class BillingDetailsComponent implements OnInit {
       "checkouts",
       { outlets: { checkOutlet: ["result"] } }
     ]);
+  }
+
+  getBilling() {
+    const billings = this.billingService.getBillingOfUser(this.loggedUser.$key);
+    billings.snapshotChanges().subscribe(
+      billing => {
+        this.billingsList = [];
+        billing.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.billingsList.push(y as Billing);
+
+          // map observable outcome to user properties.
+          // There will be only one billing entry at time.
+          this.userDetail.firstName = y["firstName"];
+          this.userDetail.lastName = y["lastName"];
+          this.userDetail.address1 = y["address1"];
+          this.userDetail.address2 = y["address2"];
+          this.userDetail.zip = y["zip"];
+          this.userDetail.city = y["city"];
+        });
+      },
+      err => {
+        const toastOption: ToastOptions = {
+          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
+          msg: err,
+          showClose: true,
+          timeout: 5000,
+          theme: "material"
+        };
+      }
+    );
   }
 }
