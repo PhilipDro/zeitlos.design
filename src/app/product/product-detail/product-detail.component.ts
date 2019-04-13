@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
-import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
-import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 
 @Component({
   selector: "app-product-detail",
@@ -18,13 +16,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private spinnerService: LoaderSpinnerService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
   ) {
     this.product = new Product();
-    this.toastyConfig.position = "top-right";
-    this.toastyConfig.theme = "material";
   }
 
   ngOnInit() {
@@ -35,11 +28,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   getProductDetail(id: string) {
-    this.spinnerService.show();
     const selectedProduct = this.productService.getProductById(id);
     selectedProduct.snapshotChanges().subscribe(
       product => {
-        this.spinnerService.hide();
         const y = product.payload.toJSON() as Product;
 
         y["$key"] = id;
@@ -53,15 +44,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.product.productImageUrl7 = "assets/products/product-" + this.product.productId + "-7.jpg";
         this.product.productImageUrl8 = "assets/products/product-" + this.product.productId + "-8.jpg";
       },
-      error => {
-        const toastOption: ToastOptions = {
-          title: "Fehler bei der Abfrage der Detail-Ansicht",
-          msg: error,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+      err => {
+        console.log("Fehler bei der Abfrage der Detail-Ansicht" + err);
       }
     );
   }

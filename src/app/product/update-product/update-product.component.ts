@@ -1,9 +1,3 @@
-import {
-  ToastyService,
-  ToastyConfig,
-  ToastOptions,
-  ToastData
-} from "ng2-toasty";
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
@@ -30,10 +24,7 @@ export class UpdateProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig,
   ) {
-    this.toastyConfig.theme = "material";
   }
 
   ngOnInit() {
@@ -41,15 +32,6 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateProduct(productForm: NgForm) {
-    const toastOptions: ToastOptions = {
-      title: "",
-      msg:
-        "Produkt " + productForm.value["productName"] + " wurde erfolgreich aktualisiert.",
-      showClose: true,
-      timeout: 5000,
-      theme: "default"
-    };
-
     /**
      * Map form values to newly generated Product.
      */
@@ -95,7 +77,7 @@ export class UpdateProductComponent implements OnInit {
 
     this.productService.updateProduct(this.key, this.product);
 
-    this.toastyService.success(toastOptions);
+    console.log("Produkt " + productForm.value["productName"] + " wurde erfolgreich aktualisiert.");
 
     this.updated.emit(null);
 
@@ -103,6 +85,6 @@ export class UpdateProductComponent implements OnInit {
   }
 
   moveToTop() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
   }
 }

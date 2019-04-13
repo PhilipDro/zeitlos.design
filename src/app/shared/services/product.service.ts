@@ -1,8 +1,9 @@
-import {Injectable, OnInit} from "@angular/core";
+import { Injectable, OnInit, Inject } from "@angular/core";
 import { AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
-import { ToastOptions, ToastyService, ToastyConfig } from "ng2-toasty";
 import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
+import { isPlatformBrowser, isPlatformServer } from "@angular/common";
+import { PLATFORM_ID } from "@angular/core";
 
 @Injectable()
 export class ProductService {
@@ -23,13 +24,8 @@ export class ProductService {
   constructor(
     private db: AngularFireDatabase,
     private authService: AuthService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    @Inject(PLATFORM_ID) private _platformId: Object
   ) {
-    // Toaster Config
-    this.toastyConfig.position = "top-right";
-    this.toastyConfig.theme = "material";
-
     this.calculateLocalFavProdCounts();
     this.calculateLocalCartProdCounts();
   }
@@ -73,40 +69,33 @@ export class ProductService {
 
   // Adding New product to favourite if logged else to localStorage
   addFavouriteProduct(data: Product): void {
-    // Toast Product Already exists
-    const toastAlreadyExists: ToastOptions = {
-      title: "Das Produkt befindet sich bereits in der Wunschliste.",
-      msg: "",
-      showClose: true,
-      timeout: 5000,
-      theme: "material"
-    };
+    // Product Already exists
+    console.log("Das Produkt befindet sich bereits in der Wunschliste.");
 
-    // Toaster Adding
-    const toastAdd: ToastOptions = {
-      title: "Produkt erfolgreich zur Wunschliste hinzugefügt.",
-      msg: "",
-      showClose: true,
-      timeout: 5000,
-      theme: "material"
-    };
+    // Adding
+    console.log("Produkt erfolgreich zur Wunschliste hinzugefügt.");
 
     let a: Product[];
-    a = JSON.parse(localStorage.getItem("avf_item")) || [];
-    a.push(data);
-    this.toastyService.wait(toastAdd);
-    setTimeout(() => {
-      localStorage.setItem("avf_item", JSON.stringify(a));
-      this.calculateLocalFavProdCounts();
-    }, 1500);
+    if (isPlatformBrowser(this._platformId)) {
+      a = JSON.parse(localStorage.getItem("avf_item")) || [];
+
+      a.push(data);
+
+      setTimeout(() => {
+        localStorage.setItem("avf_item", JSON.stringify(a));
+        this.calculateLocalFavProdCounts();
+      }, 1500);
+    }
   }
 
   // Fetching unsigned users favourite products
   getLocalFavouriteProducts(): Product[] {
-    const products: Product[] =
-      JSON.parse(localStorage.getItem("avf_item")) || [];
+    if (isPlatformBrowser(this._platformId)) {
+      const products: Product[] =
+        JSON.parse(localStorage.getItem("avf_item")) || [];
 
-    return products;
+      return products;
+    }
   }
 
   // Removing Favourite Product from Database
@@ -116,23 +105,26 @@ export class ProductService {
 
   // Removing Favourite Product from localStorage
   removeLocalFavourite(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
-
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
-        products.splice(i, 1);
-        break;
-      }
-    }
-    // ReAdding the products after remove
-    localStorage.setItem("avf_item", JSON.stringify(products));
-
-    this.calculateLocalFavProdCounts();
+    // if (isPlatformBrowser(this._platformId)) {
+    //   const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
+    //
+    //   for (let i = 0; i < products.length; i++) {
+    //     console.log(products.length);
+    //     if (products[i].productId === product.productId) {
+    //       products.splice(i, 1);
+    //       break;
+    //     }
+    //   }
+    //   // ReAdding the products after remove
+    //   localStorage.setItem("avf_item", JSON.stringify(products));
+    //
+    //   this.calculateLocalFavProdCounts();
+    // }
   }
 
   // Returning Local Products Count
   calculateLocalFavProdCounts() {
-    this.navbarFavProdCount = this.getLocalFavouriteProducts().length;
+    // this.navbarFavProdCount = !this.getLocalFavouriteProducts().length ? 0 : this.getLocalFavouriteProducts().length;
   }
 
   /*
@@ -141,53 +133,53 @@ export class ProductService {
 
   // Adding new Product to cart db if logged in else localStorage
   addToCart(data: Product): void {
-    let a: Product[];
+    if (isPlatformBrowser(this._platformId)) {
+      let a: Product[];
 
-    a = JSON.parse(localStorage.getItem("avct_item")) || [];
+      a = JSON.parse(localStorage.getItem("avct_item")) || [];
 
-    a.push(data);
+      a.push(data);
 
-    const toastOption: ToastOptions = {
-      title: "Produkt erfolgreich zum Warenkorb hinzugefügt.",
-      msg: "",
-      showClose: true,
-      timeout: 5000,
-      theme: "material"
-    };
-    this.toastyService.wait(toastOption);
-    setTimeout(() => {
-      localStorage.setItem("avct_item", JSON.stringify(a));
-      this.calculateLocalCartProdCounts();
-    }, 500);
+      console.log("Produkt erfolgreich zum Warenkorb hinzugefügt.");
+
+      setTimeout(() => {
+        localStorage.setItem("avct_item", JSON.stringify(a));
+        this.calculateLocalCartProdCounts();
+      }, 500);
+    }
   }
 
   // Removing cart from local
   removeLocalCartProduct(product: Product) {
-    const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
-
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].productId === product.productId) {
-        products.splice(i, 1);
-        break;
-      }
-    }
-    // ReAdding the products after remove
-    localStorage.setItem("avct_item", JSON.stringify(products));
-
-    this.calculateLocalCartProdCounts();
+    // if (isPlatformBrowser(this._platformId)) {
+    //   const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
+    //
+    //   for (let i = 0; i < products.length; i++) {
+    //     if (products[i].productId === product.productId) {
+    //       products.splice(i, 1);
+    //       break;
+    //     }
+    //   }
+    //   // ReAdding the products after remove
+    //   localStorage.setItem("avct_item", JSON.stringify(products));
+    //
+    //   this.calculateLocalCartProdCounts();
+    // }
   }
 
   // Fetching Locat CartsProducts
   getLocalCartProducts(): Product[] {
-    const products: Product[] =
-      JSON.parse(localStorage.getItem("avct_item")) || [];
+    if (isPlatformBrowser(this._platformId)) {
+      const products: Product[] =
+        JSON.parse(localStorage.getItem("avct_item")) || [];
 
-    return products;
+      return products;
+    }
   }
 
   // returning LocalCarts Product Count
   calculateLocalCartProdCounts() {
-    this.navbarCartCount = this.getLocalCartProducts().length;
+    // this.navbarCartCount = !this.getLocalCartProducts().length ? 0 : this.getLocalCartProducts().length;
   }
 }
 

@@ -4,6 +4,20 @@
     <a routerLink="/index">Home</a> > <a routerLink="/produkte/alle-produkte">Produkte</a> > {{product.productName}}
   </span>
     <div class="row">
+      <div class="main-image-column col-sm-6 col-xs-12">
+        <div class="product-image">
+          <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
+          <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
+          <img [src]="product.productImageUrl" [alt]="product.productName" width="100%">
+        </div>
+
+        <button (click)="addToCart(product)" class="button button-primary margin">In den Warenkorb</button>
+        <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
+
+        <p *ngIf="product.productSold" class="margin colored">
+          Dieser Artikel ist bereits verkauft. Falls Sie interesse an diesem oder einem ähnlichen Objekt haben, nehmen Sie bitte Kontakt mit uns auf und wir beschaffen Ihnen ein noch Schöneres.
+        </p>
+      </div>
       <div class="info-column content-article content-article-main col-sm-6 col-xs-12">
         <h2 class="product-title content-article-heading">{{product.productName}}</h2>
 
@@ -64,7 +78,7 @@
             </tr>
             <tr>
               <th>Versandkosten:</th>
-              <td>{{product.productShippingCost}} €</td>
+              <td>{{product.productShippingCost}} €* <br><br> *Die Versandkosten beziehen sich lediglich auf Lieferungen innerhalb Deutschlands. Wenn Sie die Versandkosten für ein anderes Land erfahren möchten, nehmen Sie bitte direkt mit uns Kontakt auf.</td>
             </tr>
             <tr *ngIf="product.productAvailable === false">
               <th>Verfügbarkeit:</th>
@@ -78,20 +92,7 @@
         </div>
 
       </div>
-      <div class="main-image-column col-sm-6 col-xs-12">
-        <div class="product-image">
-          <!--<img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">-->
-          <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
-          <img [src]="product.productImageUrl" [alt]="product.productName" width="100%">
-        </div>
 
-        <button (click)="addToCart(product)" class="button button-primary margin">In den Warenkorb</button>
-        <button (click)="addFavourite(product)" class="button button-secondary">Auf die Wunschliste</button>
-
-        <p *ngIf="product.productSold" class="margin colored">
-          Dieser Artikel ist bereits verkauft. Falls Sie interesse an diesem oder einem ähnlichen Objekt haben, nehmen Sie bitte Kontakt mit uns auf und wir beschaffen Ihnen ein noch Schöneres.
-        </p>
-      </div>
     </div>
 
     <div class="additional-pictures">

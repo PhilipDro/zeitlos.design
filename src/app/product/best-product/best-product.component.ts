@@ -1,4 +1,3 @@
-import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
@@ -14,11 +13,7 @@ export class BestProductComponent implements OnInit {
   options: any;
   constructor(
     private productService: ProductService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
   ) {
-    this.toastyConfig.position = "top-right";
-    this.toastyConfig.theme = "material";
   }
 
   ngOnInit() {
@@ -55,14 +50,7 @@ export class BestProductComponent implements OnInit {
         // });
       },
       error => {
-        const toastOption: ToastOptions = {
-          title: "Error while fetching Products",
-          msg: error,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+        console.log("Error while fetching Products");
       }
     );
   }

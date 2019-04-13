@@ -2,8 +2,8 @@ import { ElementRef } from '@angular/core';
 import { BlockableUI } from '../common/blockableui';
 export declare class Card implements BlockableUI {
     private el;
-    title: string;
-    subtitle: string;
+    header: string;
+    subheader: string;
     style: any;
     styleClass: string;
     headerFacet: any;

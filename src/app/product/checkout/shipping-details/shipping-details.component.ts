@@ -6,7 +6,6 @@ import { Component, OnInit} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProductService } from "../../../shared/services/product.service";
-import {ToastOptions} from "ng2-toasty";
 
 @Component({
   selector: "app-shipping-details",
@@ -98,13 +97,7 @@ export class ShippingDetailsComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
+        console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen");
       }
     );
   }

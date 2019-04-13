@@ -9,7 +9,6 @@ import { Billing } from "../../../shared/models/billing";
 import { AuthService } from "../../../shared/services/auth.service";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
-import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
 import { Order} from "../../../shared/models/order";
 
 @Component({
@@ -39,8 +38,6 @@ export class ResultComponent implements OnInit {
     private billingService: BillingService,
     private orderService: OrderService,
     private authService: AuthService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig,
   ) {
 
     this.products = productService.getLocalCartProducts();
@@ -82,14 +79,7 @@ export class ResultComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+        console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen");
       }
     );
   }
@@ -112,14 +102,7 @@ export class ResultComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+        console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen" + err);
       },
     );
   }
@@ -143,21 +126,21 @@ export class ResultComponent implements OnInit {
   }
 
   downloadReceipt() {
-    const data = document.getElementById("receipt");
-    console.log(data);
-
-    html2canvas(data).then(canvas => {
-      // Few necessary setting options
-      const imgWidth = 208;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const heightLeft = imgHeight;
-
-      const contentDataURL = canvas.toDataURL("image/png");
-      const pdf = new jspdf("p", "mm", "a4"); // A4 size page of PDF
-      const position = 0;
-      pdf.addImage(contentDataURL, "PNG", 0, position, imgWidth, imgHeight);
-      pdf.save("rechnung.pdf"); // Generated PDF
-    });
+    // const data = document.getElementById("receipt");
+    // console.log(data);
+    //
+    // html2canvas(data).then(canvas => {
+    //   // Few necessary setting options
+    //   const imgWidth = 208;
+    //   const pageHeight = 295;
+    //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    //   const heightLeft = imgHeight;
+    //
+    //   const contentDataURL = canvas.toDataURL("image/png");
+    //   const pdf = new jspdf("p", "mm", "a4"); // A4 size page of PDF
+    //   const position = 0;
+    //   pdf.addImage(contentDataURL, "PNG", 0, position, imgWidth, imgHeight);
+    //   pdf.save("rechnung.pdf"); // Generated PDF
+    // });
   }
 }

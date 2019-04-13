@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
-import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
-import { ToastyService, ToastOptions, ToastyConfig } from "ng2-toasty";
+// import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ActivatedRoute } from "@angular/router";
+import { NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: "app-product-list",
@@ -35,13 +35,11 @@ export class ProductListComponent implements OnInit {
     public authService: AuthService,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private spinnerService: LoaderSpinnerService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    // private spinnerService: LoaderSpinnerService,
+    private notificationService: NotificationService
   ) {
-    this.toastyConfig.position = "top-right";
-    this.toastyConfig.theme = "material";
   }
+  
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       const category = params["productCategory"]; // (+) converts string 'id' to a number
@@ -58,11 +56,11 @@ export class ProductListComponent implements OnInit {
   }
 
   getProductsByCategory(category) {
-    this.spinnerService.show();
+    // this.spinnerService.show();
     const products = this.productService.getProductsByCategory(category);
     products.snapshotChanges().subscribe(
       product => {
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
         this.productList = [];
         product.forEach(element => {
           const y = element.payload.toJSON();
@@ -72,24 +70,17 @@ export class ProductListComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen.",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+        console.log(err);
       }
     );
   }
 
   getAllProducts() {
-    this.spinnerService.show();
+    // this.spinnerService.show();
     const products = this.productService.getProducts();
     products.snapshotChanges().subscribe(
       product => {
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
         this.productList = [];
         product.forEach(element => {
           const y = element.payload.toJSON();
@@ -98,14 +89,7 @@ export class ProductListComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
-        this.toastyService.error(toastOption);
+        console.log(err);
       }
     );
   }
@@ -116,6 +100,8 @@ export class ProductListComponent implements OnInit {
 
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
+    console.log("Wrong?");
+    this.notificationService.error("Error while fetching Products", "Second");
   }
 
   addToCart(product: Product) {
@@ -138,6 +124,6 @@ export class ProductListComponent implements OnInit {
 
   // TODO: create a service for that.
   moveToTop() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }
 }

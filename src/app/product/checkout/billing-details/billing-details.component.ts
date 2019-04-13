@@ -7,7 +7,6 @@ import { UserDetail, User } from "../../../shared/models/user";
 import { AuthService } from "../../../shared/services/auth.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import {ToastOptions} from "ng2-toasty";
 
 @Component({
   selector: "app-billing-details",
@@ -91,13 +90,7 @@ export class BillingDetailsComponent implements OnInit {
         });
       },
       err => {
-        const toastOption: ToastOptions = {
-          title: "Bei der Anfrage der Produkte ist ein Fehler unterlaufen",
-          msg: err,
-          showClose: true,
-          timeout: 5000,
-          theme: "material"
-        };
+        console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen" + err);
       }
     );
   }

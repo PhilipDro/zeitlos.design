@@ -9,6 +9,7 @@ export declare class InputSwitch implements ControlValueAccessor {
     inputId: string;
     name: string;
     disabled: boolean;
+    readonly: boolean;
     onChange: EventEmitter<any>;
     checked: boolean;
     focused: boolean;

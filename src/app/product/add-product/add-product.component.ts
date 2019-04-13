@@ -1,9 +1,3 @@
-import {
-  ToastyService,
-  ToastyConfig,
-  ToastOptions,
-  ToastData
-} from "ng2-toasty";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
@@ -23,23 +17,13 @@ export class AddProductComponent implements OnInit {
   product: Product = new Product();
   constructor(
     private productService: ProductService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
   ) {
-    this.toastyConfig.theme = "material";
   }
 
   ngOnInit() {}
 
   createProduct(productForm: NgForm) {
-    const toastOptions: ToastOptions = {
-      title: "",
-      msg:
-        "Produkt " + productForm.value["productName"] + " wurde erfolgreich hinzugefügt.",
-      showClose: true,
-      timeout: 5000,
-      theme: "default"
-    };
+    console.log("Produkt " + productForm.value["productName"] + " wurde erfolgreich hinzugefügt.");
     // productForm.value["productId"] = "PROD_" + shortId.generate();
     productForm.value["productAdded"] = moment().unix();
     productForm.value["ratings"] = Math.floor(Math.random() * 5 + 1);
@@ -86,7 +70,5 @@ export class AddProductComponent implements OnInit {
     this.productService.createProduct(this.product);
 
     // this.product = new Product();
-
-    this.toastyService.success(toastOptions);
   }
 }

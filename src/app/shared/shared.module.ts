@@ -5,7 +5,6 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { FormsModule, FormBuilder } from "@angular/forms";
-import { ToastyModule } from "ng2-toasty";
 import { RouterModule, Router } from "@angular/router";
 import { NgxPaginationModule } from "ngx-pagination";
 import { HttpClientModule } from "@angular/common/http";
@@ -20,7 +19,6 @@ import { AdminGaurd } from "./services/admin-gaurd";
 import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
-import { LoaderSpinnerService } from "./loader-spinner/loader-spinner";
 import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
 
 @NgModule({
@@ -32,7 +30,6 @@ import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie
     FormsModule,
     HttpClientModule,
     RouterModule,
-    ToastyModule.forRoot(),
     NgxPaginationModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDMbxW3MlwUP2vrAZVJyu7pYqZa1LthvTE"
@@ -53,7 +50,6 @@ import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
-    ToastyModule,
     RouterModule,
     NgxPaginationModule,
     FilterByBrandPipe,
@@ -69,8 +65,7 @@ import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie
     AdminGaurd,
     ProductService,
     UserService,
-    FormBuilder,
-    LoaderSpinnerService
+    FormBuilder
   ]
 })
 export class SharedModule {}
