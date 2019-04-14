@@ -4,6 +4,8 @@ import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 import { PLATFORM_ID } from "@angular/core";
+import { NotificationService} from "./notification.service";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class ProductService {
@@ -24,6 +26,8 @@ export class ProductService {
   constructor(
     private db: AngularFireDatabase,
     private authService: AuthService,
+    private notification: NotificationService,
+    private toastr: ToastrService,
     @Inject(PLATFORM_ID) private _platformId: Object
   ) {
     this.calculateLocalFavProdCounts();
@@ -50,10 +54,12 @@ export class ProductService {
   }
 
   updateProduct(key: string, data: Product) {
+    this.toastr.success("Produkt erfolgreich aktualisiert.", "",{});
     this.products.update(key, data);
   }
 
   deleteProduct(key: string) {
+    this.toastr.success("Produkt wurde entfernt.", "",{});
     console.log(key);
     this.products.remove(key);
   }
@@ -70,10 +76,10 @@ export class ProductService {
   // Adding New product to favourite if logged else to localStorage
   addFavouriteProduct(data: Product): void {
     // Product Already exists
-    console.log("Das Produkt befindet sich bereits in der Wunschliste.");
+    // console.log("Das Produkt befindet sich bereits in der Wunschliste.");
 
     // Adding
-    console.log("Produkt erfolgreich zur Wunschliste hinzugefügt.");
+    this.toastr.success("Produkt erfolgreich zur Wunschliste hinzugefügt", "",{});
 
     let a: Product[];
     if (isPlatformBrowser(this._platformId)) {
@@ -139,7 +145,7 @@ export class ProductService {
 
       a.push(data);
 
-      console.log("Produkt erfolgreich zum Warenkorb hinzugefügt.");
+      this.toastr.success("Produkt erfolgreich zum Warenkorb hinzugefügt.", "",{});
 
       setTimeout(() => {
         localStorage.setItem("avct_item", JSON.stringify(a));

@@ -6,20 +6,8 @@ declare var notification: any;
 export class NotificationService {
   constructor() {}
 
-  success(title, msg) {
-    notification.success(msg, title);
-  }
-  info(title, msg) {
-    notification.info(msg, title);
-  }
-  warning(title, msg) {
-    notification.warning(msg, title);
-  }
-  error(title, msg) {
-    notification.error(msg, title);
-  }
-
-  wait(title, msg) {
-    notification.info(msg, title, { timeOut: 3000 });
+  success(title) {
+    // notification.success(msg, title);
+    return title;
   }
 }

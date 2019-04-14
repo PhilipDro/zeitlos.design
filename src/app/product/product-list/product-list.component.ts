@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Inject, OnInit, PLATFORM_ID} from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 // import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ActivatedRoute } from "@angular/router";
 import { NotificationService} from "../../shared/services/notification.service";
+import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 
 @Component({
   selector: "app-product-list",
@@ -29,7 +30,8 @@ export class ProductListComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     // private spinnerService: LoaderSpinnerService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    @Inject(PLATFORM_ID) private _platformId: Object
   ) {
   }
   
@@ -93,8 +95,6 @@ export class ProductListComponent implements OnInit {
 
   addFavourite(product: Product) {
     this.productService.addFavouriteProduct(product);
-    console.log("Wrong?");
-    this.notificationService.error("Error while fetching Products", "Second");
   }
 
   addToCart(product: Product) {
@@ -117,6 +117,8 @@ export class ProductListComponent implements OnInit {
 
   // TODO: create a service for that.
   moveToTop() {
-    // window.scrollTo(0, 0);
+    if (isPlatformBrowser(this._platformId)) {
+      window.scrollTo(0, 0);
+    }
   }
 }

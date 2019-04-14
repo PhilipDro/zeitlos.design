@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NoProductsFoundComponent } from "./components/no-products-found/no-products-found.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -21,6 +22,7 @@ import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
 import { ReversePipe } from "./pipes/reverse.pipe";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { ReversePipe } from "./pipes/reverse.pipe";
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDMbxW3MlwUP2vrAZVJyu7pYqZa1LthvTE"
     })

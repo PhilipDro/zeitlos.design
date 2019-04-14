@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+import {ToastrService} from "ngx-toastr";
 
 declare var $: any;
 declare var require: any;
@@ -17,13 +18,14 @@ export class AddProductComponent implements OnInit {
   product: Product = new Product();
   constructor(
     private productService: ProductService,
+    private toastr: ToastrService
   ) {
   }
 
   ngOnInit() {}
 
   createProduct(productForm: NgForm) {
-    console.log("Produkt " + productForm.value["productName"] + " wurde erfolgreich hinzugefügt.");
+    this.toastr.success("Produkt " + productForm.value["productName"] + " wurde erfolgreich hinzugefügt.", "",{});
     // productForm.value["productId"] = "PROD_" + shortId.generate();
     productForm.value["productAdded"] = moment().unix();
     productForm.value["ratings"] = Math.floor(Math.random() * 5 + 1);

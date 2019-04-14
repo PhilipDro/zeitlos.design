@@ -22,6 +22,7 @@ Optimized for smooth user experience.
 
 ###Technology
 - Angular single page application 
+- Angular Universal for SSR  to serve crawlable HTML templates
 - Managing data streams using RxJs observables
 
 ###Instructions

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {Component, OnInit, Input, Output, EventEmitter, Inject, PLATFORM_ID} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 
 declare var $: any;
 declare var require: any;
@@ -24,6 +25,7 @@ export class UpdateProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    @Inject(PLATFORM_ID) private _platformId: Object
   ) {
   }
 
@@ -85,6 +87,8 @@ export class UpdateProductComponent implements OnInit {
   }
 
   moveToTop() {
-    //window.scrollTo(0, 0);
+    if (isPlatformBrowser(this._platformId)) {
+      window.scrollTo(0, 0);
+    }
   }
 }
