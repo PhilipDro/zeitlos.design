@@ -21,13 +21,6 @@ export class ProductListComponent implements OnInit {
   productToUpdate: Product;
   keyToUpdate: string;
   discountPrice: number;
-
-  brands = [
-    "Tische",
-    "Stühle",
-    "Schränke"
-  ];
-
   selectedBrand: "All";
 
   page = 1;

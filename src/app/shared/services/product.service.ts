@@ -105,26 +105,25 @@ export class ProductService {
 
   // Removing Favourite Product from localStorage
   removeLocalFavourite(product: Product) {
-    // if (isPlatformBrowser(this._platformId)) {
-    //   const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
-    //
-    //   for (let i = 0; i < products.length; i++) {
-    //     console.log(products.length);
-    //     if (products[i].productId === product.productId) {
-    //       products.splice(i, 1);
-    //       break;
-    //     }
-    //   }
-    //   // ReAdding the products after remove
-    //   localStorage.setItem("avf_item", JSON.stringify(products));
-    //
-    //   this.calculateLocalFavProdCounts();
-    // }
+    if (isPlatformBrowser(this._platformId)) {
+      const products: Product[] = JSON.parse(localStorage.getItem("avf_item"));
+
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].productId === product.productId) {
+          products.splice(i, 1);
+          break;
+        }
+      }
+      // ReAdding the products after remove
+      localStorage.setItem("avf_item", JSON.stringify(products));
+
+      this.calculateLocalFavProdCounts();
+    }
   }
 
   // Returning Local Products Count
   calculateLocalFavProdCounts() {
-    // this.navbarFavProdCount = !this.getLocalFavouriteProducts().length ? 0 : this.getLocalFavouriteProducts().length;
+    this.navbarFavProdCount = !this.getLocalFavouriteProducts() ? 0 : this.getLocalFavouriteProducts().length;
   }
 
   /*
@@ -151,20 +150,20 @@ export class ProductService {
 
   // Removing cart from local
   removeLocalCartProduct(product: Product) {
-    // if (isPlatformBrowser(this._platformId)) {
-    //   const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
-    //
-    //   for (let i = 0; i < products.length; i++) {
-    //     if (products[i].productId === product.productId) {
-    //       products.splice(i, 1);
-    //       break;
-    //     }
-    //   }
-    //   // ReAdding the products after remove
-    //   localStorage.setItem("avct_item", JSON.stringify(products));
-    //
-    //   this.calculateLocalCartProdCounts();
-    // }
+    if (isPlatformBrowser(this._platformId)) {
+      const products: Product[] = JSON.parse(localStorage.getItem("avct_item"));
+
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].productId === product.productId) {
+          products.splice(i, 1);
+          break;
+        }
+      }
+      // ReAdding the products after remove
+      localStorage.setItem("avct_item", JSON.stringify(products));
+
+      this.calculateLocalCartProdCounts();
+    }
   }
 
   // Fetching Locat CartsProducts
@@ -179,7 +178,7 @@ export class ProductService {
 
   // returning LocalCarts Product Count
   calculateLocalCartProdCounts() {
-    // this.navbarCartCount = !this.getLocalCartProducts().length ? 0 : this.getLocalCartProducts().length;
+    this.navbarCartCount = !this.getLocalCartProducts() ? 0 : this.getLocalCartProducts().length;
   }
 }
 

@@ -64,7 +64,7 @@
       <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-12 col-sm-12 col-md-9">
 
         <!-- List of Products -->
-        <div class="item-wrapper" *ngFor="let product of productList.slice().reverse() | filterByBrand: selectedBrand | paginate: { itemsPerPage: 12, currentPage: page }">
+        <div class="item-wrapper" *ngFor="let product of productList | reverse | paginate: { itemsPerPage: 12, currentPage: page }">
           <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6">
             <!--Card-->
             <div class="card">

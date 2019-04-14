@@ -20,6 +20,7 @@ import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
+import { ReversePipe } from "./pipes/reverse.pipe";
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie
     NoAccessComponent,
     PageNotFoundComponent,
     ServiceListComponent,
-    CookieDisclaimerComponent
+    CookieDisclaimerComponent,
+    ReversePipe
   ],
   exports: [
     NoProductsFoundComponent,
@@ -57,7 +59,8 @@ import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie
     NoAccessComponent,
     PageNotFoundComponent,
     ServiceListComponent,
-    CookieDisclaimerComponent
+    CookieDisclaimerComponent,
+    ReversePipe
   ],
   providers: [
     AuthService,
