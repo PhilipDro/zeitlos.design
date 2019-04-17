@@ -18,6 +18,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { CategoryTeaserComponent } from './category-teaser/category-teaser.component';
 import { ConsultingComponent } from './consulting/consulting.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AgbComponent } from './agb/agb.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     PrivacyPolicyComponent,
     CategoryTeaserComponent,
     ConsultingComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    AgbComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [NavbarComponent, FooterComponent],

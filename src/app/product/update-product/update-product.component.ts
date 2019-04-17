@@ -4,7 +4,6 @@ import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 
-declare var $: any;
 declare var require: any;
 const shortId = require("shortid");
 const moment = require("moment");

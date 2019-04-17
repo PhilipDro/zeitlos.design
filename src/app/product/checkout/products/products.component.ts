@@ -1,6 +1,9 @@
 import { ProductService } from "./../../../shared/services/product.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Product } from "../../../shared/models/product";
+import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: "app-products",
@@ -9,9 +12,14 @@ import { Product } from "../../../shared/models/product";
 })
 export class ProductsComponent implements OnInit {
   checkoutProducts: Product[];
-
+  agbcheck = false;
   totalPrice = 0;
-  constructor(productService: ProductService) {
+
+  constructor(
+    productService: ProductService,
+    private router: Router,
+    private toastr: ToastrService,
+  ) {
     document.getElementById("shippingTab").style.display = "none";
     document.getElementById("billingTab").style.display = "none";
     document.getElementById("resultTab").style.display = "none";
@@ -25,5 +33,18 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  validateInput(form: NgForm) {
+    if (this.agbcheck) {
+      this.router.navigate([
+        "checkouts",
+        {outlets: {checkOutlet: ["shipping-details"]}}
+      ]);
+    }
+    else {
+      this.toastr.error("Bitte akzeptieren Sie die AGB.");
+    }
+  }
 }

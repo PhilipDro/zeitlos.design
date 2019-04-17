@@ -18,7 +18,8 @@
   <span>Gesamt: </span>
   <strong>{{totalPrice}} €</strong>
 </p>
-
-<div class="">
-    <a class="button" [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['shipping-details']}}]" routerLinkActive="active">Weiter</a>
-</div>
+<form #ProductsForm="ngForm" (ngSubmit)="validateInput(ProductsForm)">
+  <input [(ngModel)]="agbcheck" type="checkbox" required name="agbcheck" id="agbcheck">
+  <label for="agbcheck">Ich akzeptiere die <a href="javascript:;;" [routerLink]="['/index/agb']">AGBs</a>.</label>
+  <button class="button" type="submit" routerLinkActive="active">Weiter</button>
+</form>
