@@ -7,6 +7,7 @@ import { UserDetail, User } from "../../../shared/models/user";
 import { AuthService } from "../../../shared/services/auth.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: "app-billing-details",
@@ -24,7 +25,8 @@ export class BillingDetailsComponent implements OnInit {
     authService: AuthService,
     private billingService: BillingService,
     productService: ProductService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) {
     /* Hiding Billing Tab Element */
     document.getElementById("productsTab").style.display = "none";
@@ -43,30 +45,38 @@ export class BillingDetailsComponent implements OnInit {
   ngOnInit() {}
 
   updateBillingDetails(form: NgForm) {
-    const data = form.value;
 
-    data["emailId"] = this.userDetails.emailId;
-    data["userId"] = this.userDetails.$key;
-    let totalPrice = 0;
-    const products = [];
-    this.products.forEach(product => {
-      delete product["$key"];
-      totalPrice += product.productPrice;
-      products.push(product);
-    });
+    try {
+      const data = form.value;
 
-    data["products"] = products;
+      data["emailId"] = this.userDetails.emailId;
+      data["userId"] = this.userDetails.$key;
+      let totalPrice = 0;
+      const products = [];
+      this.products.forEach(product => {
+        delete product["$key"];
+        totalPrice += product.productPrice;
+        products.push(product);
+      });
 
-    data["totalPrice"] = totalPrice;
+      data["products"] = products;
 
-    data["billingDate"] = Date.now();
+      data["totalPrice"] = totalPrice;
 
-    this.billingService.createBillings(data);
+      data["billingDate"] = Date.now();
 
-    this.router.navigate([
-      "checkouts",
-      { outlets: { checkOutlet: ["result"] } }
-    ]);
+      this.billingService.createBillings(data);
+
+      this.router.navigate([
+        "checkouts",
+        { outlets: { checkOutlet: ["result"] } }
+      ]);
+
+      this.toastr.success("Rechnungsdaten erfolgreich aufenommen!");
+    }
+    catch(err) {
+      this.toastr.error("Bitte füllen Sie alle Felder aus.");
+    }
   }
 
   getBilling() {

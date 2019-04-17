@@ -209,9 +209,17 @@ form.form {
     font-size: 1em;
     width: 100%;
     padding: 0 0 .8em 0;
-    //text-transform: uppercase;
-  }
 
+    // Form validation
+    .validate-form &.ng-valid {
+      border-color: $color-success;
+      border-width: 2px;
+    }
+    .validate-form &.ng-invalid {
+      border-color: $color-primary;
+      border-width: 2px;
+    }
+  }
 }
 
 // Content containers

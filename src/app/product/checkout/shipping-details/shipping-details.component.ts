@@ -6,6 +6,7 @@ import { Component, OnInit} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProductService } from "../../../shared/services/product.service";
+import { ToastrService} from "ngx-toastr";
 
 @Component({
   selector: "app-shipping-details",
@@ -24,7 +25,8 @@ export class ShippingDetailsComponent implements OnInit {
     authService: AuthService,
     private shippingService: ShippingService,
     productService: ProductService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) {
     /* Hiding products Element */
     document.getElementById("productsTab").style.display = "none";
@@ -44,35 +46,45 @@ export class ShippingDetailsComponent implements OnInit {
   ngOnInit() {}
 
   updateUserDetails(form: NgForm) {
-    const data = form.value;
 
-    data["emailId"] = this.userDetails.emailId;
-    /**
-     * Connect instance of User to the userDetails.
-     */
-    data["userId"] = this.userDetails.$key;
-    const products = [];
+    try {
+      const data = form.value;
 
-    let totalPrice = 0;
+      data["emailId"] = this.userDetails.emailId;
+      /**
+       * Connect instance of User to the userDetails.
+       */
+      data["userId"] = this.userDetails.$key;
+      const products = [];
 
-    this.products.forEach(product => {
-      delete product.$key;
-      totalPrice += product.productPrice;
-      products.push(product);
-    });
+      let totalPrice = 0;
 
-    data["products"] = products;
+      this.products.forEach(product => {
+        delete product.$key;
+        totalPrice += product.productPrice;
+        products.push(product);
+      });
 
-    data["totalPrice"] = totalPrice;
+      data["products"] = products;
 
-    data["shippingDate"] = Date.now();
+      data["totalPrice"] = totalPrice;
 
-    this.shippingService.createshippings(data);
+      data["shippingDate"] = Date.now();
 
-    this.router.navigate([
-      "checkouts",
-      { outlets: { checkOutlet: ["billing-details"] } }
-    ]);
+      this.shippingService.createshippings(data);
+
+      this.router.navigate([
+        "checkouts",
+        { outlets: { checkOutlet: ["billing-details"] } }
+      ]);
+
+      console.log("Dats de form: " + form);
+
+      this.toastr.success("Versanddaten erfolgreich aufenommen!");
+    }
+    catch (err) {
+      this.toastr.error("Bitte füllen Sie alle Felder aus.");
+    }
   }
 
   getShipping() {
