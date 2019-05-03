@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { Mail } from '../../../shared/models/mail';
-import { Order } from '../../../shared/models/order';
-import { MailService } from '../../../shared/services/mail.service';
+import {Mail} from "../../../shared/models/mail";
+import {Order} from "../../../shared/models/order";
+import {MailService} from "../../../shared/services/mail.service";
 
 @Component({
-  selector: 'app-mail-order',
-  templateUrl: './mail-order.component.html',
-  styleUrls: ['./mail-order.component.scss'],
+  selector: "app-mail-order",
+  templateUrl: "./mail-order.component.html",
+  styleUrls: ["./mail-order.component.scss"],
   providers: [HttpModule, MailService]
 })
 export class MailOrderComponent implements OnInit {
@@ -21,7 +21,7 @@ export class MailOrderComponent implements OnInit {
 
   // initially fill fields to prevent errors
   public message: Mail = {
-    userId: ''
+    userId: ""
   };
 
   onSubmit() {
@@ -34,14 +34,14 @@ export class MailOrderComponent implements OnInit {
   }
 
   handleResponse(response) {
-    if(response.status == 'success') {
+    if (response.status == "success") {
       this.message = {
-        userId: 'userId',
+        userId: "userId",
       };
       this.messageSent = true;
     }
-    if(response.status == 'error') {
-      alert('Error');
+    if (response.status == "error") {
+      alert("Error");
     }
   }
 }

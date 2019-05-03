@@ -4,79 +4,69 @@ header('Content-type: application/json');
 
 $errors = '';
 
+// set received values
 if(empty($errors)) {
 
-  if($_POST['parts'] != NULL) {
-    $parts = '<span>Segmente: </span>' .  '<strong>' . ucfirst($_POST['parts']) . '</strong><br>';
+  if($_POST['productName'] != NULL) {
+    $productName = '<span>Produkt Name: </span>' .  '<strong>' . ucfirst($_POST['productName']) . '</strong><br>';
   }
   else {
-    $parts = '';
+    $productName = '';
   }
-  if($_POST['stain'] != NULL) {
-    $stain = '<span>Gebeizt auf: </span>' .  '<strong>' . ucfirst($_POST['stain']) . '</strong><br>';
-  }
-  else {
-    $stain = '';
-  }
-  if($_POST['deco'] == null) {
-    $deco = '<span>Vorderleisten: </span><strong>Keine</strong><br>';
-  }
-  else {
-    $deco = '<span>Vorderleisten: </span><strong>Vorhanden</strong><br>';
-  }
-  if($_POST['ledge'] == null) {
-    $ledge = '<span>Kranzleisten: </span><strong>Keine</strong><br>';
-  }
-  else {
-    $ledge = '<span>Kranzleisten: </span><strong>Vorhanden</strong><br>';
-  }
-  if($_POST['drawer'] != NULL AND $_POST['drawer'] != 0 AND isset($_POST['drawer'])) {
-    $drawer = '<span>Schubladen: </span>' .  '<strong>' . ucfirst($_POST['drawer']) . '</strong><br>';
-  }
-  else {
-    $drawer = '';
-  }
-  if($_POST['leoDrawers'] != NULL AND $_POST['leoDrawers'] != 0 AND isset($_POST['leoDrawers'])) {
-    $leoDrawers = '<span>Schubladen: </span>' .  '<strong>' . ucfirst($_POST['leoDrawers']) . '</strong><br>';
-  }
-  else {
-    $leoDrawers = '';
-  }
-  if($_POST['slidingDoor'] != NULL AND $_POST['slidingDoor'] != 0 AND isset($_POST['slidingDoor'])) {
-    $slidingDoor = '<span>Schiebetüren: </span>' .  '<strong>' . ucfirst($_POST['slidingDoor']) . '</strong><br>';
-  }
-  else {
-    $slidingDoor = '';
-  }
-  if($_POST['surface'] != NULL) {
-    $surface = '<span>Oberflächenbehandlung: </span>' .  '<strong>' .ucfirst($_POST['surface']) . '</strong><br>';
-  }
-  else {
-    $surface = '';
-  }
+
+//  if($_POST['stain'] != NULL) {
+//    $stain = '<span>Gebeizt auf: </span>' .  '<strong>' . ucfirst($_POST['stain']) . '</strong><br>';
+//  }
+//  else {
+//    $stain = '';
+//  }
+//  if($_POST['deco'] == null) {
+//    $deco = '<span>Vorderleisten: </span><strong>Keine</strong><br>';
+//  }
+//  else {
+//    $deco = '<span>Vorderleisten: </span><strong>Vorhanden</strong><br>';
+//  }
+//  if($_POST['ledge'] == null) {
+//    $ledge = '<span>Kranzleisten: </span><strong>Keine</strong><br>';
+//  }
+//  else {
+//    $ledge = '<span>Kranzleisten: </span><strong>Vorhanden</strong><br>';
+//  }
+//  if($_POST['drawer'] != NULL AND $_POST['drawer'] != 0 AND isset($_POST['drawer'])) {
+//    $drawer = '<span>Schubladen: </span>' .  '<strong>' . ucfirst($_POST['drawer']) . '</strong><br>';
+//  }
+//  else {
+//    $drawer = '';
+//  }
+//  if($_POST['leoDrawers'] != NULL AND $_POST['leoDrawers'] != 0 AND isset($_POST['leoDrawers'])) {
+//    $leoDrawers = '<span>Schubladen: </span>' .  '<strong>' . ucfirst($_POST['leoDrawers']) . '</strong><br>';
+//  }
+//  else {
+//    $leoDrawers = '';
+//  }
+//  if($_POST['slidingDoor'] != NULL AND $_POST['slidingDoor'] != 0 AND isset($_POST['slidingDoor'])) {
+//    $slidingDoor = '<span>Schiebetüren: </span>' .  '<strong>' . ucfirst($_POST['slidingDoor']) . '</strong><br>';
+//  }
+//  else {
+//    $slidingDoor = '';
+//  }
+//  if($_POST['surface'] != NULL) {
+//    $surface = '<span>Oberflächenbehandlung: </span>' .  '<strong>' .ucfirst($_POST['surface']) . '</strong><br>';
+//  }
+//  else {
+//    $surface = '';
+//  }
 
   // $stain = $_POST['stain'];
   // $drawer = $_POST['drawer'];
   // $leoDrawers = $_POST['leoDrawers'];
   // $surface = $_POST['surface'];
 
-  $properties =
-    $parts .
-    '<span>Holz: </span>' . '<strong>' . ucfirst($_POST['wood']) . '</strong><br>' .
-    $stain .
-    $deco .
-    $ledge .
-    $drawer .
-    $leoDrawers .
-    $slidingDoor .
-    $surface .
-    '<span>Breite: </span>' .  '<strong>' .$_POST['width'] . '<span> cm<span></strong><br>' .
-    '<span>Tiefe: </span>' . '<strong>' . $_POST['depth'] . '<span> cm<span></strong><br>' .
-    '<span>Höhe: </span>' .  '<strong>' .$_POST['height'] . '<span> cm<span></strong>';
+  $properties = $productName;
 
   //message to customer
   $from_name = 'Regale nach Mass';
-  $from_email = 'info@moebel-restaurierung.com';
+  $from_email = 'junk@philipdrozd.com';
   $message ='<h2>Danke für Ihre Anfrage.</h2><p>Sie interessieren sich für folgendes Regal:</p>' . $properties .
     '<p>Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um Weiteres zu besprechen.</p>' .
     '<p>Mit freundlichen Grüßen, <br />Ihr Massregal-Team'
@@ -94,16 +84,18 @@ if(empty($errors)) {
 
   //message to base
   $subject_base = 'Regale nach Mass - Neue Anfrage';
-  $to_email_base = 'info@moebel-restaurierung.com';
-  $message_base = 'Telefonnummer des Klienten: ' . '<strong>' . $_POST['phone'] . '</strong>' .
-    '<p>Mail des Kunden:</p><br>' .
-    $_POST['mail'] .
-    '<p>Nachricht des Kunden:</p><br>' .
-    $_POST['message'] .
-    '<br><p>Kunde hat Interesse an folgendem Regal:</p>'.
-    $properties
+  $to_email_base = 'junk@philipdrozd.com';
 
-  ;
+  $message_base = 'Telefonnummer des Klienten: Test';
+
+//  $message_base = 'Telefonnummer des Klienten: ' . '<strong>' . $_POST['phone'] . '</strong>' .
+//    '<p>Mail des Kunden:</p><br>' .
+//    $_POST['mail'] .
+//    '<p>Nachricht des Kunden:</p><br>' .
+//    $_POST['message'] .
+//    '<br><p>Kunde hat Interesse an folgendem Regal:</p>'.
+//    $properties
+//  ;
 
   //headers to base
   $headers .= "MIME-Version: 1.0\r\n";
