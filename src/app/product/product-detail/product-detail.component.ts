@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
 
@@ -12,10 +12,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub: any;
   product: Product;
   imgUrl;
+  productId: number;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private router: Router
   ) {
     this.product = new Product();
   }
@@ -23,8 +25,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       const id = params["id"]; // (+) converts string 'id' to a number
+      this.productId = id;
       this.getProductDetail(id);
     });
+
+    this.router.navigate([
+      "produkte/produkt/" + this.productId,
+    ]);
+
   }
 
   getProductDetail(id: string) {
@@ -35,6 +43,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
         y["$key"] = id;
         this.product = y;
+        // set remaining product properties. TODO: clean up images of product
         this.product.productImageUrl = "assets/products/product-" + this.product.productId + "-1.jpg";
         this.product.productImageUrl2 = "assets/products/product-" + this.product.productId + "-2.jpg";
         this.product.productImageUrl3 = "assets/products/product-" + this.product.productId + "-3.jpg";
@@ -62,6 +71,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
   handleBrokenImage() {
-    console.log("yeah uhhh");
+    return;
   }
 }

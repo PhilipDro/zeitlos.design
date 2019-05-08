@@ -45,6 +45,11 @@ app.get('*', (req, res) => {
   res.render('index', { req });
 });
 
+app.route('/sitemap.html')
+.get((req, res) => {
+  res.render('sitemap', { req });
+});
+
 // Start up the Node server
 app.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);

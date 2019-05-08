@@ -17,18 +17,18 @@
           <div class="product-filter">
             <h2>Kategorien &#9660;</h2>
             <ul class="list">
-              <li><a routerLink="/produkte/alle-produkte" routerLinkActive="active">Alle</a></li>
-              <li><a routerLink="/produkte/Tische" routerLinkActive="active">Tische</a></li>
-              <li><a routerLink="/produkte/Lampen" routerLinkActive="active">Lampen</a></li>
-              <li><a routerLink="/produkte/Stühle" routerLinkActive="active">Stühle</a></li>
-              <li><a routerLink="/produkte/Sessel" routerLinkActive="active">Sessel</a></li>
-              <li><a routerLink="/produkte/Schränke" routerLinkActive="active">Schränke</a></li>
-              <li><a routerLink="/produkte/Sofas" routerLinkActive="active">Sofas</a></li>
-              <li><a routerLink="/produkte/Regale" routerLinkActive="active">Regale</a></li>
-              <li><a routerLink="/produkte/Gemälde" routerLinkActive="active">Gemälde</a></li>
-              <li><a routerLink="/produkte/Gläser" routerLinkActive="active">Gläser</a></li>
-              <li><a routerLink="/produkte/Vasen" routerLinkActive="active">Vasen</a></li>
-              <li><a routerLink="/produkte/Kunst" routerLinkActive="active">Kunst</a></li>
+              <li><a routerLink="alle-produkte" routerLinkActive="active">Alle</a></li>
+              <li><a routerLink="Tische" routerLinkActive="active">Tische</a></li>
+              <li><a routerLink="Lampen" routerLinkActive="active">Lampen</a></li>
+              <li><a routerLink="Stühle" routerLinkActive="active">Stühle</a></li>
+              <li><a routerLink="Sessel" routerLinkActive="active">Sessel</a></li>
+              <li><a routerLink="Schränke" routerLinkActive="active">Schränke</a></li>
+              <li><a routerLink="Sofas" routerLinkActive="active">Sofas</a></li>
+              <li><a routerLink="Regale" routerLinkActive="active">Regale</a></li>
+              <li><a routerLink="Gemälde" routerLinkActive="active">Gemälde</a></li>
+              <li><a routerLink="Gläser" routerLinkActive="active">Gläser</a></li>
+              <li><a routerLink="Vasen" routerLinkActive="active">Vasen</a></li>
+              <li><a routerLink="Kunst" routerLinkActive="active">Kunst</a></li>
             </ul>
           </div>
         </div>
@@ -75,8 +75,7 @@
                 <img [src]="product.productImageUrl" alt="product.productImageAlt">
                 <span class="hidden-element">Details ansehen!</span>
               </a>
-              <!--/.Item image-->
-              <!--Card contents-->
+              <!-- Product image-->
               <div class="item-body text-center no-padding">
                 <!--Category & Title-->
                 <p class="title">
@@ -90,7 +89,6 @@
                   <span *ngIf="product.productDiscount !== 0" class="discount">{{product.productPrice - (product.productPrice * (product.productDiscount/100))}} €</span>
                   <span [class.linethrough]="product.productDiscount !== 0">{{ product.productPrice }} €</span>
                 </p>
-                <!--Card footer-->
                 <div class="item-footer">
                   <span *ngIf="product.productAvailable === true" class="left">Sofort lieferbar</span>
                   <span class="right">

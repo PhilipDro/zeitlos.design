@@ -3,10 +3,9 @@ import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { Routes } from "@angular/router";
-import { IndexComponent } from "../index/index.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
-import {UpdateProductComponent} from "./update-product/update-product.component";
-import {AddProductComponent} from "./add-product/add-product.component";
+import { UpdateProductComponent } from "./update-product/update-product.component";
+import { AddProductComponent } from "./add-product/add-product.component";
 
 export const ProductRoutes: Routes = [
   {
@@ -14,7 +13,7 @@ export const ProductRoutes: Routes = [
     children: [
       {
         path: "",
-        component: IndexComponent
+        component: ProductListComponent
       },
       {
         path: "alle-produkte",
@@ -33,12 +32,13 @@ export const ProductRoutes: Routes = [
         loadChildren: "./checkout/checkout.module#CheckoutModule"
       },
       {
-        path: "produkt/:id",
-        component: ProductDetailComponent
+        path: "produkt/",
+        component: ProductDetailComponent,
       },
       {
         path: ":productCategory",
-        component: ProductListComponent
+        component: ProductListComponent,
+        // data: { categoryProduct: productCategory }
       },
       {
         path: "produktbearbeitung",

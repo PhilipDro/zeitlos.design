@@ -31,6 +31,7 @@ export class ResultComponent implements OnInit {
   orderCreated = false;
   latestShipping;
   latestBilling;
+  orderSent = false;
 
   constructor(
     private productService: ProductService,
@@ -69,7 +70,6 @@ export class ResultComponent implements OnInit {
         shipping.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
-          // this.latestShipping = y;
           this.order.shippingId = y["$key"];
 
           if (this.order.shippingId && this.order.billingId) {
@@ -80,7 +80,8 @@ export class ResultComponent implements OnInit {
       },
       err => {
         console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen");
-      }
+      },
+      () => console.log("shipping observable complete")
     );
   }
 
@@ -92,7 +93,6 @@ export class ResultComponent implements OnInit {
         billing.forEach(element => {
           const y = element.payload.toJSON();
           y["$key"] = element.key;
-          // this.latestBilling = y["$key"];
           this.order.billingId = y["$key"];
 
           if (this.order.shippingId && this.order.billingId) {
@@ -104,24 +104,28 @@ export class ResultComponent implements OnInit {
       err => {
         console.log("Bei der Anfrage der Produkte ist ein Fehler unterlaufen" + err);
       },
+      () => console.log("billing observable complete")
     );
   }
 
   createOrder() {
-    /**
-     * Create Order.
-     */
-    // Workaround: Remove $key from products because firebase does not accept "$" in strings.
-    this.products.forEach(product => {
-      delete product.$key;
-    });
+    if(!this.orderSent) {
+      /**
+       * Create Order.
+       */
+      // Workaround: Remove $key from products because firebase does not accept "$" in strings.
+      this.products.forEach(product => {
+        delete product.$key;
+      });
 
-    this.order.orderId = Math.floor(Math.random() * 100000);
-    this.order.userId = this.loggedUser.$key;
-    this.order.products = this.products;
+      this.order.orderId = Math.floor(Math.random() * 100000);
+      this.order.userId = this.loggedUser.$key;
+      this.order.products = this.products;
 
-    if (this.order.shippingId && this.order.billingId) {
-      this.orderService.createOrder(this.order);
+      if (this.order.shippingId && this.order.billingId) {
+        this.orderService.createOrder(this.order);
+        this.orderSent = true;
+      }
     }
   }
 

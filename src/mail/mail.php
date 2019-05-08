@@ -66,7 +66,7 @@ if(empty($errors)) {
 
   //message to customer
   $from_name = 'Regale nach Mass';
-  $from_email = 'junk@philipdrozd.com';
+  $from_email = '';
   $message ='<h2>Danke für Ihre Anfrage.</h2><p>Sie interessieren sich für folgendes Regal:</p>' . $properties .
     '<p>Wir werden uns in Kürze mit Ihnen in Verbindung setzen, um Weiteres zu besprechen.</p>' .
     '<p>Mit freundlichen Grüßen, <br />Ihr Massregal-Team'
@@ -84,7 +84,7 @@ if(empty($errors)) {
 
   //message to base
   $subject_base = 'Regale nach Mass - Neue Anfrage';
-  $to_email_base = 'junk@philipdrozd.com';
+  $to_email_base = '';
 
   $message_base = 'Telefonnummer des Klienten: Test';
 

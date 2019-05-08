@@ -2,6 +2,7 @@ import {Component, Inject, OnInit, PLATFORM_ID} from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
+import {Meta, Title} from "@angular/platform-browser";
 // import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ActivatedRoute } from "@angular/router";
 import { NotificationService} from "../../shared/services/notification.service";
@@ -31,22 +32,22 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     // private spinnerService: LoaderSpinnerService,
     private notificationService: NotificationService,
+    private title: Title,
+    private meta: Meta,
     @Inject(PLATFORM_ID) private _platformId: Object
   ) {
   }
   
   ngOnInit() {
+    this.title.setTitle('Unsere Produkte reichen von originalen Klassikern des Bauhaus bis über die kunstvollen Objekte des Art Deco.');
+
     this.sub = this.route.params.subscribe(params => {
       const category = params["productCategory"]; // (+) converts string 'id' to a number
 
       this.path = !category ? "Alle" : category;
 
-      if(category) {
-        this.getProductsByCategory(category);
-      }
-      else {
-        this.getAllProducts();
-      }
+      category ? this.getProductsByCategory(category) : this.getAllProducts();
+
     });
   }
 

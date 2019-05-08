@@ -80,7 +80,7 @@ export class ShippingDetailsComponent implements OnInit {
 
       console.log("Dats de form: " + form);
 
-      this.toastr.success("Versanddaten erfolgreich aufenommen!");
+      this.toastr.success("Versanddaten erfolgreich aufgenommen!");
     }
     catch (err) {
       this.toastr.error("Bitte füllen Sie alle Felder aus.");
