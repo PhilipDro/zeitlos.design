@@ -6,6 +6,7 @@ import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 import { PLATFORM_ID } from "@angular/core";
 import { NotificationService} from "./notification.service";
 import {ToastrService} from "ngx-toastr";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ProductService {
@@ -34,6 +35,8 @@ export class ProductService {
     this.calculateLocalCartProdCounts();
   }
 
+  // TODO add an observable approach in the future
+  //  to enable reusing the component
   getProducts() {
     this.products = this.db.list("products", ref => ref.orderByChild("productId").startAt(1));
     return this.products;

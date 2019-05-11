@@ -1,4 +1,3 @@
-import { CheckoutComponent } from "./checkout/checkout.component";
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
 import { ProductListComponent } from "./product-list/product-list.component";
@@ -6,6 +5,7 @@ import { Routes } from "@angular/router";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { UpdateProductComponent } from "./update-product/update-product.component";
 import { AddProductComponent } from "./add-product/add-product.component";
+import { PageNotFoundComponent } from "../shared/components/page-not-found/page-not-found.component";
 
 export const ProductRoutes: Routes = [
   {
@@ -32,7 +32,7 @@ export const ProductRoutes: Routes = [
         loadChildren: "./checkout/checkout.module#CheckoutModule"
       },
       {
-        path: "produkt/",
+        path: "produkt/:id",
         component: ProductDetailComponent,
       },
       {
@@ -48,6 +48,7 @@ export const ProductRoutes: Routes = [
         path: "produkterstellung",
         component: AddProductComponent
       },
+      { path: "**", component: PageNotFoundComponent }
     ]
   }
 ]

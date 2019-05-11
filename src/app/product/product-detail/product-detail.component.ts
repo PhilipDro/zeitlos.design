@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+
+// import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-product-detail",
@@ -16,23 +18,22 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private productService: ProductService
   ) {
     this.product = new Product();
   }
 
   ngOnInit() {
+
     this.sub = this.route.params.subscribe(params => {
       const id = params["id"]; // (+) converts string 'id' to a number
       this.productId = id;
       this.getProductDetail(id);
     });
 
-    this.router.navigate([
-      "produkte/produkt/" + this.productId,
-    ]);
-
+    // const id = this.route.snapshot.paramMap.get("id");
+    // this.getProductDetail(id);
   }
 
   getProductDetail(id: string) {

@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // configuration and services
 import { ProductRoutes } from "./product.routing";
-// import { FooterComponent } from "../index/footer/footer.component";
 
 // Components
 import { CheckoutModule } from "./checkout/checkout.module";
@@ -20,7 +19,7 @@ import { FavouriteProductsComponent } from "./favourite-products/favourite-produ
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.component";
 import { ProductListIntroComponent } from "./product-list-intro/product-list-intro.component";
-import { UpdateProductComponent } from './update-product/update-product.component';
+import { UpdateProductComponent } from "./update-product/update-product.component";
 
 
 @NgModule({
@@ -41,7 +40,6 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     CartCalculatorComponent,
     ProductListIntroComponent,
     UpdateProductComponent,
-    // FooterComponent
   ],
   exports: [BestProductComponent]
 })

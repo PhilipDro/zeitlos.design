@@ -13,7 +13,7 @@ export const AppRoutes: Routes = [
         loadChildren: "./index/index.module#IndexModule"
       },
       {
-        path: "products",
+        path: "produkte",
         loadChildren: "./product/product.module#ProductModule"
       },
       {
@@ -22,6 +22,7 @@ export const AppRoutes: Routes = [
       }
     ]
   },
+  { path: "", redirectTo: "/index", pathMatch: "full"},
   { path: "no-access", component: NoAccessComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
