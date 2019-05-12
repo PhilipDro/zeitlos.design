@@ -6,6 +6,8 @@ import {ngExpressEngine} from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 
+// import { nodeMailer } from 'nodemailer';
+const nodemailer = require('nodemailer');
 import * as express from 'express';
 import {join} from 'path';
 
@@ -40,6 +42,10 @@ app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '1y'
 }));
 
+// Send mail API enpoint
+app.post('/send-mail', (req, res) => {
+  transporter.sendMail(mailOptions);
+});
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
   res.render('index', { req });
@@ -53,4 +59,27 @@ app.route('/sitemap.html')
 // Start up the Node server
 app.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);
+});
+
+const transporter = nodemailer.createTransport({
+  service: 'imap.strato.de',
+  auth: {
+    user: 'me@philipdrozd.com',
+    pass: 'Patta95+'
+  }
+});
+
+const mailOptions = {
+  from: 'me@philipdrozd.com',
+  to: 'junk@philipdrozd.comm',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
 });

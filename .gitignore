@@ -42,3 +42,6 @@ Thumbs.db
 #Personal Config
 /src/environments/firebaseConfigDummy.ts
 firebase.json
+
+#App Files
+/server.ts

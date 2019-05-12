@@ -14,13 +14,14 @@ import { AppRoutes } from "./app.routing";
     AppComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({appId: "serverApp" }),
     BrowserAnimationsModule,
     IndexModule,
     ProductModule,
     UserModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes, { scrollPositionRestoration: 'enabled' })
+    RouterModule.forRoot(AppRoutes, {scrollPositionRestoration: "enabled", useHash: true }),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
