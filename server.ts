@@ -43,9 +43,9 @@ app.get('*.*', express.static(DIST_FOLDER, {
 }));
 
 // Send mail API enpoint
-app.post('/send-mail', (req, res) => {
-  transporter.sendMail(mailOptions);
-});
+// app.post('/send-mail', (req, res) => {
+//   transporter.sendMail(mailOptions);
+// });
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
   res.render('index', { req });
@@ -57,29 +57,31 @@ app.route('/sitemap.html')
 });
 
 // Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
-});
+app.listen(PORT, '0.0.0.0');
 
-const transporter = nodemailer.createTransport({
-  service: 'imap.strato.de',
-  auth: {
-    user: 'me@philipdrozd.com',
-    pass: 'Patta95+'
-  }
-});
+// app.listen(PORT, () => {
+//   console.log(`Node Express server listening on http://localhost:${PORT}`);
+// });
 
-const mailOptions = {
-  from: 'me@philipdrozd.com',
-  to: 'junk@philipdrozd.comm',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+// const transporter = nodemailer.createTransport({
+//   service: 'imap.strato.de',
+//   auth: {
+//     user: 'me@philipdrozd.com',
+//     pass: 'Patta95+'
+//   }
+// });
+//
+// const mailOptions = {
+//   from: 'me@philipdrozd.com',
+//   to: 'junk@philipdrozd.comm',
+//   subject: 'Sending Email using Node.js',
+//   text: 'That was easy!'
+// };
+//
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
