@@ -149,16 +149,15 @@ button {
     margin-bottom: 2em;
     padding: 0;
 
-    &:hover {
-      ul {
-        opacity: 1;
-
-        li {
-          //display: block;
-          line-height: 2.6em;
-        }
-      }
-    }
+    // &:hover {
+    //   ul {
+    //
+    //     li {
+    //       //display: block;
+    //       line-height: 2.6em;
+    //     }
+    //   }
+    // }
     ul {
       padding-left: 1.5em;
       position: absolute;
@@ -167,12 +166,15 @@ button {
       z-index: 1020;
       margin-top: 0;
       border: 1px solid $color-medium;
-
-      opacity: 0;
+      display: none;
       transition: opacity .5s;
 
+      &.list.active {
+        display: block;
+      }
+
       li {
-        //display: none;
+        line-height: 2.4em;
 
         a {
           color: $font-color-default;
@@ -186,5 +188,8 @@ button {
         }
       }
     }
+  }
+  .product-filter-mobile {
+
   }
 }

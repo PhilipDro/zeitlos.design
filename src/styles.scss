@@ -13,6 +13,10 @@ button,
 input
 {
   font-family: 'Krub', sans-serif;
+  background-color: $gray;
+  outline: none;
+  padding: .7em 1.3em;
+  border: 1px solid $color-medium;
 }
 
 h1 {
@@ -219,6 +223,34 @@ form.form {
       border-color: $color-primary;
       border-width: 2px;
     }
+  }
+}
+
+.form-search {
+  width: 100%;
+  text-align: right;
+
+  @media(max-width: $xs) {
+    .search-input {
+      width: 60%;
+    }
+  }
+
+  label {
+    background: $gray;
+    padding: 0.6em;
+    border: 1px solid $color-medium;
+    position: relative;
+    top: 1px;
+
+    @media(min-width: $xs) {
+      display: inline;
+    }
+  }
+  .search-input {
+      float: right;
+      border-radius: 0;
+      box-shadow: 0;
   }
 }
 

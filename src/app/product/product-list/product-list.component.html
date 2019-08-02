@@ -14,9 +14,9 @@
 
         <!--For smaller screens-->
         <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-6 col-sm-3 md-hide">
-          <div class="product-filter">
-            <h2>Kategorien &#9660;</h2>
-            <ul class="list">
+          <div class="product-filter product-filter-mobile">
+            <h2 (click)="toggleCollapseProductFilter()">Kategorien &#9660;</h2>
+            <ul class="list" [ngClass]="{'active': collapseProductFilter}">
               <li><a routerLink="alle-produkte" routerLinkActive="active">Alle</a></li>
               <li><a routerLink="Tische" routerLinkActive="active">Tische</a></li>
               <li><a routerLink="Lampen" routerLinkActive="active">Lampen</a></li>
@@ -62,10 +62,18 @@
       </div>
 
       <div *ngIf="!showAddProducts && !showUpdateProducts" class="col-xs-12 col-sm-12 col-md-9">
+        <!-- <app-search-product>
+
+        </app-search-product> -->
+
+        <form class="form-search">
+          <label for="product-search"><i class="fa fa-search"></i></label>
+          <input id="product-search" class="search-input" type="text" (keyup)="searchProduct($event)" placeholder="Suche nach Produkten" class="input">
+        </form>
 
         <!-- List of Products -->
         <div class="item-wrapper" *ngFor="let product of productList | reverse | paginate: { itemsPerPage: 12, currentPage: page }">
-          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6">
+          <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6 col-xs-6">
             <!--Card-->
             <div class="card">
               <!--Item image-->

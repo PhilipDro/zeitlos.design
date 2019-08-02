@@ -1,0 +1,65 @@
+<h1>Suche</h1>
+<input type="text" (keydown)="search($event)" placeholder="Suche nach Produkten" class="input">
+
+<div *ngFor="let product of productList">
+  <!-- <h4>{{item?.productName}}</h4>
+  <p>
+    {{item?.productDescription}}
+  </p> -->
+
+
+  <!-- List of Products -->
+  <div class="item-wrapper" *ngFor="let product of productList | reverse | paginate: { itemsPerPage: 12, currentPage: page }">
+    <div *ngIf="authService.isAdmin() || product.productActive" class="item col-xs-12 col-sm-6">
+      <!--Card-->
+      <div class="card">
+        <!--Item image-->
+        <a class="img-wrapper" [routerLink]="['/produkte/produkt', product.$key]">
+          <div *ngIf="product.productSold" class="corner-ribbon shadow top-right red">Verkauft</div>
+          <span *ngIf="product.productDiscount !== 0" class="discount-badge">-{{product.productDiscount}}%</span>
+          <img [src]="product.productImageUrl" alt="product.productImageAlt">
+          <span class="hidden-element">Details ansehen!</span>
+        </a>
+        <!-- Product image-->
+        <div class="item-body text-center no-padding">
+          <!--Category & Title-->
+          <p class="title">
+            <strong>
+              <a [routerLink]="['/produkte/produkt', product.$key]" routerLinkActive="router-link-active">{{ product.productName }}</a>
+            </strong>
+            <span *ngIf="product.productDesigner && product.productDesigner != '-'" class="sub-title">von {{product.productDesigner}}</span>
+            <span *ngIf="!product.productDesigner || product.productDesigner === '-'" class="sub-title"><br /></span>
+          </p>
+          <p class="price">
+            <span *ngIf="product.productDiscount !== 0" class="discount">{{product.productPrice - (product.productPrice * (product.productDiscount/100))}} €</span>
+            <span [class.linethrough]="product.productDiscount !== 0">{{ product.productPrice }} €</span>
+          </p>
+          <div class="item-footer">
+            <span *ngIf="product.productAvailable === true" class="left">Sofort lieferbar</span>
+            <span class="right">
+              <a (click)="addFavourite(product)">
+                <i class="fa fa-heart"></i>
+              </a>
+              <a (click)="addToCart(product)">
+                <i class="fa fa-shopping-cart"></i>
+              </a>
+              <a *ngIf="authService.isAdmin()" (click)="toggleUpdateProduct(product.$key, product)">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a *ngIf="authService.isAdmin()" (click)="removeProduct(product.$key)">
+                <i class="fa fa-trash"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="productList?.length < 1">
+  <hr>
+  <p>
+    Es wurden keine Ergebnisse für Ihre Suchanfrage gefunden.
+  </p>
+</div>

@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from "@angular/core";
+import { Component, Inject, OnInit, PLATFORM_ID } from "@angular/core";
 import { Product } from "../../shared/models/product";
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
-import {Meta, Title} from "@angular/platform-browser";
+import { Meta, Title } from "@angular/platform-browser";
 // import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
 import { ActivatedRoute } from "@angular/router";
 import { NotificationService} from "../../shared/services/notification.service";
@@ -25,6 +25,11 @@ export class ProductListComponent implements OnInit {
   discountPrice: number;
   selectedBrand: "All";
 
+  collapseProductFilter = false;
+
+  startAt = "";
+  endAt = "";
+
   page = 1;
   constructor(
     public authService: AuthService,
@@ -37,7 +42,7 @@ export class ProductListComponent implements OnInit {
     @Inject(PLATFORM_ID) private _platformId: Object
   ) {
   }
-  
+
   ngOnInit() {
     this.title.setTitle('Unsere Produkte reichen von originalen Klassikern des Bauhaus bis über die kunstvollen Objekte des Art Deco.');
 
@@ -90,6 +95,31 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  searchProduct($event) {
+    let q = $event.target.value;
+    this.startAt = q;
+    this.endAt = q + "\uf8ff";
+
+    this.runSearch();
+  }
+
+  runSearch() {
+    const products = this.productService.getSearchProducts(this.startAt, this.endAt);
+    products.snapshotChanges().subscribe(
+      product => {
+        this.productList = [];
+        product.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.productList.push(y as Product);
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
   removeProduct(key: string) {
     this.productService.deleteProduct(key);
   }
@@ -114,6 +144,11 @@ export class ProductListComponent implements OnInit {
 
   removeUpdateForm(event) {
     this.showUpdateProducts = false;
+  }
+
+  toggleCollapseProductFilter() {
+    this.collapseProductFilter = !this.collapseProductFilter;
+    console.log(this.collapseProductFilter);
   }
 
   // TODO: create a service for that.

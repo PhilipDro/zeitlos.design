@@ -4,8 +4,8 @@ import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
 import { PLATFORM_ID } from "@angular/core";
-import { NotificationService} from "./notification.service";
-import {ToastrService} from "ngx-toastr";
+import { NotificationService } from "./notification.service";
+import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
 
 @Injectable()
@@ -45,6 +45,21 @@ export class ProductService {
   getProductsByCategory(category) {
     this.productsByCategory = this.db.list("products", ref => ref.orderByChild("productCategory").equalTo(category));
     return this.productsByCategory;
+  }
+
+  getSearchProducts(start, end) {
+    if(!start) {
+      this.products = this.db.list("products", ref => ref.orderByChild("productId").startAt(1));
+      return this.products;
+    }
+    else if(isFinite(start)) {
+      this.products = this.db.list("products", ref => ref.orderByChild("productId").equalTo(Number(start)).limitToFirst(10));
+      return this.products;
+    }
+    else {
+      this.products = this.db.list("products", ref => ref.orderByChild("productName").startAt(start).endAt(end).limitToFirst(30));
+      return this.products;
+    }
   }
 
   createProduct(data: Product) {
