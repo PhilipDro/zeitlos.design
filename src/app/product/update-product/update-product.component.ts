@@ -29,7 +29,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.product);
+    //console.log(this.product);
   }
 
   updateProduct(productForm: NgForm) {
@@ -64,7 +64,7 @@ export class UpdateProductComponent implements OnInit {
     this.product.productAvailable = productForm.value["productAvailable"] || true;
     this.product.productQuantity = productForm.value["productQuantity"] || 1;
     this.product.productSold = productForm.value["productSold"] || false;
-    this.product.productActive = productForm.value["productActive"] || true;
+    this.product.productActive = productForm.value["productActive"];
 
     // productForm.value["productId"] = "PROD_" + shortId.generate();
     productForm.value["productAdded"] = moment().unix();
@@ -78,7 +78,9 @@ export class UpdateProductComponent implements OnInit {
 
     this.productService.updateProduct(this.key, this.product);
 
+    console.log("------------------------------------------------------");
     console.log("Produkt " + productForm.value["productName"] + " wurde erfolgreich aktualisiert.");
+    console.log(this.product.productActive);
 
     this.updated.emit(null);
 
