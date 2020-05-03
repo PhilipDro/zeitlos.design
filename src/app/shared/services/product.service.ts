@@ -77,9 +77,12 @@ export class ProductService {
   }
 
   deleteProduct(key: string) {
-    this.toastr.success("Produkt wurde entfernt.", "",{});
-    console.log(key);
-    this.products.remove(key);
+    if (confirm('Sicher, dass das Produkt gelöscht werden soll?')) {
+      this.toastr.success("Produkt wurde entfernt.", "",{});
+      this.products.remove(key);
+    } else {
+      console.log("Datenbank bleibt unverändert.");
+    }
   }
 
   // Get Favourite Product based on userId
