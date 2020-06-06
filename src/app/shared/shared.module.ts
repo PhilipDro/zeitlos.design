@@ -16,6 +16,7 @@ import { ServiceListComponent } from "./components/service-list/service-list.com
 import { FireBaseConfig } from "../../environments/firebaseConfigDummy";
 import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
 import { ProductService } from "./services/product.service";
+import { StaticContentService } from "./services/static-content.service";
 import { AdminGaurd } from "./services/admin-gaurd";
 import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
@@ -23,6 +24,7 @@ import { UserService } from "./services/user.service";
 import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
 import { ReversePipe } from "./pipes/reverse.pipe";
 import { ToastrModule } from "ngx-toastr";
+import { Article } from "./models/article";
 
 @NgModule({
   imports: [
@@ -71,8 +73,10 @@ import { ToastrModule } from "ngx-toastr";
     AuthGuard,
     AdminGaurd,
     ProductService,
+    StaticContentService,
     UserService,
-    FormBuilder
+    FormBuilder,
+    Article
   ]
 })
 export class SharedModule {}

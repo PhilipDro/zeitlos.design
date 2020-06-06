@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
-import {ToastrService} from "ngx-toastr";
+import { ToastrService } from "ngx-toastr";
 
 declare var $: any;
 declare var require: any;

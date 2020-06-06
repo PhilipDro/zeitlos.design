@@ -1,6 +1,20 @@
 <section class="content-section dark-background">
   <div class="container">
     <div class="row">
+
+      <a *ngIf="authService.isAdmin()" (click)="updateArticle(header.$key, article)">
+        <i class="fa fa-edit">Header editieren</i>
+      </a>
+
+      <form #updateArticleForm="ngForm" (ngSubmit)="updateArticle(updateArticleForm)">
+        <label for="articleTitle">Header</label>
+        <input type="text" id="articleTitle" name="articleTitle" [(ngModel)]="article.articleTitle"
+          placeholder="Titel des Headers" value="Titel" required>
+        <div class="invalid-feedback">
+          Title Angabe benötigt.
+        </div>
+      </form>
+
       <div class="content-article content-article-main col-sm-7 col-xs-12">
         <p class="content-article-secondary-heading">Bauhaus Klassiker</p>
         <h1 class="content-article-heading mn">Wir sind geöffnet!</h1>
@@ -8,6 +22,8 @@
         <button class="button button-primary button-lead">
           <a routerLink="/produkte/alle-produkte" routerLinkActive="active">Jetzt entdecken</a>
         </button>
+
+
       </div>
 
       <div class="col-sm-5 col-xs-12 right-side">
