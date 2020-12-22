@@ -16,6 +16,10 @@ import { StaticContentService } from "../shared/services/static-content.service"
 export class IndexComponent implements OnInit {
 
   destroy: boolean = false;
+  articleList: Article[];
+  article: Article;
+  articleShow: boolean;
+  //counter: number = 0;
 
   @Input() key: string;
 
@@ -32,8 +36,56 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle("Art Deco, Bauhaus, Moderne. Hochwertig aufgearbeitete Produkte zum Teil bis zu 30% reduziert. Jetzt entdecken!");
+    //this.getArticles(); TODO
+
+    //this.sliderCounter();
   }
 
+  getArticles() {
+    // this.spinnerService.show();
+    const articles = this.staticContentService.getArticles();
+    articles.snapshotChanges().subscribe(
+      article => {
+        // this.spinnerService.hide();
+        this.articleList = [];
+        article.forEach(element => {
+          const y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.articleList.push(y as Article);
+          this.runSlider();
+          console.log("length: " + this.articleList.length);
+        });
+
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  // runSlider() {
+  //   this.articleList[this.counter].articleVisible = false;
+  //   this.counter++;
+  //   if(this.counter > this.articleList.length) {
+  //     console.log("reset");
+  //     this.counter = 0;
+  //
+  //     this.sliderArticles();
+  //   }
+  //   this.sliderArticles();
+  // }
+  //
+  // runSlider() {
+  //   this.counter = 1;
+  //   this.articleList[this.counter].articleVisible = true;
+  // }
+  //
+  // sliderArticles() {
+  //    this.articleList[this.counter].articleVisible = true;
+  //    setTimeout(this.runSlider(), 2000);
+  // }
+
+  // TODO
   sendMail() {
     console.log("test send mail");
 
@@ -48,40 +100,5 @@ export class IndexComponent implements OnInit {
         response => console.log(`This is the first response: ${response}`),
         response => console.log(`This is the second response: ${response}`)
       );
-  }
-
-  createArticle(articleForm: NgForm) {
-    this.toastr.success("Artikel " + articleForm.value["articleTitle"] + " wurde erfolgreich hinzugefügt.", "",{});
-    // articleForm.value["productId"] = "PROD_" + shortId.generate();
-    //articleForm.value["articleAdded"] = moment().unix();
-    if (articleForm.value["articleImageUrl"] === undefined) {
-      articleForm.value["articleImageUrl"] =
-        "http://via.placeholder.com/640x360/007bff/ffffff";
-    }
-  }
-
-  updateArticle(articleForm: NgForm) {
-    /**
-     * Map form values to newly generated header content.
-     */
-    this.article = new Article();
-    //his.article.articleTitle = productForm.value["articleTitle"] || "";
-    this.article.articleTitle = "Titel des Artikels";
-
-    //this.showEditHeader = false;
-
-    console.log(this.article.articleTitle);
-    // this.header.productId = productForm.value["productId"] || "";
-    // this.header.productCategory = productForm.value["productCategory"] || "";
-    // this.header.productMaterial = productForm.value["productMaterial"] || "";
-
-    this.staticContentService.createArticle(this.article);
-
-    //const date = productForm.value["articleAdded"];
-
-    console.log("------------------------------------------------------");
-    //console.log(this.product.productActive);
-
-    //this.updated.emit(null);
   }
 }

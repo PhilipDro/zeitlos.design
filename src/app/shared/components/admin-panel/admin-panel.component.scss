@@ -1,0 +1,21 @@
+.invalid-feedback {
+  display: none; //TODO
+}
+label {
+  display: block;
+}
+input,
+textarea {
+  width: 80%;
+  padding: 2vh 2vw;
+  margin: 2vh 0;
+  font-family: 'Krub', sans-serif;
+}
+
+textarea {
+  height: 15vh;
+}
+
+article div {
+  padding-top: 47px
+}

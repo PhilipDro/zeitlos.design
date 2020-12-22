@@ -2,32 +2,27 @@
   <div class="container">
     <div class="row">
 
-      <a *ngIf="authService.isAdmin()" (click)="updateArticle(header.$key, article)">
-        <i class="fa fa-edit">Header editieren</i>
+      <a *ngIf="authService.isAdmin()" routerLink="/admin-panel" routerLinkActive="active"
+        class="button button-secondary">
+        <i class="fa fa-edit"></i>
+        <span>Seite editieren </span>
       </a>
 
-      <form #updateArticleForm="ngForm" (ngSubmit)="updateArticle(updateArticleForm)">
-        <label for="articleTitle">Header</label>
-        <input type="text" id="articleTitle" name="articleTitle" [(ngModel)]="article.articleTitle"
-          placeholder="Titel des Headers" value="Titel" required>
-        <div class="invalid-feedback">
-          Title Angabe benötigt.
+      <div class="col-sm-7 col-xs-12">
+        <div *ngFor="let article of articleList">
+          <div *ngIf="article.articleSlider && article.articleActive && article.articleVisible" class="slider content-article content-article-main">
+           <p class="content-article-secondary-heading">{{article.articleTagline}}</p>
+           <h1 class="content-article-heading mn">{{article.articleTitle}}</h1>
+           <p class="content-article-text">{{article.articleMainText}}</p>
+           <button class="button button-primary button-lead">
+             <a routerLink="/produkte/alle-produkte" routerLinkActive="active">{{article.articleButtonText}}</a>
+           </button>
+          </div>
         </div>
-      </form>
-
-      <div class="content-article content-article-main col-sm-7 col-xs-12">
-        <p class="content-article-secondary-heading">Bauhaus Klassiker</p>
-        <h1 class="content-article-heading mn">Wir sind geöffnet!</h1>
-        <p class="content-article-text">Und freuen uns auf Ihren Besuch in der Suarezstraße.</p>
-        <button class="button button-primary button-lead">
-          <a routerLink="/produkte/alle-produkte" routerLinkActive="active">Jetzt entdecken</a>
-        </button>
-
-
       </div>
 
       <div class="col-sm-5 col-xs-12 right-side">
-        <img src="assets/img/wassili.png" alt="" />
+        <img src="assets/img/wassili.png" alt="">
       </div>
     </div>
   </div>

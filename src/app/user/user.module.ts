@@ -6,7 +6,6 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
 // Configuration and Services
 import { UserRoutes } from "./user.routing";
 

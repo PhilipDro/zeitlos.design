@@ -1,0 +1,74 @@
+<section>
+  <div class="container">
+    <h1>Adminbereich</h1>
+    <div *ngIf="showAddArticle" class="row">
+      <div class="col-sm-6">
+       <form #createArticleForm="ngForm" (ngSubmit)="createArticle(createArticleForm)">
+         <h2>Neuer Artikel</h2>
+
+         <label for="articleId">Artikel ID</label>
+         <input type="text" id="articleId" name="articleId" [(ngModel)]="article.articleId"
+           placeholder="ID des Artikels" value="articleId">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleTagline">Oberüberschrift (In Großbuchstaben über dem Titel)</label>
+         <input type="text" id="articleTagline" name="articleTagline" [(ngModel)]="this.article.articleTagline"
+           placeholder="Oberüberschrift" value="Titel" required>
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleTitle">Titel</label>
+         <input type="text" id="articleTitle" name="articleTitle" [(ngModel)]="article.articleTitle"
+           placeholder="Haupttitel" value="Titel">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleSubTitle">Untertitel</label>
+         <input type="text" id="articleSubTitle" name="articleSubTitle" [(ngModel)]="article.articleSubTitle"
+           placeholder="Unterüberschrift" value="articleMainText">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleMainText">Haupttext</label>
+         <input type="text" id="articleMainText" name="articleMainText" [(ngModel)]="article.articleMainText"
+           placeholder="Text des Artikels" value="articleMainText">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleButtonText">Text im Button</label>
+         <input type="text" id="articleButtonText" name="articleButtonText" [(ngModel)]="article.articleButtonText"
+           placeholder="" value="articleButtonText">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleActive">Aktiv</label>
+         <input name="articleActive" id="articleActive" type="checkbox" [value]="article.articleActive"  [(ngModel)]="article.articleActive">
+         <div class="invalid-feedback">
+         </div>
+
+         <label for="articleSlider">Slider</label>
+         <input name="articleSlider" id="articleSlider" type="checkbox" [value]="article.articleSlider"  [(ngModel)]="article.articleSlider">
+         <div class="invalid-feedback">
+         </div>
+
+         <input class="button button-primary" type="submit" value="Artikel speichern">
+         <button class="button button-secondary" (click)="toggleAddArticle()">Zur Übersicht</button>
+       </form>
+     </div>
+
+      <div class="col-sm-6">
+        <h2>Vorschau</h2>
+        <article>
+          <div>{{article.articleTagline}}</div>
+          <div>{{article.articleTitle}}</div>
+          <div>{{article.articleSubTitle}}</div>
+          <div>{{article.articleMainText}}</div>
+          <div>{{article.articleButtonText}}</div>
+        </article>
+      </div>
+    </div>
+
+    <app-article></app-article>
+  </div>
+</section>

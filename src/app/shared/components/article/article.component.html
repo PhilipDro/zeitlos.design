@@ -1,0 +1,9 @@
+<h2>Bestehende Artikel</h2>
+<p>Hier finden sich bereits erstellte Blogeinträge (Artikel).
+<div class="item-wrapper" *ngFor="let article of articleList | reverse | paginate: { itemsPerPage: 12, currentPage: page }">
+  <div *ngIf="article.articleActive" class="item">
+    <p>{{article.articleTagline}}</p>
+    <h3>{{article.articleTitle}}</h3>
+    <p>{{article.articleMainText}}</p>
+  </div>
+</div>

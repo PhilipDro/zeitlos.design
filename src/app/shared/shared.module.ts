@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AgmCoreModule } from "@agm/core";
 import { NoAccessComponent } from "./components/no-access/no-access.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { ServiceListComponent } from "./components/service-list/service-list.component";
 import { FireBaseConfig } from "../../environments/firebaseConfigDummy";
 import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
@@ -21,10 +22,12 @@ import { AdminGaurd } from "./services/admin-gaurd";
 import { AuthGuard } from "./services/auth_gaurd";
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
+import { ArticleService } from "./services/article.service";
 import { CookieDisclaimerComponent } from "./components/cookie-disclaimer/cookie-disclaimer.component";
 import { ReversePipe } from "./pipes/reverse.pipe";
 import { ToastrModule } from "ngx-toastr";
 import { Article } from "./models/article";
+import { ArticleComponent } from "./components/article/article.component";
 
 @NgModule({
   imports: [
@@ -49,7 +52,10 @@ import { Article } from "./models/article";
     PageNotFoundComponent,
     ServiceListComponent,
     CookieDisclaimerComponent,
-    ReversePipe
+    ReversePipe,
+    AdminPanelComponent,
+    ArticleComponent,
+    AdminPanelComponent
   ],
   exports: [
     NoProductsFoundComponent,
@@ -66,13 +72,15 @@ import { Article } from "./models/article";
     PageNotFoundComponent,
     ServiceListComponent,
     CookieDisclaimerComponent,
-    ReversePipe
+    ReversePipe,
+    AdminPanelComponent
   ],
   providers: [
     AuthService,
     AuthGuard,
     AdminGaurd,
     ProductService,
+    ArticleService,
     StaticContentService,
     UserService,
     FormBuilder,

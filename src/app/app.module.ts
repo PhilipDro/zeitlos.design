@@ -20,8 +20,7 @@ import { AppRoutes } from "./app.routing";
     ProductModule,
     UserModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes, {scrollPositionRestoration: "enabled", useHash: true }),
-
+    RouterModule.forRoot(AppRoutes, {scrollPositionRestoration: "enabled", useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent],

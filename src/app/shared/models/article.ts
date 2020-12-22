@@ -5,8 +5,10 @@ export class Article {
   articleTitle: string;
   articleSubTitle: string;
   articleMainText: string;
-  articleButtonText: string = "Jetzt entdecken!";
+  articleButtonText: string;
   articleAdded: string;
   articleActive = true;
   articleSlider: boolean;
+  articleVisible: boolean = false;
+  articleCategory: string;
 }

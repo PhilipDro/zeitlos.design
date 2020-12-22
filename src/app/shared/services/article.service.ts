@@ -8,13 +8,10 @@ import { NotificationService } from "./notification.service";
 import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
 
-@Injectable()
-export class StaticContentService {
-
-  articles: AngularFireList<Article>;
-  article: AngularFireObject<Article>;
-
-  //selectedProduct = new Product(); // TODO
+@Injectable({
+  providedIn: 'root'
+})
+export class ArticleService {
 
   constructor(
     private db: AngularFireDatabase,
@@ -22,18 +19,25 @@ export class StaticContentService {
     private notification: NotificationService,
     private toastr: ToastrService,
     @Inject(PLATFORM_ID) private _platformId: Object
-  ) {
-    this.getArticles();
-    // This could allow the feature of bookmarking
-    // articles as a user in the future.
-    // this.calculateLocalFavProdCounts();
-    // this.calculateLocalCartProdCounts();
+  ) { }
+
+  articles: AngularFireList<Article>;
+  article: AngularFireObject<Article>;
+
+  selectedArticle = new Article();
+
+  createArticle(data: Article) {
+    this.articles.push(data);
   }
 
   getArticles() {
     this.articles = this.db.list("articles");
-    console.log(this.articles);
     return this.articles;
+  }
+
+  getArticleById(key: string) {
+    this.article = this.db.object("articles/" + key);
+    return this.article;
   }
 
   updateArticle(key: string, data: Article) {
@@ -41,7 +45,12 @@ export class StaticContentService {
     this.articles.update(key, data);
   }
 
-  createArticle(data: Article) {
-    this.articles.push(data);
+  deleteArticle(key: string) {
+    if (confirm('Sicher, dass das Produkt gelöscht werden soll?')) {
+      this.toastr.success("Produkt wurde entfernt.", "",{});
+      this.articles.remove(key);
+    } else {
+      console.log("Datenbank bleibt unverändert.");
+    }
   }
 }
