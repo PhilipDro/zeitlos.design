@@ -41,7 +41,7 @@
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.1",
     "jspdf": "^1.5.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-toastr": "^4.1.2",
     "ngx-pagination": "^3.2.1",
     "ngx-toastr": "^10.0.2",
